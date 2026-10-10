@@ -64,9 +64,9 @@ export const projects: Project[] = [
       "Accessible information architecture",
       "Guided comparison experience",
     ],
-    url: "https://medicarechoice.app/",
-    cta: "Explore MedicareChoice",
+    url: "https://plainplanguide.com/",
+    cta: "Explore PlainPlanGuide",
     image: medicareShot,
-    imageAlt: "MedicareChoice homepage with the headline “Pick the right Medicare plan—without the fine print headache.”",
+    imageAlt: "PlainPlanGuide homepage — a plain-language Medicare plan guide",
   },
 ];
