@@ -21,8 +21,8 @@ export const submitInquiry = createServerFn({ method: "POST" })
     if (data.website || Date.now() - data.startedAt < 2500) {
       return { ok: false as const, error: "Something looked off with that submission. Please try again." };
     }
-    const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_PUBLISHABLE_KEY;
+    const url = process.env["SUPABASE_URL"];
+    const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
     if (!url || !key) return { ok: false as const, error: "The form isn't connected right now. Please try again later." };
 
     const supabase = createClient(url, key, { auth: { persistSession: false } });
