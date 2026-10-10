@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
           name: "Alexis Beam",
           description: DESC,
           slogan: "Thoughtfully designed. Purposefully built.",
-          founder: { "@type": "Person", name: "Alexis Beam", jobTitle: "Web Designer & Digital Solutions Consultant" },
+          founder: { "@type": "Person", name: "Alexis Beam", jobTitle: "Web Designer & Digital Solutions Consultant, Ph.D.", hasCredential: "Ph.D. in Psychology" },
           serviceType: services.map((s) => s.title),
         }),
       },
@@ -106,8 +106,16 @@ function Hero() {
               <span className="text-foreground">Hi, I'm Alexis.</span> I create beautiful, functional websites and digital experiences for businesses and people with big ideas.
             </p>
             <p>
-              With a background in psychology, data strategy, and technology, I bring thoughtful design and practical problem-solving together to build things that look great and work even better.
+              With a <span className="text-foreground">doctorate in psychology</span> and <span className="text-foreground">over 12 years</span> in data strategy and technology, I bring thoughtful design and practical problem-solving together to build things that look great and work even better.
             </p>
+            <ul aria-label="Credentials" className="eyebrow flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-terracotta">
+              {["Ph.D., Psychology", "12+ Years Experience", "Data Strategy", "Technology & Systems"].map((c, i) => (
+                <li key={c} className="flex items-center gap-4">
+                  {i > 0 && <span className="h-3 w-px bg-terracotta/50" aria-hidden="true" />}
+                  {c}
+                </li>
+              ))}
+            </ul>
             <div className="flex flex-col gap-4 pt-4 sm:flex-row sm:items-center sm:gap-8">
               <a href="#work" className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
                 Explore My Work <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
@@ -236,17 +244,22 @@ function About() {
           </Reveal>
           <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-7">
             <p className="font-serif text-3xl text-foreground">Hi, I'm Alexis.</p>
+            <p>I hold a Ph.D. in psychology and have spent more than 12 years building a career in data, technology, and business strategy.</p>
             <p>I'm a designer, builder, problem-solver, and someone who genuinely loves figuring out how to make things work better.</p>
-            <p>My background is a little different from that of a traditional web designer. I earned my Ph.D. in psychology and built my career working with data, technology, and business strategy.</p>
-            <p>That experience taught me to think critically, understand how people interact with information, and approach challenges from multiple perspectives.</p>
+            <p>That's a different path than most web designers take, and it taught me to think critically, understand how people interact with information, and approach challenges from multiple perspectives.</p>
             <p>Today, I bring that same curiosity and problem-solving mindset to web design and digital development.</p>
             <p>I believe the best digital experiences aren't just beautiful. They're intuitive, purposeful, and built around the people who use them.</p>
             <p>Whether you're launching a new business, refreshing an existing website, or exploring an idea, I love finding creative ways to bring it to life.</p>
             <ul className="grid gap-6 border-t pt-8 sm:grid-cols-3">
-              {["Human-Centered Thinking", "Business-Minded Solutions", "Thoughtful Design"].map((h, i) => (
+              {[
+                ["Human-Centered Thinking", "Grounded in a doctorate in psychology"],
+                ["Business-Minded Solutions", "Shaped by years in data strategy"],
+                ["Thoughtful Design", "Built with modern technology"],
+              ].map(([h, c], i) => (
                 <li key={h} className="text-base text-foreground">
                   <span className="eyebrow block text-terracotta">0{i + 1}</span>
                   <span className="mt-2 block font-serif text-2xl leading-tight">{h}</span>
+                  <span className="mt-2 block text-sm text-muted-foreground">{c}</span>
                 </li>
               ))}
             </ul>
