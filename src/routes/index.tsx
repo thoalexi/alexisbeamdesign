@@ -108,15 +108,7 @@ function Hero() {
             <p>
               With a <span className="text-foreground">doctorate in psychology</span> and <span className="text-foreground">over 12 years</span> in data strategy and technology, I bring thoughtful design and practical problem-solving together to build things that look great and work even better.
             </p>
-            <ul aria-label="Credentials" className="eyebrow flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-terracotta">
-              {["Ph.D., Psychology", "12+ Years Experience", "Data Strategy", "Technology & Systems"].map((c, i) => (
-                <li key={c} className="flex items-center gap-4">
-                  {i > 0 && <span className="h-3 w-px bg-terracotta/50" aria-hidden="true" />}
-                  {c}
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-col gap-4 pt-4 sm:flex-row sm:items-center sm:gap-8">
+            <div className="flex flex-col gap-4 pt-5 sm:flex-row sm:items-center sm:gap-8">
               <a href="#work" className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
                 Explore My Work <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
               </a>
