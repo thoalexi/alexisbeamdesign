@@ -5,6 +5,7 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { projects, type Project } from "@/data/projects";
 import { navLinks, services, socials, steps } from "@/data/site";
 import { cn } from "@/lib/utils";
+import headshot from "@/assets/alexis-headshot.png.asset.json";
 
 const TITLE = "Alexis Beam | Web Design & Digital Solutions";
 const DESC =
@@ -221,13 +222,16 @@ function About() {
         <SectionHead eyebrow="A little about me" title={<>A creative mind.<br /><em className="text-accent">An analytical one, too.</em></>} />
         <div className="mt-20 grid gap-14 md:grid-cols-12">
           <Reveal className="md:col-span-5">
-            {/* TODO: replace with a professional photograph of Alexis */}
-            <div className="relative aspect-[4/5] bg-secondary">
-              <div className="absolute inset-4 flex flex-col items-center justify-center border border-dashed border-foreground/25 text-center">
-                <span className="font-serif text-7xl text-foreground/20">AB</span>
-                <span className="eyebrow mt-4 text-muted-foreground">Portrait coming soon</span>
-              </div>
-              <span className="absolute -bottom-4 -right-4 hidden h-24 w-24 border border-terracotta md:block" aria-hidden="true" />
+            <div className="relative mx-auto w-full max-w-[260px] md:mx-0 md:max-w-[300px]">
+              <img
+                src={headshot.url}
+                alt="Portrait of Alexis Beam"
+                width={890}
+                height={1168}
+                loading="lazy"
+                className="relative z-10 aspect-[4/5] w-full object-cover object-top"
+              />
+              <span className="absolute -bottom-3 -right-3 hidden h-20 w-20 border border-terracotta md:block" aria-hidden="true" />
             </div>
           </Reveal>
           <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-7">
