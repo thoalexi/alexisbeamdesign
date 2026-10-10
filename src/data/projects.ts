@@ -20,7 +20,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "picklightly",
-    name: "Picklightly",
+    name: "picklightly",
     category: "Interactive Web Application / Consumer Experience",
     description:
       "A thoughtfully designed decision-making toolkit that helps everyday overthinkers make choices with more clarity and confidence. Picklightly combines interactive decision tools with a simple, approachable experience designed to make everyday decisions feel less overwhelming.",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
       "Clear information architecture",
     ],
     url: "https://picklightly-decision-guide.lovable.app/",
-    cta: "Explore Picklightly",
+    cta: "Explore picklightly",
     image: picklightlyShot,
     imageAlt: "Picklightly homepage with the headline “You’ve thought about it enough.” and the Decision Router tool",
   },
