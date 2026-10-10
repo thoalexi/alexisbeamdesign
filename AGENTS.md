@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Portfolio projects, services, process steps, socials and form options live in `src/data/*` — edit content there, not in components (keeps the site easy to update).
+- Contact inquiries are inserted via a server function (`src/lib/inquiry.functions.ts`) using the publishable key and an insert-only RLS policy; never expose read access to inquiries publicly.
