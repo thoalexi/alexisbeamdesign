@@ -1,4 +1,6 @@
 import picklightlyShot from "@/assets/picklightly.jpg";
+import projectbidsShot from "@/assets/projectbids.jpg";
+import medicareShot from "@/assets/medicarechoice.jpg";
 
 export type Project = {
   slug: string;
@@ -45,11 +47,10 @@ export const projects: Project[] = [
       "User workflows",
       "Digital product development",
     ],
-    url: null, // TODO: add live URL
+    url: "https://projectbids.app/",
     cta: "Explore ProjectBids",
-    image: null, // TODO: add screenshot
-    imageAlt: "ProjectBids preview",
-    inDevelopment: true,
+    image: projectbidsShot,
+    imageAlt: "ProjectBids homepage with the headline “Post it once. Local Atlanta pros compete for your business.”",
   },
   {
     slug: "medicare-comparison",
@@ -63,10 +64,9 @@ export const projects: Project[] = [
       "Accessible information architecture",
       "Guided comparison experience",
     ],
-    url: null, // TODO: add live URL
-    cta: "Explore Project",
-    image: null, // TODO: add screenshot
-    imageAlt: "Medicare Comparison Tool preview",
-    inDevelopment: true,
+    url: "https://medicarechoice.app/",
+    cta: "Explore MedicareChoice",
+    image: medicareShot,
+    imageAlt: "MedicareChoice homepage with the headline “Pick the right Medicare plan—without the fine print headache.”",
   },
 ];
