@@ -119,7 +119,7 @@ function Hero() {
         </div>
       </div>
       <a href="#work" aria-label="Scroll to selected work" className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-muted-foreground md:flex">
-        <span className="eyebrow text-[0.6rem]">Scroll</span>
+        <span className="eyebrow text-[0.6rem]">{"\n"}</span>
         <span className="relative h-10 w-px overflow-hidden bg-border">
           <span className="scroll-dot absolute left-0 top-0 h-3 w-px bg-foreground" />
         </span>
