@@ -54,7 +54,8 @@ Send a real test inquiry with the new fields, then check that it saved, that the
 ## Technical details
 - `src/data/site.ts`: `bookingUrl: string | null = "https://calendly.com/alexisbeamdesign"`, `timelineOptions`, and a `bookingLink(placement)` helper that appends UTMs via `URL`, keeping any existing params.
 - `src/routes/index.tsx`: header/hero labels, new `Consultation` section, Contact restructure, Services line, footer link. `Header.tsx` label.
-- `ContactForm.tsx`: new fields; idempotency ID created once per form mount, sent to the server function, and used as the email `idempotencyKey`.
-- Migration: `inquiries.website_url text null` and `inquiries.timeline text null`. The insert policy is recreated with length checks and a timeline whitelist; grants are unchanged (insert-only).
+- `ContactForm.tsx`: new fields. A `submissionId` (crypto.randomUUID) is held in a ref, reused on retries, and regenerated after success.
+- Migration (additive, no new tables): nullable `website_url` and `timeline`; `submission_id uuid` with a unique index; `alert_status text default 'pending'` (pending/sent/failed/suppressed), `alert_error text`, `alert_attempts int default 0`, `alert_sent_at timestamptz`. The anon insert policy is recreated with length checks and a timeline whitelist, and still can't set the alert columns. Grants stay insert-only for the public.
+- `inquiry.functions.ts`: insert via the publishable client. On a unique-violation (23505), return ok without re-sending. Then send with `idempotencyKey = inquiry-alert-<submissionId>`, retrying up to 3 times with backoff on 429/5xx, and record the outcome with a server-only admin client loaded inside the handler (status update only). Recovery uses those columns plus the email logs.
 - `inquiry.functions.ts`: zod URL normalize + validate and a timeline enum; insert the new columns; pass them to `new-inquiry-alert.tsx`, which gets two new rows.
 - New `src/routes/privacy-policy.tsx` with its own `head()` and canonical.
