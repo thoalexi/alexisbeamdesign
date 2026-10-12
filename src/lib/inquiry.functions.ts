@@ -38,5 +38,23 @@ export const submitInquiry = createServerFn({ method: "POST" })
       console.error("inquiry insert failed", error);
       return { ok: false as const, error: "Your message couldn't be sent just now. Please try again in a moment." };
     }
+    try {
+      const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+      await sendTemplateEmail("new-inquiry-alert", "alexisbeamdesign@gmail.com", {
+        templateData: {
+          name: data.name,
+          email: data.email,
+          businessName: data.businessName || "",
+          service: data.service,
+          budget: data.budget || "",
+          message: data.message,
+        },
+        replyTo: data.email,
+        idempotencyKey: `new-inquiry-alert-${crypto.randomUUID()}`,
+      });
+    } catch (e) {
+      // The inquiry is already saved; don't fail the visitor's submission over the alert.
+      console.error("inquiry alert email failed", e);
+    }
     return { ok: true as const };
   });
