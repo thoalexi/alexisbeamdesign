@@ -11,7 +11,7 @@ interface Props {
   message?: string
 }
 
-const Row = ({ label, value }: { label: string; value?: string }) => (
+const Row = ({ label, value }: { label: string; value?: string | undefined }) => (
   <Section style={{ margin: '0 0 14px' }}>
     <Text style={labelStyle}>{label}</Text>
     <Text style={valueStyle}>{value || '—'}</Text>
@@ -43,7 +43,7 @@ const Email = ({ name, email, businessName, service, budget, message }: Props) =
 
 export const template = {
   component: Email,
-  subject: (d: Record<string, any>) => `New inquiry from ${d.name || 'your website'}`,
+  subject: (d: Record<string, any>) => `New inquiry from ${d['name'] || 'your website'}`,
   displayName: 'New inquiry alert',
   to: 'alexisbeamdesign@gmail.com',
   previewData: {
