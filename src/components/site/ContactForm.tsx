@@ -2,6 +2,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { budgetOptions, serviceOptions } from "@/data/site";
 import { submitInquiry } from "@/lib/inquiry.functions";
 import { cn } from "@/lib/utils";
+import { track, trackOnce } from "@/lib/analytics";
 
 type Errors = Partial<Record<"name" | "email" | "service" | "message" | "form", string>>;
 
@@ -39,7 +40,10 @@ export function ContactForm() {
           startedAt: startedAt.current,
         },
       });
-      if (res.ok) setStatus("sent");
+      if (res.ok) {
+        track("generate_lead", { form_id: "contact_inquiry", service_type: v("service") });
+        setStatus("sent");
+      }
       else {
         setErrors({ form: res.error });
         setStatus("idle");
@@ -69,7 +73,7 @@ export function ContactForm() {
     ) : null;
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+    <form onSubmit={onSubmit} onFocus={() => trackOnce("inq", "inquiry_start", { form_id: "contact_inquiry" })} noValidate className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label>
           Website <input name="website" tabIndex={-1} autoComplete="off" />
