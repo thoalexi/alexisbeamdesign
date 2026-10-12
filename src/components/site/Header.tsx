@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={cn("font-serif text-2xl tracking-tight", className)}>
+    <span className={cn("font-serif text-3xl font-medium tracking-tight md:text-4xl", className)}>
       alexis beam<span className="text-terracotta">.</span>
     </span>
   );
