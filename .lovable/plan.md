@@ -16,6 +16,7 @@ A link that opens your Calendly page (https://calendly.com/alexisbeamdesign) in 
 - **Contact:** opens with **Ready to Get Started?** and its copy, then the form, which stays the most prominent thing. Beside it, a quieter **Still Exploring?** with a "Schedule a Free 15-Minute Chat →" text link.
 - **Services:** one quiet line, "Not sure what you need? Let's talk it through. Schedule a Free 15-Minute Chat →"
 - **Exactly three booking links in total.** They all use one central setting and disappear if it's ever removed. Each one tells screen readers it opens a new tab.
+- **Calendly link:** your page builds itself with scripts, so I can't read the exact event link from here. I'll open it in a real browser and use the direct link to "Free 15-Minute Consultation" (for example calendly.com/alexisbeamdesign/…). If I can't confirm that event, I'll stop and ask you for the link instead of guessing.
 
 Conflict to note: the current Contact heading already says "Have something in mind? Let's make it happen." To avoid repeating the same heading twice in a row, I'll change the Contact heading to **"Ready to Get Started?"**, as your brief describes.
 
@@ -28,8 +29,9 @@ Conflict to note: the current Contact heading already says "Have something in mi
 ## Phase 3 — Saving and email alerts
 - Two optional details are added to saved inquiries: the website and the timeline. The rule that lets the public submit is tightened to check both. The public still can't read, edit or delete inquiries.
 - The alert email to alexisbeamdesign@gmail.com shows the website and timeline.
-- **Duplicate protection:** each submission gets a one-time ID, so a retried send can't create a second alert email.
-- **If the alert email fails:** the inquiry is already safely saved, so the visitor still sees success; that matches "processing confirmed" for the business. The failure is logged, not hidden. Changing this would mean visitors see an error even though their message reached you. Tell me if you'd prefer that instead.
+- **Duplicate protection, enforced by the database:** each new inquiry gets its own submission ID. Retrying the same submission reuses that ID, and the database refuses a second copy with the same ID. After a successful send, the next inquiry gets a fresh ID. A retry of something already saved is treated as success, without a second record or a second alert.
+- **If the alert email fails:** the inquiry is always saved first. Each inquiry records whether its alert was sent, failed or is still pending, along with the error. The server retries a temporary failure (such as being briefly rate-limited) a couple of times. If it still fails, the inquiry stays marked "failed" so it can be found and resent.
+- **Recovery:** your inbox can't show what never arrived, so failed alerts must be findable another way. I can list and resend them for you at any time from chat, without building an admin area. The visitor sees "message received", which is true because it's saved; the site never claims an email was delivered.
 - **Rate limiting:** the platform has no built-in limit on how often someone can submit. The current spam trap, the too-fast-submission check and the database rules stay in place. A stricter limit would need extra custom work, which I'd only add if you want it.
 
 ## Phase 4 — Analytics
@@ -41,15 +43,10 @@ Conflict to note: the current Contact heading already says "Have something in mi
 ## Phase 5 — Privacy Policy page
 - A new **/privacy-policy** page in the site's style, with its own title and description, findable by search engines, linked quietly in the footer.
 - It names **Meant To Beam LLC, doing business as Alexis Beam Design**, and covers the inquiry form, email alerts, Google Analytics (ad personalization off) and Calendly.
-- It makes no claims about how long data is kept, security certifications, or compliance.
-- **I need you to confirm:**
-  - the effective date (I'll use the day this goes live)
-  - the contact email for privacy requests (I'll use alexisbeamdesign@gmail.com unless you say otherwise)
-  - how long you keep inquiries
-  - your mailing address, if you want it listed
-
-  These are marked clearly on the page until you confirm them.
-- No cookie banner for now. I'll flag in the policy whether one may be needed for EU or California visitors.
+- Effective date **October 12, 2026**. Privacy contact **alexisbeamdesign@gmail.com**.
+- Retention is described as it actually works: inquiries are kept until they're no longer needed to respond to or work with you, and you can ask for yours to be deleted by email. No specific timeframe, certifications or compliance claims.
+- **No placeholders on the published page.** Anything unconfirmed is left out rather than marked. Before you publish, I'll list what's still open (for example, whether you want a mailing address shown).
+- No cookie banner for now.
 
 ## Phase 6 — Testing
 Send a real test inquiry with the new fields, then check that it saved, that the alert email went out (once your sending domain is verified), and that the error messages work. Check that all three booking links open the right Calendly page in a new tab, that the analytics events fire, that desktop and mobile layouts have no overflow, that everything works with the keyboard, and that the privacy page and footer link work.
