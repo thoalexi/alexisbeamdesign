@@ -61,6 +61,8 @@ export const submitInquiry = createServerFn({ method: "POST" })
       service: data.service,
       message: data.message,
       budget: data.budget || null,
+      website_url: data.websiteUrl || null,
+      timeline: data.timeline || null,
     });
     if (error) {
       console.error("inquiry insert failed", error);
@@ -75,6 +77,8 @@ export const submitInquiry = createServerFn({ method: "POST" })
           businessName: data.businessName || "",
           service: data.service,
           budget: data.budget || "",
+          websiteUrl: data.websiteUrl || "",
+          timeline: data.timeline || "",
           message: data.message,
         },
         replyTo: data.email,

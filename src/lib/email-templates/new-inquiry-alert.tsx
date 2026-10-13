@@ -8,6 +8,8 @@ interface Props {
   businessName?: string
   service?: string
   budget?: string
+  websiteUrl?: string
+  timeline?: string
   message?: string
 }
 
@@ -18,7 +20,7 @@ const Row = ({ label, value }: { label: string; value?: string | undefined }) =>
   </Section>
 )
 
-const Email = ({ name, email, businessName, service, budget, message }: Props) => (
+const Email = ({ name, email, businessName, service, budget, websiteUrl, timeline, message }: Props) => (
   <Html lang="en" dir="ltr">
     <Head />
     <Preview>New inquiry from {name || 'a visitor'}</Preview>
@@ -32,6 +34,8 @@ const Email = ({ name, email, businessName, service, budget, message }: Props) =
         <Row label="Business" value={businessName} />
         <Row label="Service" value={service} />
         <Row label="Budget" value={budget} />
+        <Row label="Existing website" value={websiteUrl} />
+        <Row label="Timeline" value={timeline} />
         <Text style={labelStyle}>Message</Text>
         <Text style={{ ...valueStyle, whiteSpace: 'pre-wrap' }}>{message || '—'}</Text>
         <Hr style={hr} />
@@ -52,6 +56,8 @@ export const template = {
     businessName: 'Example Co.',
     service: 'Website Redesign',
     budget: 'Prefer not to say',
+    websiteUrl: 'https://example.com/',
+    timeline: 'Within 1–3 months',
     message: 'Hi Alexis, I would love to talk about refreshing our website.',
   },
 } satisfies TemplateEntry

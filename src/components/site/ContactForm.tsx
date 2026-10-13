@@ -1,10 +1,11 @@
 import { useRef, useState, type FormEvent } from "react";
-import { budgetOptions, serviceOptions } from "@/data/site";
+import { budgetOptions, serviceOptions, timelineOptions } from "@/data/site";
+import { normalizeWebsite } from "@/lib/inquiry.functions";
 import { submitInquiry } from "@/lib/inquiry.functions";
 import { cn } from "@/lib/utils";
 import { track, trackOnce } from "@/lib/analytics";
 
-type Errors = Partial<Record<"name" | "email" | "service" | "message" | "form", string>>;
+type Errors = Partial<Record<"name" | "email" | "service" | "message" | "websiteUrl" | "form", string>>;
 
 const fieldBase =
   "w-full border-0 border-b border-input bg-transparent px-0 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-0 transition-colors";
@@ -22,6 +23,7 @@ export function ContactForm() {
     if (!v("name")) next.name = "Please share your name.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) next.email = "Please enter a valid email address.";
     if (!v("service")) next.service = "Please choose what I can help with.";
+    if (normalizeWebsite(v("websiteUrl")) === null) next.websiteUrl = "Please enter a valid website address, like yourwebsite.com.";
     if (v("message").length < 10) next.message = "Tell me a little more (at least 10 characters).";
     setErrors(next);
     if (Object.keys(next).length) return;
@@ -36,6 +38,8 @@ export function ContactForm() {
           service: v("service") as (typeof serviceOptions)[number],
           message: v("message"),
           budget: v("budget") as (typeof budgetOptions)[number] | "",
+          websiteUrl: v("websiteUrl"),
+          timeline: v("timeline") as (typeof timelineOptions)[number] | "",
           website: v("website"),
           startedAt: startedAt.current,
         },
@@ -103,6 +107,16 @@ export function ContactForm() {
           {budgetOptions.map((o) => <option key={o}>{o}</option>)}
         </select>
       </Field>
+      <Field label="Existing website">
+        <input name="websiteUrl" type="text" inputMode="url" autoComplete="url" placeholder="https://yourwebsite.com" maxLength={255} className={fieldBase} aria-invalid={!!errors.websiteUrl} aria-describedby={errors.websiteUrl ? "websiteUrl-error" : undefined} />
+        {err("websiteUrl")}
+      </Field>
+      <Field label="When are you hoping to get started?">
+        <select name="timeline" defaultValue="" className={cn(fieldBase, "cursor-pointer")}>
+          <option value="">Select a timeline (optional)</option>
+          {timelineOptions.map((o) => <option key={o}>{o}</option>)}
+        </select>
+      </Field>
       <Field label="Tell me about your project" required className="sm:col-span-2">
         <textarea name="message" rows={5} maxLength={5000} className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
         {err("message")}
@@ -116,7 +130,7 @@ export function ContactForm() {
           disabled={status === "sending"}
           className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-8 py-4 text-sm tracking-wide text-background transition-colors duration-300 hover:bg-accent disabled:opacity-60"
         >
-          {status === "sending" ? "Sending…" : "Send My Inquiry"}
+          {status === "sending" ? "Sending…" : "Send My Project Details"}
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </button>
       </div>

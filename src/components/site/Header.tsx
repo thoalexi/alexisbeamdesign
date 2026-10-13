@@ -50,7 +50,7 @@ export function Header() {
             href="#contact"
             className="group inline-flex items-center gap-2 border border-foreground px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
           >
-            Let's Talk <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            Request a Quote <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </div>
         <button
@@ -85,7 +85,7 @@ export function Header() {
           onClick={() => setOpen(false)}
           className="mt-10 flex items-center justify-center bg-foreground py-4 text-background"
         >
-          Let's Talk →
+          Request a Quote →
         </a>
       </div>
     </header>
