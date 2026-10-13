@@ -9,9 +9,10 @@ import { navLinks, services, socials, steps } from "@/data/site";
 import { cn } from "@/lib/utils";
 import headshot from "@/assets/alexis-headshot.png.asset.json";
 
-const TITLE = "Alexis Beam | Web Design & Digital Solutions";
+const TITLE = "Alexis Beam | Web Design, Automation & Digital Solutions";
 const DESC =
-  "Thoughtful websites and digital solutions for small businesses and entrepreneurs. Explore the work of Alexis Beam, independent web designer and digital consultant.";
+  "Thoughtful web design and practical business automation for small businesses. Simplify repetitive tasks, improve workflows, and build a better digital presence.";
+const URL_HOME = "https://alexisbeamdesign.com/";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,12 +22,12 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: URL_HOME },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: URL_HOME }],
     scripts: [
       {
         type: "application/ld+json",
@@ -59,6 +60,7 @@ function Home() {
         <Services />
         <Process />
         <Differentiator />
+        <Automation />
         <Consultation />
         <Contact />
       </main>
@@ -105,8 +107,9 @@ function Hero() {
         </h1>
         <div className="mt-14 grid gap-10 md:grid-cols-12">
           <div className="rise space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-6" style={{ animationDelay: "420ms" }}>
+            <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">Thoughtful websites. Smarter ways of working.</p>
             <p>
-              <span className="text-foreground">Hi, I'm Alexis.</span> I create beautiful, functional websites and digital experiences for businesses and people with big ideas.
+              <span className="text-foreground">Hi, I'm Alexis.</span> From beautiful, functional websites to automating the everyday tasks that slow you down, I help small businesses simplify their work and grow with confidence.
             </p>
             <p>
               With a <span className="text-foreground">doctorate in psychology</span> and <span className="text-foreground">over 12 years</span> in data strategy and technology, I bring thoughtful design and practical problem-solving together to build things that look great and work even better.
@@ -346,6 +349,32 @@ function Differentiator() {
           <p className="border-t border-accent-foreground/30 pt-6 font-serif text-2xl italic text-accent-foreground">
             Less unnecessary complexity. More thoughtful solutions.
           </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Automation ---------- */
+function Automation() {
+  return (
+    <section aria-labelledby="automation-title" className="px-6 py-24 md:px-10 md:py-32">
+      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-12">
+        <Reveal className="md:col-span-6">
+          <h2 id="automation-title" className="text-5xl leading-[0.95] sm:text-6xl">
+            What's one task you wish you could <em className="text-accent">automate?</em>
+          </h2>
+        </Reveal>
+        <Reveal delay={120} className="self-end md:col-span-5 md:col-start-8">
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            Every business has repetitive tasks that take up more time than they should. Whether it's managing inquiries, updating spreadsheets, sending follow-ups, or moving information between systems, there may be a simpler way. Tell me what's slowing you down, and I'll help you explore whether automation could make it easier.
+          </p>
+          <BookingLink
+            placement="automation"
+            className="group mt-8 inline-flex min-h-12 items-center justify-center gap-3 border border-foreground px-7 py-4 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
+          >
+            Let's Talk About Automation <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </BookingLink>
         </Reveal>
       </div>
     </section>

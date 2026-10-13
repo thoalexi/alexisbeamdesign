@@ -36,15 +36,15 @@ export const services = [
     ],
   },
   {
-    title: "Digital Solutions & Automation",
+    title: "Digital Solutions & Workflow Automation",
     blurb:
-      "Sometimes the best solution goes beyond a traditional website. I explore practical ways to simplify workflows, organize information, and bring new digital ideas to life.",
+      "Practical automation for the everyday work that eats up your time, from customer follow-ups and connected forms and spreadsheets to reporting and admin workflows, so your business runs more smoothly.",
     includes: [
+      "Automated customer follow-ups",
+      "Connected forms and spreadsheets",
+      "Automated reporting and dashboards",
+      "Administrative workflow automation",
       "Interactive web tools",
-      "Custom forms and workflows",
-      "Business process improvements",
-      "Analytics and reporting",
-      "Automation opportunities",
     ],
   },
 ];
@@ -71,7 +71,7 @@ export const timelineOptions = ["As soon as possible", "Within 1–3 months", "W
 /** Public Calendly page for the Free 15-Minute Consultation. Set to null to hide every booking link. */
 export const bookingUrl: string | null = "https://calendly.com/alexisbeamdesign";
 
-export type BookingPlacement = "services" | "discovery_section" | "contact";
+export type BookingPlacement = "services" | "discovery_section" | "contact" | "automation";
 
 /** Booking URL tagged with the placement, keeping any existing query params. Null if not configured/invalid. */
 export function bookingLink(placement: BookingPlacement): string | null {
