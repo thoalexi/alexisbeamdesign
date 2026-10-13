@@ -113,7 +113,7 @@ export function ContactForm() {
       </Field>
       <Field label="When are you hoping to get started?">
         <select name="timeline" defaultValue="" className={cn(fieldBase, "cursor-pointer")}>
-          <option value="">Select a timeline (optional)</option>
+          <option value="">Select a timeline</option>
           {timelineOptions.map((o) => <option key={o}>{o}</option>)}
         </select>
       </Field>
