@@ -6,10 +6,8 @@ Only these four changes. Nothing else on the site moves or changes.
 The big headline "Thoughtfully designed. Purposefully built." and both buttons stay the same. The paragraphs below it change to:
 
 - New line, slightly bigger and darker: **"Thoughtful websites. Smarter ways of working."**
-- "From beautiful, functional websites to automating the everyday tasks that slow you down, I help small businesses simplify their work and grow with confidence."
+- "Hi, I'm Alexis. From beautiful, functional websites to automating the everyday tasks that slow you down, I help small businesses simplify their work and grow with confidence."
 - The existing paragraph about your doctorate in psychology and 12+ years stays as it is.
-
-The "Hi, I'm Alexis." opener gets dropped from this spot because the new line takes its place. It still appears in the About section. Tell me if you'd like to keep it here too.
 
 ## 2. Services
 The third service is renamed **"Digital Solutions & Workflow Automation"**.
