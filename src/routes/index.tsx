@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header, Wordmark } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
 import { ContactForm } from "@/components/site/ContactForm";
+import { BookingLink } from "@/components/site/BookingLink";
+import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
 import { navLinks, services, socials, steps } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -57,6 +59,7 @@ function Home() {
         <Services />
         <Process />
         <Differentiator />
+        <Consultation />
         <Contact />
       </main>
       <Footer />
@@ -113,7 +116,7 @@ function Hero() {
                 Explore My Work <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
               </a>
               <a href="#contact" className="link-underline self-start py-2 text-sm text-foreground sm:self-auto">
-                Let's Work Together →
+                Request a Quote →
               </a>
             </div>
           </div>
@@ -291,6 +294,10 @@ function Services() {
         <p className="mt-10 max-w-xl text-sm italic text-muted-foreground">
           Complex integrations and custom software projects are evaluated individually based on technical requirements.
         </p>
+        <p className="mt-6 text-base text-foreground">
+          Not sure what you need? Let's talk it through.{" "}
+          <BookingLink placement="services" className="link-underline whitespace-nowrap text-accent">Schedule a Free 15-Minute Chat →</BookingLink>
+        </p>
       </div>
     </section>
   );
@@ -345,19 +352,48 @@ function Differentiator() {
   );
 }
 
+/* ---------- Consultation ---------- */
+function Consultation() {
+  return (
+    <section aria-labelledby="consult-title" className="bg-secondary px-6 py-24 md:px-10 md:py-32">
+      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-12">
+        <Reveal className="md:col-span-6">
+          <p className="eyebrow flex items-center gap-4 text-accent"><span className="h-px w-10 bg-accent" aria-hidden="true" />Free 15-minute chat</p>
+          <h2 id="consult-title" className="mt-6 text-5xl leading-[0.95] sm:text-6xl">Have something <em className="text-accent">in mind?</em></h2>
+        </Reveal>
+        <Reveal delay={120} className="self-end md:col-span-5 md:col-start-8">
+          <p className="text-lg leading-relaxed text-muted-foreground">Whether you have a specific project or are still figuring things out, I'm happy to hear what you're working on.</p>
+          <BookingLink
+            placement="discovery_section"
+            className="group mt-8 inline-flex min-h-12 items-center justify-center gap-3 border border-foreground px-7 py-4 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
+          >
+            Schedule a Free 15-Minute Chat <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </BookingLink>
+          <p className="mt-4 text-sm italic text-muted-foreground">No obligation. Just a conversation about your business and what you're looking to build.</p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- Contact ---------- */
 function Contact() {
   return (
     <section id="contact" className="px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-12">
         <Reveal className="md:col-span-5">
-          <p className="eyebrow flex items-center gap-4 text-accent"><span className="h-px w-10 bg-accent" aria-hidden="true" />Let's connect</p>
+          <p className="eyebrow flex items-center gap-4 text-accent"><span className="h-px w-10 bg-accent" aria-hidden="true" />Request a quote</p>
           <h2 className="mt-6 text-5xl leading-[0.95] sm:text-6xl">
-            Have something in mind? <em className="text-accent">Let's make it happen.</em>
+            Ready to get <em className="text-accent">started?</em>
           </h2>
-          <div className="mt-8 space-y-4 text-lg leading-relaxed text-muted-foreground">
-            <p>Whether you're starting something new, refreshing an existing website, or exploring an idea, I'd love to hear about it.</p>
-            <p>Tell me a little about what you're working on, and we'll see if we're a good fit.</p>
+          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">Know what you need? Share your project details and let's discuss next steps.</p>
+          <div className="mt-12 border-t pt-8">
+            <p className="font-serif text-2xl">Still exploring?</p>
+            <p className="mt-2 leading-relaxed text-muted-foreground">Have questions or want to talk through an idea? Let's connect.</p>
+            <BookingLink placement="contact" className="group mt-4 inline-flex items-center gap-2 text-sm">
+              <span className="link-underline">Schedule a Free 15-Minute Chat</span>
+              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </BookingLink>
           </div>
         </Reveal>
         <Reveal delay={120} className="relative md:col-span-6 md:col-start-7">
@@ -394,7 +430,10 @@ function Footer() {
         </div>
         <div className="mt-16 flex flex-col gap-2 border-t border-ink-foreground/15 pt-6 text-xs text-ink-foreground/60 sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} Alexis Beam. All rights reserved.</p>
-          <p className="font-serif text-sm italic">Made thoughtfully, by Alexis.</p>
+          <p className="flex gap-6">
+            <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link>
+            <span className="font-serif text-sm italic">Made thoughtfully, by Alexis.</span>
+          </p>
         </div>
       </div>
     </footer>
