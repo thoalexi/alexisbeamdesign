@@ -107,7 +107,7 @@ function Hero() {
         </h1>
         <div className="mt-14 grid gap-10 md:grid-cols-12">
           <div className="rise space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-6" style={{ animationDelay: "420ms" }}>
-            <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">Thoughtful websites. Smarter ways of working.</p>
+            <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">Beautiful websites. Smarter ways of working.</p>
             <p>
               <span className="text-foreground">Hi, I'm Alexis.</span> From beautiful, functional websites to automating the everyday tasks that slow you down, I help small businesses simplify their work and grow with confidence.
             </p>
