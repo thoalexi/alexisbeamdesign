@@ -24,6 +24,8 @@ export type Database = {
           message: string
           name: string
           service: string
+          timeline: string | null
+          website_url: string | null
         }
         Insert: {
           budget?: string | null
@@ -34,6 +36,8 @@ export type Database = {
           message: string
           name: string
           service: string
+          timeline?: string | null
+          website_url?: string | null
         }
         Update: {
           budget?: string | null
@@ -44,6 +48,8 @@ export type Database = {
           message?: string
           name?: string
           service?: string
+          timeline?: string | null
+          website_url?: string | null
         }
         Relationships: []
       }

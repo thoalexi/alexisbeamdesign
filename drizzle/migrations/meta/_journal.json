@@ -15,6 +15,13 @@
       "when": 1791604197967,
       "tag": "0001_tighten_inquiries_insert",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791849816890,
+      "tag": "0002_inquiries_website_timeline",
+      "breakpoints": true
     }
   ]
 }
