@@ -65,3 +65,25 @@ export const serviceOptions = [
 ] as const;
 
 export const budgetOptions = ["Under $1,000", "$1,000–$2,500", "$2,500–$5,000", "$5,000+", "Not Sure Yet"] as const;
+
+export const timelineOptions = ["As soon as possible", "Within 1–3 months", "Within 3–6 months", "I'm flexible"] as const;
+
+/** Public Calendly page for the Free 15-Minute Consultation. Set to null to hide every booking link. */
+export const bookingUrl: string | null = "https://calendly.com/alexisbeamdesign";
+
+export type BookingPlacement = "services" | "discovery_section" | "contact";
+
+/** Booking URL tagged with the placement, keeping any existing query params. Null if not configured/invalid. */
+export function bookingLink(placement: BookingPlacement): string | null {
+  if (!bookingUrl) return null;
+  try {
+    const u = new URL(bookingUrl);
+    if (u.protocol !== "https:") return null;
+    u.searchParams.set("utm_source", "alexisbeamdesign.com");
+    u.searchParams.set("utm_medium", "website");
+    u.searchParams.set("utm_content", placement);
+    return u.toString();
+  } catch {
+    return null;
+  }
+}
