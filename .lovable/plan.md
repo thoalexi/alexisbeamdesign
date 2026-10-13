@@ -33,3 +33,8 @@ Between this section and the chat section, the background colors change so the t
 - `src/routes/index.tsx`: hero copy, new `Automation` section before `Consultation`, TITLE/DESC constants. Consultation background swaps to `bg-background` so it alternates with the new `bg-secondary` section.
 - `src/data/site.ts`: service rename/blurb/includes; add `"automation"` to `BookingPlacement` so Calendly UTM and the GA `discovery_call_click` event can tell this button apart.
 - No new dependencies.
+
+## Tracking and link-preview checks
+- The new button is labeled "automation" in both the Calendly link (utm_content=automation, alongside the existing utm_source/utm_medium and any parameters already on the booking URL) and the Google Analytics discovery_call_click event (placement: automation). This reuses the existing BookingLink/bookingLink helpers, so no new tracking code is needed.
+- After building, I'll fetch the homepage the way a link-preview crawler does (raw server HTML, no JavaScript) and confirm the new title, description, og:title, og:description and twitter tags are in that HTML.
+- og:url and canonical are currently the relative "/". As part of the metadata update they become the absolute https://alexisbeamdesign.com/ so crawlers read them correctly.
