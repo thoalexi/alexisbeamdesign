@@ -1,23 +1,28 @@
-# Opening section update and mobile contact check
+# About section update
 
-## Text changes (homepage opening section only)
-- The headline "Thoughtfully designed. Purposefully built." stays exactly as it is.
-- Remove the line "Beautiful websites. Smarter ways of working."
-- Replace the "Hi, I'm Alexis. From beautiful, functional websites..." paragraph with:
-  "Hi, I'm Alexis. I design and redesign websites and help small businesses improve workflows with practical automation—in Atlanta and across the U.S."
-  "Hi, I'm Alexis." keeps its slightly darker color, and the paragraph keeps its current style.
-- The doctorate and experience paragraph stays below it, unchanged.
-- Spacing is adjusted so removing the line leaves no gap.
+Only the About section changes. The rest of the site stays the same.
 
-## Note on button names
-The site no longer has a "Let's Work Together" button or a "Send My Inquiry" button. They were renamed earlier to **Request a Quote** and **Send My Project Details**. I'll test those buttons and keep their current names. Tell me if you want the old names back.
+## Stays the same
+- The "A LITTLE ABOUT ME" label, the heading "A creative mind. An analytical one, too.", the portrait and its terracotta frame.
+- The quote underneath ("Good ideas deserve to become something real.") and its praxi caption.
+- Fonts, colors and the numbered style (terracotta number, serif title, small grey description).
 
-## Mobile check
-- On a phone-sized screen, tap "Request a Quote" in the opening section, and also the one in the menu.
-- Confirm the page scrolls to the contact section, the heading isn't hidden behind the sticky top bar, and every form field and the send button can be seen and used.
-- Fix any overlapping or clipped content I find, with small spacing changes only.
-- Send you screenshots of the updated opening section (desktop and mobile) and the mobile contact section, and report whether the link works. I won't publish.
+## Bio
+- Remove the large standalone "Hi, I'm Alexis." and all six current paragraphs.
+- Add your four new paragraphs, word for word. The first one ("You know your business...") is a little larger and darker, matching how the "Beautiful websites..." line looks in the opening section. The other three use the current bio style.
+
+## Three numbered items
+- 01 Human-Centered Thinking: "Clear information and intuitive experiences that help people find their way."
+- 02 Business-Minded Solutions: "Recommendations grounded in your goals, priorities, and everyday work."
+- 03 Thoughtful Design: "Visual care and practical functionality, considered together from the start."
+- The new descriptions are longer, and three narrow columns next to the bio would leave only a few words per line. So the items stack one under another on phones and tablets, and sit side by side only on wide screens. The spacing between them is slightly larger so they're comfortable to read.
+
+## Checks before you publish
+- Screenshots of the About section on desktop and on a phone.
+- Confirm there's no clipped text or sideways scrolling at phone width.
+- Confirm the "About" menu link scrolls to this section on desktop and from the phone menu.
+- Share a short summary of the changes. I won't publish.
 
 ## Technical details
-- Edit `src/routes/index.tsx`, hero block around lines 110–116. If the section heading ends up under the sticky header, add `scroll-mt` to `#contact`.
-- Verify with Playwright at 390x844: click the hero `#contact` link, check the `#contact` bounding box against the header height, and confirm the submit button is visible and enabled.
+- `src/routes/index.tsx`, `About()` only. The bio `<p>`s replace lines 238–244. The lead paragraph uses `font-serif text-2xl md:text-3xl text-foreground leading-snug`. The card list becomes `grid gap-8 border-t pt-8 xl:grid-cols-3`, with the new captions.
+- Playwright at 1280 and 390 widths: check that `scrollWidth <= innerWidth`, click the nav `#about` link and check the section's position.
