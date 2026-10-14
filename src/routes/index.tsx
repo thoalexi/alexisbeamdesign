@@ -235,18 +235,15 @@ function About() {
             </div>
           </Reveal>
           <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-7">
-            <p className="font-serif text-3xl text-foreground">Hi, I'm Alexis.</p>
-            <p>I hold a Ph.D. in psychology and have spent more than 12 years building a career in data, technology, and business strategy.</p>
-            <p>I'm a designer, builder, problem-solver, and someone who genuinely loves figuring out how to make things work better.</p>
-            <p>That's a different path than most web designers take, and it taught me to think critically, understand how people interact with information, and approach challenges from multiple perspectives.</p>
-            <p>Today, I bring that same curiosity and problem-solving mindset to web design and digital development.</p>
-            <p>I believe the best digital experiences aren't just beautiful. They're intuitive, purposeful, and built around the people who use them.</p>
-            <p>Whether you're launching a new business, refreshing an existing website, or exploring an idea, I love finding creative ways to bring it to life.</p>
-            <ul className="grid gap-6 border-t pt-8 sm:grid-cols-3">
+            <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">You know your business. I bring a fresh perspective on how your website and everyday tools can support it.</p>
+            <p>I’m Alexis, and I enjoy turning complicated problems into clear, useful solutions. My Ph.D. in psychology, with a focus in cognitive science, taught me to look closely at how people think, learn, and make decisions. More than 12 years in data, technology, and business strategy taught me to connect that understanding to practical business needs.</p>
+            <p>When we work together, I start by listening: what’s working, what’s frustrating, and what you want to accomplish. From there, I combine thoughtful design with practical problem-solving—whether we’re creating or redesigning a website, improving a workflow, or automating a repetitive task.</p>
+            <p>Based in Atlanta and working with small businesses across the U.S., I keep the process collaborative and focused on what will be useful to you.</p>
+            <ul className="!mt-10 grid gap-8 border-t pt-8 xl:grid-cols-3">
               {[
-                ["Human-Centered Thinking", "Grounded in a doctorate in psychology"],
-                ["Business-Minded Solutions", "Shaped by years in data strategy"],
-                ["Thoughtful Design", "Built with modern technology"],
+                ["Human-Centered Thinking", "Clear information and intuitive experiences that help people find their way."],
+                ["Business-Minded Solutions", "Recommendations grounded in your goals, priorities, and everyday work."],
+                ["Thoughtful Design", "Visual care and practical functionality, considered together from the start."],
               ].map(([h, c], i) => (
                 <li key={h} className="text-base text-foreground">
                   <span className="eyebrow block text-terracotta">0{i + 1}</span>
