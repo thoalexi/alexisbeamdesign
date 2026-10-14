@@ -109,7 +109,7 @@ function Hero() {
           <div className="rise space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-6" style={{ animationDelay: "420ms" }}>
             <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">Beautiful websites. Smarter ways of working.</p>
             <p>
-              <span className="text-foreground">Hi, I'm Alexis.</span> From beautiful, functional websites to automating the everyday tasks that slow you down, I help small businesses simplify their work and grow with confidence.
+              <span className="text-foreground"></span> From beautiful, functional websites to automating the everyday tasks that slow you down, I help small businesses simplify their work and grow with confidence.
             </p>
             <p>
               With a <span className="text-foreground">doctorate in psychology</span> and <span className="text-foreground">over 12 years</span> in data strategy and technology, I bring thoughtful design and practical problem-solving together to build things that look great and work even better.
