@@ -9,7 +9,7 @@ Only the About section changes. The rest of the site stays the same.
 
 ## Bio
 - Remove the large standalone "Hi, I'm Alexis." and all six current paragraphs.
-- Add your four new paragraphs, word for word. The first one ("You know your business...") is a little larger and darker, matching how the "Beautiful websites..." line looks in the opening section. The other three use the current bio style.
+- Add your four new paragraphs, word for word. The first one ("You know your business...") is a little larger and darker, matching the style of the "Better websites. Smarter ways of working." line in the opening section, which stays unchanged. The other three use the current bio style.
 
 ## Three numbered items
 - 01 Human-Centered Thinking: "Clear information and intuitive experiences that help people find their way."
