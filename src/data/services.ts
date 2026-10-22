@@ -59,7 +59,7 @@ export const servicePages: ServicePage[] = [
       "Custom website design and development for small businesses. Thoughtful, mobile-friendly sites built to make a great first impression and turn visitors into customers. Based in Atlanta, working remotely across the U.S.",
     h1: "Website design & development for small businesses",
     intro:
-      "Your website is often the first place people meet your business. I design and build custom websites that look considered, load cleanly, and make it easy for visitors to understand what you do and take the next step. I'm based in Atlanta and work remotely with small businesses across the U.S.",
+      "Your website is often the first place people meet your business. I design and build custom websites that look considered, load cleanly, and make it easy for visitors to understand what you do and take the next step.",
     problemsTitle: "When this is a good fit",
     problems: [
       "You're starting a business and need a professional online presence for the first time.",
