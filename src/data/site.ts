@@ -79,8 +79,13 @@ export function bookingLink(placement: BookingPlacement): string | null {
   try {
     const u = new URL(bookingUrl);
     if (u.protocol !== "https:") return null;
-    u.searchParams.set("utm_source", "alexisbeamdesign.com");
-    u.searchParams.set("utm_medium", "website");
+    // Forward first-touch campaign attribution (already sanitized to safe tokens),
+    // falling back to the site's own defaults when none was captured.
+    const captured = attributionUtmParams();
+    u.searchParams.set("utm_source", captured.utm_source ?? "alexisbeamdesign.com");
+    u.searchParams.set("utm_medium", captured.utm_medium ?? "website");
+    if (captured.utm_campaign) u.searchParams.set("utm_campaign", captured.utm_campaign);
+    // The placement is always reported separately as utm_content.
     u.searchParams.set("utm_content", placement);
     return u.toString();
   } catch {

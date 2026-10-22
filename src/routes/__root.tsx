@@ -13,7 +13,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { getAnalyticsId } from "../lib/analytics.functions";
-import { initAnalytics } from "../lib/analytics";
+import { initAnalytics, trackPageView } from "../lib/analytics";
+import { captureAttribution } from "../lib/attribution";
 
 function NotFoundComponent() {
   return (
