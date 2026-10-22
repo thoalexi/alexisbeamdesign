@@ -2,5 +2,5 @@
 - [x] Add factual service FAQs and consistent unnumbered process; adjust mobile About heading.
 - [x] Verify desktop/mobile navigation, quote selection, safe invalid forms, existing tests and preview diagnostics.
 - [x] Report changed files, preview URL, commit status and unverified inbox delivery.
-- [ ] Refine shared typography and homepage text hierarchy without changing content or palette.
-- [ ] Review all five content pages at the seven requested widths and check existing tests.
+- [x] Refine shared typography and homepage text hierarchy without changing content or palette.
+- [x] Review all five content pages at the seven requested widths and check existing tests.
