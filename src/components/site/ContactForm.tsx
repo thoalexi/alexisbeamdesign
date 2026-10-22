@@ -87,18 +87,18 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
         </label>
       </div>
       <Field label="Name" required>
-        <input name="name" autoComplete="name" maxLength={100} className={fieldBase} aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
+        <input name="name" required autoComplete="name" maxLength={100} className={fieldBase} aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
         {err("name")}
       </Field>
       <Field label="Email" required>
-        <input name="email" type="email" autoComplete="email" maxLength={255} className={fieldBase} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
+        <input name="email" type="email" required autoComplete="email" maxLength={255} className={fieldBase} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
         {err("email")}
       </Field>
       <Field label="Business name" className="sm:col-span-2">
         <input name="businessName" autoComplete="organization" maxLength={150} className={fieldBase} />
       </Field>
       <Field label="What can I help you with?" required>
-        <select name="service" defaultValue="" className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
+        <select key={preselectedService} name="service" required defaultValue={preselectedService} className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
           <option value="" disabled>Choose one</option>
           {serviceOptions.map((o) => <option key={o}>{o}</option>)}
         </select>
@@ -121,12 +121,16 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
         </select>
       </Field>
       <Field label="Tell me about your project" required className="sm:col-span-2">
-        <textarea name="message" rows={5} maxLength={5000} className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
+        <textarea name="message" required rows={5} maxLength={5000} placeholder="What would a great outcome look like for you?" className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
         {err("message")}
       </Field>
       <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground" aria-live="polite">
           {errors.form ? <span className="text-destructive">{errors.form}</span> : "I usually reply within a couple of business days."}
+        </p>
+        <p className="text-xs text-muted-foreground sm:col-span-2">
+          By sending this form, you agree to the handling of your information as described in the{" "}
+          <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link>.
         </p>
         <button
           type="submit"
