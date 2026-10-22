@@ -252,8 +252,7 @@ function About() {
                 ["Thoughtful Design", "Visual care and practical functionality, considered together from the start."],
               ].map(([h, c], i) => (
                 <li key={h} className="text-base text-foreground">
-                  <span className="eyebrow block text-terracotta">0{i + 1}</span>
-                  <span className="mt-2 block font-serif text-2xl leading-tight">{h}</span>
+                  <span className="block font-serif text-2xl leading-tight">{h}</span>
                   <span className="mt-2 block text-sm text-muted-foreground">{c}</span>
                 </li>
               ))}
