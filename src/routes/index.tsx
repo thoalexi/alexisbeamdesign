@@ -8,7 +8,8 @@ import { projects, type Project } from "@/data/projects";
 import { homepageCopy, navLinks, serviceOptions, services, socials, steps } from "@/data/site";
 import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
-import headshot from "@/assets/alexis-headshot.png.asset.json";
+import headshot400 from "@/assets/alexis-headshot-400.webp.asset.json";
+import headshot800 from "@/assets/alexis-headshot-800.webp.asset.json";
 
 const TITLE = "Alexis Beam | Web Design, Automation & Digital Solutions";
 const DESC =
@@ -222,7 +223,10 @@ function About() {
           <Reveal className="md:col-span-5 md:sticky md:top-28 md:self-start">
             <div className="relative mx-auto w-full max-w-[300px] md:mx-0 md:max-w-[380px]">
               <img
-                src={headshot.url}
+                src={headshot800.url}
+                srcSet={`${headshot400.url} 400w, ${headshot800.url} 800w`}
+                sizes="(min-width: 768px) 380px, 300px"
+                decoding="async"
                 alt="Portrait of Alexis Beam"
                 width={890}
                 height={1168}
