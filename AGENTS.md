@@ -12,3 +12,5 @@
 - Portfolio projects, services, process steps, socials and form options live in `src/data/*` — edit content there, not in components (keeps the site easy to update).
 - Contact inquiries are inserted via a server function (`src/lib/inquiry.functions.ts`) using the publishable key and an insert-only RLS policy; never expose read access to inquiries publicly.
 - Calendly booking links render only via BookingLink + bookingUrl in src/data/site.ts (plain external link, no embed) — one place to change, no dead links, no third-party script.
+- Service detail pages (/small-business-web-design, /website-redesign, /workflow-automation) share src/components/site/ServicePage.tsx; all copy lives in src/data/services.ts — keep it truthful (no prices, guarantees, turnaround, or testimonials).
+- Acquisition attribution is captured and sanitized in src/lib/attribution.ts (allowlisted UTM tokens + bare landing path only, never full URLs/referrer); it flows to the inquiry alert email and Calendly links, never to the database.
