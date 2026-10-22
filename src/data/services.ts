@@ -104,7 +104,7 @@ export const servicePages: ServicePage[] = [
       "Website redesign services for small businesses whose current site isn't working for them. Clearer navigation, better mobile experience, and customer journeys that make sense. Based in Atlanta, working remotely across the U.S.",
     h1: "Website redesigns that make your site work harder",
     intro:
-      "Already have a website that isn't quite working for you? A redesign can turn it into something you're excited to share — clearer, faster to navigate, and built around how your customers actually look for information. I'm based in Atlanta and work remotely with small businesses across the U.S.",
+      "Already have a website that isn't quite working for you? A redesign can turn it into something you're excited to share — clearer, faster to navigate, and built around how your customers actually look for information.",
     problemsTitle: "Signs it might be time",
     problems: [
       "Your site looks dated next to competitors, and you hesitate to share the link.",
