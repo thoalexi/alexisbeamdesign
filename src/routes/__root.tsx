@@ -134,14 +134,15 @@ function RootComponent() {
   }, []);
 
   // GA4's config fires the initial page view; send one per subsequent SPA navigation.
+  // Compare pathnames rather than skipping the first event: the initial resolution
+  // may already have happened before this subscription exists.
   useEffect(() => {
-    let first = true;
+    let last = window.location.pathname;
     const unsub = router.subscribe("onResolved", () => {
-      if (first) {
-        first = false;
-        return;
-      }
-      trackPageView(window.location.pathname);
+      const p = window.location.pathname;
+      if (p === last) return;
+      last = p;
+      trackPageView(p);
     });
     return unsub;
   }, [router]);
