@@ -5,7 +5,8 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { BookingLink } from "@/components/site/BookingLink";
 import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
-import { navLinks, services, socials, steps } from "@/data/site";
+import { navLinks, serviceOptions, services, socials, steps } from "@/data/site";
+import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
 import headshot from "@/assets/alexis-headshot.png.asset.json";
 
@@ -15,6 +16,10 @@ const DESC =
 const URL_HOME = "https://alexisbeamdesign.com/";
 
 export const Route = createFileRoute("/")({
+  // Quote CTAs arrive as /?service=<option>#contact; only allowlisted form options preselect.
+  validateSearch: (search: Record<string, unknown>) => ({
+    service: preselectService(typeof search.service === "string" ? search.service : "", serviceOptions),
+  }),
   head: () => ({
     meta: [
       { title: TITLE },
