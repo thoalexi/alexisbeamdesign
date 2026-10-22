@@ -8,8 +8,7 @@ import { projects, type Project } from "@/data/projects";
 import { homepageCopy, navLinks, serviceOptions, services, socials, steps } from "@/data/site";
 import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
-import headshot400 from "@/assets/alexis-headshot-400.webp.asset.json";
-import headshot800 from "@/assets/alexis-headshot-800.webp.asset.json";
+import headshot from "@/assets/alexis-headshot.png.asset.json";
 
 const TITLE = "Alexis Beam | Web Design, Automation & Digital Solutions";
 const DESC =
@@ -102,15 +101,15 @@ function Hero() {
         <circle cx="1130" cy="250" r="140" stroke="var(--aegean)" strokeOpacity="0.35" strokeWidth="1" />
       </svg>
       <div className="relative mx-auto w-full max-w-7xl">
-        <p className="eyebrow text-muted-foreground">Independent web design &amp; digital solutions</p>
+        <p className="eyebrow rise text-muted-foreground">Independent web design &amp; digital solutions</p>
         <h1 className="hero-heading mt-8">
-          <span className="block">Thoughtfully designed.</span>
-          <span className="block italic text-accent sm:pl-3 lg:pl-8">
+          <span className="rise block" style={{ animationDelay: "120ms" }}>Thoughtfully designed.</span>
+          <span className="rise block italic text-accent sm:pl-3 lg:pl-8" style={{ animationDelay: "260ms" }}>
             Purposefully built<span className="not-italic text-terracotta">.</span>
           </span>
         </h1>
         <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-12">
-          <div className="space-y-4 text-lg leading-relaxed text-muted-foreground md:col-span-7 md:col-start-6">
+          <div className="rise space-y-4 text-lg leading-relaxed text-muted-foreground md:col-span-7 md:col-start-6" style={{ animationDelay: "420ms" }}>
             <p className="hero-support max-w-xl text-foreground">{homepageCopy.opening}</p>
             <p className="max-w-xl font-sans text-sm leading-relaxed md:text-base">{homepageCopy.intro}</p>
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
@@ -223,10 +222,7 @@ function About() {
           <Reveal className="md:col-span-5 md:sticky md:top-28 md:self-start">
             <div className="relative mx-auto w-full max-w-[300px] md:mx-0 md:max-w-[380px]">
               <img
-                src={headshot800.url}
-                srcSet={`${headshot400.url} 400w, ${headshot800.url} 800w`}
-                sizes="(min-width: 768px) 380px, 300px"
-                decoding="async"
+                src={headshot.url}
                 alt="Portrait of Alexis Beam"
                 width={890}
                 height={1168}
