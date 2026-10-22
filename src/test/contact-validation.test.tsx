@@ -7,7 +7,6 @@ vi.mock("@/lib/inquiry.functions", () => ({
   submitInquiry: submit,
   normalizeWebsite: (value: string) => value === "" ? "" : null,
 }));
-vi.mock("@/tanstack/react-router", () => ({}));
 vi.mock("@tanstack/react-router", () => ({
   Link: ({ children, to, className }: { children: ReactNode; to: string; className?: string }) => <a href={to} className={className}>{children}</a>,
 }));
