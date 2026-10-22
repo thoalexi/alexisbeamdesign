@@ -87,14 +87,14 @@ export const bookingUrl: string | null = "https://calendly.com/alexisbeamdesign"
 export type BookingPlacement = "services" | "discovery_section" | "contact" | "automation" | "opening";
 
 /** Booking URL tagged with the placement, keeping any existing query params. Null if not configured/invalid. */
-export function bookingLink(placement: BookingPlacement): string | null {
+export function bookingLink(placement: BookingPlacement, includeAttribution = true): string | null {
   if (!bookingUrl) return null;
   try {
     const u = new URL(bookingUrl);
     if (u.protocol !== "https:") return null;
     // Forward first-touch campaign attribution (already sanitized to safe tokens),
     // falling back to the site's own defaults when none was captured.
-    const captured = attributionUtmParams();
+    const captured = includeAttribution ? attributionUtmParams() : {};
     u.searchParams.set("utm_source", captured["utm_source"] ?? "alexisbeamdesign.com");
     u.searchParams.set("utm_medium", captured["utm_medium"] ?? "website");
     if (captured["utm_campaign"]) u.searchParams.set("utm_campaign", captured["utm_campaign"]);
