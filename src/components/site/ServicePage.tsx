@@ -21,7 +21,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
                 <span className="h-px w-10 bg-accent" aria-hidden="true" />
                 {service.title}
               </p>
-              <h1 className="mt-6 max-w-4xl text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">{service.h1}</h1>
+              <h1 className="editorial-page-title mt-6 max-w-4xl">{service.h1}</h1>
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">{service.intro}</p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
                 <a
@@ -42,7 +42,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
         <section className="bg-secondary px-6 py-24 md:px-10 md:py-32">
           <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12">
             <Reveal className="md:col-span-5">
-              <h2 className="text-4xl leading-tight sm:text-5xl">{service.problemsTitle}</h2>
+              <h2 className="editorial-heading">{service.problemsTitle}</h2>
             </Reveal>
             <Reveal delay={120} className="md:col-span-6 md:col-start-7">
               <ul className="space-y-5">
@@ -61,7 +61,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
         <section className="px-6 py-24 md:px-10 md:py-32">
           <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12">
             <Reveal className="md:col-span-5">
-              <h2 className="text-4xl leading-tight sm:text-5xl">{service.includedTitle}</h2>
+              <h2 className="editorial-heading">{service.includedTitle}</h2>
             </Reveal>
             <Reveal delay={120} className="md:col-span-6 md:col-start-7">
               <ul className="space-y-2.5 text-base">
@@ -84,7 +84,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
                 <span className="h-px w-10 bg-accent" aria-hidden="true" />
                 The process
               </p>
-              <h2 className="mt-6 max-w-2xl text-4xl leading-tight sm:text-5xl">Simple process. <em className="text-accent">Thoughtful results.</em></h2>
+              <h2 className="editorial-heading mt-6 max-w-2xl">Simple process. <em className="text-accent">Thoughtful results.</em></h2>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{service.processNote}</p>
             </Reveal>
             <ol className="relative mt-16 grid gap-12 md:grid-cols-4 md:gap-8">
@@ -92,7 +92,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
               {serviceProcessSteps.map((s, i) => (
                 <Reveal as="li" key={s.title} delay={i * 110} className="relative pl-10 md:pl-0 md:pt-12">
                   <span aria-hidden="true" className="absolute left-0 top-1 h-[15px] w-[15px] rounded-full border border-terracotta bg-background md:top-0" />
-                  <h3 className="text-3xl">{s.title}</h3>
+                  <h3 className="font-serif text-3xl leading-tight">{s.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
                 </Reveal>
               ))}
@@ -115,8 +115,8 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
             <div className="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
               {service.faqs.map((f) => (
                 <Reveal key={f.q} as="article">
-                  <h3 className="font-serif text-2xl leading-snug">{f.q}</h3>
-                  <p className="mt-4 leading-relaxed text-muted-foreground">{f.a}</p>
+                  <h3 className="editorial-subheading">{f.q}</h3>
+                  <p className="editorial-body mt-4 max-w-prose text-muted-foreground">{f.a}</p>
                 </Reveal>
               ))}
             </div>
@@ -127,7 +127,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
         <section className="bg-aegean px-6 py-24 text-accent-foreground md:px-10 md:py-32">
           <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12">
             <Reveal className="md:col-span-6">
-              <h2 className="text-4xl leading-tight sm:text-5xl">Ready to talk about <em>your</em> project?</h2>
+              <h2 className="editorial-heading">Ready to talk about <em>your</em> project?</h2>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
                 <a
                   href={quoteHref}

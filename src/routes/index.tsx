@@ -81,7 +81,7 @@ function SectionHead({ eyebrow, title, copy, className }: { eyebrow: string; tit
           <span className="h-px w-10 bg-accent" aria-hidden="true" />
           {eyebrow}
         </p>
-        <h2 className="mt-6 text-5xl leading-[0.95] sm:text-6xl lg:text-7xl text-balance">{title}</h2>
+        <h2 className="editorial-heading mt-6">{title}</h2>
       </Reveal>
       {copy && (
         <Reveal delay={120} className="self-end md:col-span-4 md:col-start-9">
@@ -102,16 +102,16 @@ function Hero() {
       </svg>
       <div className="relative mx-auto w-full max-w-7xl">
         <p className="eyebrow rise text-muted-foreground">Independent web design &amp; digital solutions</p>
-        <h1 className="mt-8 text-[clamp(3.2rem,10vw,9.5rem)] leading-[0.88] tracking-[-0.03em]">
+        <h1 className="hero-heading mt-8">
           <span className="rise block" style={{ animationDelay: "120ms" }}>Thoughtfully designed.</span>
-          <span className="rise block pl-[8vw] italic text-accent" style={{ animationDelay: "260ms" }}>
+          <span className="rise block italic text-accent sm:pl-3 lg:pl-8" style={{ animationDelay: "260ms" }}>
             Purposefully built<span className="not-italic text-terracotta">.</span>
           </span>
         </h1>
         <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-12">
           <div className="rise space-y-4 text-lg leading-relaxed text-muted-foreground md:col-span-7 md:col-start-6" style={{ animationDelay: "420ms" }}>
-            <p className="max-w-xl font-serif text-2xl leading-snug text-foreground md:text-3xl">{homepageCopy.opening}</p>
-            <p>{homepageCopy.intro}</p>
+            <p className="hero-support max-w-xl text-foreground">{homepageCopy.opening}</p>
+            <p className="max-w-xl font-sans text-sm leading-relaxed md:text-base">{homepageCopy.intro}</p>
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
               <a href="#contact" className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
                 Request a Quote <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -244,7 +244,7 @@ function About() {
                 ["Thoughtful Design", "Visual care and practical functionality, considered together from the start."],
               ].map(([h, c]) => (
                 <li key={h} className="text-base text-foreground">
-                  <span className="block font-serif text-2xl leading-tight">{h}</span>
+                  <span className="editorial-subheading block">{h}</span>
                   <span className="mt-2 block text-sm text-muted-foreground">{c}</span>
                 </li>
               ))}
@@ -320,7 +320,7 @@ function Process() {
           {steps.map((s, i) => (
             <Reveal as="li" key={s.title} delay={i * 110} className="relative pl-10 md:pl-0 md:pt-12">
               <span aria-hidden="true" className="absolute left-0 top-1 h-[15px] w-[15px] rounded-full border border-terracotta bg-background md:top-0" />
-              <h3 className="text-4xl">{s.title}</h3>
+              <h3 className="font-serif text-3xl leading-tight">{s.title}</h3>
               <p className="mt-4 leading-relaxed text-muted-foreground">{s.text}</p>
             </Reveal>
           ))}
@@ -336,7 +336,7 @@ function Differentiator() {
     <section aria-labelledby="diff-title" className="bg-aegean px-6 py-24 text-accent-foreground md:px-10 md:py-28">
       <div className="mx-auto grid max-w-7xl gap-14 md:grid-cols-12">
         <Reveal className="md:col-span-6">
-          <h2 id="diff-title" className="text-5xl leading-[0.95] sm:text-6xl lg:text-8xl">
+          <h2 id="diff-title" className="editorial-heading">
             Not just another <em>pretty</em> website.
           </h2>
         </Reveal>
@@ -359,7 +359,7 @@ function Contact() {
       <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-12">
         <Reveal className="md:col-span-5">
           <p className="eyebrow flex items-center gap-4 text-accent"><span className="h-px w-10 bg-accent" aria-hidden="true" />Request a quote</p>
-          <h2 className="mt-6 text-5xl leading-[0.95] sm:text-6xl">
+          <h2 className="editorial-heading mt-6">
             Ready to get <em className="text-accent">started?</em>
           </h2>
           <p className="mt-8 text-lg leading-relaxed text-muted-foreground">{homepageCopy.contactIntro}</p>

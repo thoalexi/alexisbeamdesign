@@ -16,3 +16,4 @@
 - Acquisition attribution is captured and sanitized in src/lib/attribution.ts (allowlisted UTM tokens + bare landing path only, never full URLs/referrer); it flows to the inquiry alert email and Calendly links, never to the database.
 - Homepage invitation copy lives in `src/data/site.ts`; the homepage has one combined contact section and an opening BookingLink so quote and optional chat paths stay centralized.
 - BookingLink renders a campaign-free destination initially and applies sanitized session attribution after hydration, keeping server and browser output consistent.
+- Shared editorial typography lives in src/styles.css as reusable fixed-breakpoint utilities; use them for page, section, and supporting text hierarchy without viewport-scaled fonts.
