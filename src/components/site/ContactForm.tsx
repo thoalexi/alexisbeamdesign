@@ -145,8 +145,7 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
         </button>
       </div>
       <p className="text-xs text-muted-foreground sm:col-span-2">
-        By sending this form, you agree to the handling of your information as described in the{" "}
-        <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link>.
+        See the <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link> for how your information is handled.
       </p>
     </form>
   );
