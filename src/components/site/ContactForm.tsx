@@ -1,4 +1,4 @@
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { budgetOptions, serviceOptions, timelineOptions } from "@/data/site";
 import { normalizeWebsite } from "@/lib/inquiry.functions";
@@ -14,6 +14,13 @@ const fieldBase =
 
 export function ContactForm({ preselectedService = "" }: { preselectedService?: string | undefined }) {
   const startedAt = useRef(Date.now());
+  const serviceRef = useRef<HTMLSelectElement>(null);
+
+  // Browsers auto-select the first enabled option when none matches; set the
+  // value explicitly so an empty preselection lands on the disabled placeholder.
+  useEffect(() => {
+    if (serviceRef.current) serviceRef.current.value = preselectedService;
+  }, [preselectedService]);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [errors, setErrors] = useState<Errors>({});
 
@@ -98,7 +105,7 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
         <input name="businessName" autoComplete="organization" maxLength={150} className={fieldBase} />
       </Field>
       <Field label="What can I help you with?" required>
-        <select key={preselectedService} name="service" required defaultValue={preselectedService} className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
+        <select ref={serviceRef} name="service" required defaultValue={preselectedService} className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
           <option value="" disabled>Choose one</option>
           {serviceOptions.map((o) => <option key={o}>{o}</option>)}
         </select>
