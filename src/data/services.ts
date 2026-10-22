@@ -152,7 +152,7 @@ export const servicePages: ServicePage[] = [
       "Practical workflow automation for small businesses: automated customer follow-ups, connected forms and spreadsheets, reporting, and admin workflows. Based in Atlanta, working remotely across the U.S.",
     h1: "Workflow automation that gives you your time back",
     intro:
-      "Every business has repetitive tasks that take up more time than they should — follow-ups, data entry, reports, moving information between tools. I build practical automations that handle the everyday work quietly in the background, so your business runs more smoothly. I'm based in Atlanta and work remotely with small businesses across the U.S.",
+      "Every business has repetitive tasks that take up more time than they should — follow-ups, data entry, reports, moving information between tools. I build practical automations that handle the everyday work quietly in the background, so your business runs more smoothly.",
     problemsTitle: "Where automation helps most",
     problems: [
       "Customer inquiries sit unanswered because follow-up depends on remembering to do it.",
