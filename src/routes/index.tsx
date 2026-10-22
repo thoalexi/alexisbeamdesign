@@ -333,7 +333,7 @@ function Process() {
           {steps.map((s, i) => (
             <Reveal as="li" key={s.title} delay={i * 110} className="relative pl-10 md:pl-0 md:pt-12">
               <span aria-hidden="true" className="absolute left-0 top-1 h-[15px] w-[15px] rounded-full border border-terracotta bg-background md:top-0" />
-              <span className="eyebrow text-muted-foreground">0{i + 1}</span>
+              <span className="eyebrow text-muted-foreground"></span>
               <h3 className="mt-2 text-4xl">{s.title}</h3>
               <p className="mt-4 leading-relaxed text-muted-foreground">{s.text}</p>
             </Reveal>
