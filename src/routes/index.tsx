@@ -228,7 +228,7 @@ function About() {
         <SectionHead eyebrow="A little about me" title={<>A creative mind.<br /><em className="text-accent">An analytical one, too.</em></>} />
         <div className="mt-12 grid items-start gap-12 md:grid-cols-12 md:gap-10">
           <Reveal className="md:col-span-5">
-            <div className="relative mx-auto w-full max-w-[280px] md:mx-0 md:max-w-[340px]">
+            <div className="relative mx-auto w-full max-w-[300px] md:mx-0 md:max-w-[380px]">
               <img
                 src={headshot.url}
                 alt="Portrait of Alexis Beam"
