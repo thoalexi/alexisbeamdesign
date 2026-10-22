@@ -226,9 +226,9 @@ function About() {
     <section id="about" className="px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-7xl">
         <SectionHead eyebrow="A little about me" title={<>A creative mind.<br /><em className="text-accent">An analytical one, too.</em></>} />
-        <div className="mt-20 grid gap-14 md:grid-cols-12">
+        <div className="mt-12 grid items-start gap-12 md:grid-cols-12 md:gap-10">
           <Reveal className="md:col-span-5">
-            <div className="relative mx-auto w-full max-w-[260px] md:mx-0 md:max-w-[300px]">
+            <div className="relative mx-auto w-full max-w-[300px] md:mx-0 md:max-w-[380px]">
               <img
                 src={headshot.url}
                 alt="Portrait of Alexis Beam"
@@ -240,7 +240,7 @@ function About() {
               <span className="absolute -bottom-3 -right-3 hidden h-20 w-20 border border-terracotta md:block" aria-hidden="true" />
             </div>
           </Reveal>
-          <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-7">
+          <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-6">
             <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">You know your business. I bring a fresh perspective on how your website and everyday tools can support it.</p>
             <p>I’m Alexis, and I enjoy turning complicated problems into clear, useful solutions. My Ph.D. in psychology, with a focus in cognitive science, taught me to look closely at how people think, learn, and make decisions. More than 12 years in data, technology, and business strategy taught me to connect that understanding to practical business needs.</p>
             <p>When we work together, I start by listening: what’s working, what’s frustrating, and what you want to accomplish. From there, I combine thoughtful design with practical problem-solving—whether we’re creating or redesigning a website, improving a workflow, or automating a repetitive task.</p>
