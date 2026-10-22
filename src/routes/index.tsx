@@ -17,9 +17,10 @@ const URL_HOME = "https://alexisbeamdesign.com/";
 
 export const Route = createFileRoute("/")({
   // Quote CTAs arrive as /?service=<option>#contact; only allowlisted form options preselect.
-  validateSearch: (search: Record<string, unknown>) => ({
-    service: preselectService(typeof search.service === "string" ? search.service : "", serviceOptions),
-  }),
+  validateSearch: (search: Record<string, unknown>) => {
+    const service = preselectService(typeof search["service"] === "string" ? search["service"] : "", serviceOptions);
+    return service ? { service } : {};
+  },
   head: () => ({
     meta: [
       { title: TITLE },
@@ -287,13 +288,15 @@ function Services() {
               <div className="md:col-span-6">
                 <h3 className="text-4xl transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">{s.title}</h3>
                 <p className="mt-5 max-w-lg leading-relaxed text-muted-foreground">{s.blurb}</p>
-                <Link
-                  to={`/${servicePages[i].slug}`}
-                  className="group/link mt-6 inline-flex items-center gap-2 text-sm text-foreground"
-                >
-                  <span className="link-underline">Learn more about {s.title}</span>
-                  <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
-                </Link>
+                {(() => {
+                  const page = servicePages.find((p) => p.title === s.title);
+                  return page ? (
+                    <Link to={page.path} className="group/link mt-6 inline-flex items-center gap-2 text-sm text-foreground">
+                      <span className="link-underline">Learn more about {s.title}</span>
+                      <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+                    </Link>
+                  ) : null;
+                })()}
               </div>
               <ul className="space-y-2.5 text-sm md:col-span-4 md:col-start-9">
                 {s.includes.map((x) => (

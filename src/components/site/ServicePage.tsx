@@ -146,7 +146,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
               <ul className="mt-5 space-y-4">
                 {others.map((o) => (
                   <li key={o.slug}>
-                    <Link to={`/${o.slug}`} className="group inline-flex items-baseline gap-3 font-serif text-2xl">
+                    <Link to={o.path} className="group inline-flex items-baseline gap-3 font-serif text-2xl">
                       <span className="link-underline">{o.title}</span>
                       <span aria-hidden="true" className="text-base transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </Link>
