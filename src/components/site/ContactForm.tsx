@@ -133,7 +133,7 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
       </Field>
       <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground" aria-live="polite">
-          {errors.form ? <span className="text-destructive">{errors.form}</span> : "I usually reply within a couple of business days."}
+          {errors.form ? <span className="text-destructive">{errors.form}</span> : "I usually reply within one business day."}
         </p>
         <button
           type="submit"
