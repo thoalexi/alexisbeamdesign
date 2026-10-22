@@ -250,10 +250,9 @@ function About() {
                 ["Human-Centered Thinking", "Clear information and intuitive experiences that help people find their way."],
                 ["Business-Minded Solutions", "Recommendations grounded in your goals, priorities, and everyday work."],
                 ["Thoughtful Design", "Visual care and practical functionality, considered together from the start."],
-              ].map(([h, c], i) => (
+              ].map(([h, c]) => (
                 <li key={h} className="text-base text-foreground">
-                  <span className="eyebrow block text-terracotta">0{i + 1}</span>
-                  <span className="mt-2 block font-serif text-2xl leading-tight">{h}</span>
+                  <span className="block font-serif text-2xl leading-tight">{h}</span>
                   <span className="mt-2 block text-sm text-muted-foreground">{c}</span>
                 </li>
               ))}
