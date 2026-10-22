@@ -1,0 +1,4 @@
+- [ ] Simplify opening and consolidate homepage invitations, preserving portfolio and bio.
+- [ ] Add factual service FAQs and consistent unnumbered process; adjust mobile About heading.
+- [ ] Verify desktop/mobile navigation, quote selection, safe invalid forms, existing tests and preview diagnostics.
+- [ ] Report changed files, preview URL, commit status and unverified inbox delivery.
