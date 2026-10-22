@@ -8,9 +8,13 @@ import { steps } from "./site";
 
 export type ServiceFaq = { q: string; a: string };
 
+export type ServicePagePath = "/small-business-web-design" | "/website-redesign" | "/workflow-automation";
+
 export type ServicePage = {
   /** URL path segment, e.g. "small-business-web-design" */
   slug: string;
+  /** Full route path, used for type-safe links. */
+  path: ServicePagePath;
   /** Matches an entry in serviceOptions so the quote form can preselect it. */
   inquiryService: string;
   title: string;
