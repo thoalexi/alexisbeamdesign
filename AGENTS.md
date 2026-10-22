@@ -15,3 +15,4 @@
 - Service detail pages (/small-business-web-design, /website-redesign, /workflow-automation) share src/components/site/ServicePage.tsx; all copy lives in src/data/services.ts — keep it truthful (no prices, guarantees, turnaround, or testimonials).
 - Acquisition attribution is captured and sanitized in src/lib/attribution.ts (allowlisted UTM tokens + bare landing path only, never full URLs/referrer); it flows to the inquiry alert email and Calendly links, never to the database.
 - Homepage invitation copy lives in `src/data/site.ts`; the homepage has one combined contact section and an opening BookingLink so quote and optional chat paths stay centralized.
+- BookingLink renders a campaign-free destination initially and applies sanitized session attribution after hydration, keeping server and browser output consistent.
