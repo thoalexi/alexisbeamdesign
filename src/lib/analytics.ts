@@ -18,8 +18,15 @@ export function track(event: string, params: Params = {}) {
 
 export function trackOnce(key: string, event: string, params: Params = {}) {
   if (fired.has(key)) return;
+  // Don't mark as fired when gtag isn't available — allow a later retry.
+  if (typeof window === "undefined" || !window.gtag) return;
   fired.add(key);
   track(event, params);
+}
+
+/** GA4 only auto-tracks the initial page load; send one page_view per SPA navigation. */
+export function trackPageView(path: string) {
+  track("page_view", { page_path: path });
 }
 
 export function initAnalytics(id: string) {
