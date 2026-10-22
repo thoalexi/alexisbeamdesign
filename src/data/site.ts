@@ -1,5 +1,16 @@
 import { attributionUtmParams } from "@/lib/attribution";
 
+export const homepageCopy = {
+  opening: "Websites and practical workflow automation for small businesses.",
+  intro: "Based in Atlanta, working with small businesses across the U.S.",
+  servicesIntro: "Website design, redesign, and practical improvements to the tools you use every day.",
+  differentiator: "A website should help people understand your business and take the next step. Connected tools and practical automation can make the work behind it simpler, too.",
+  contactIntro: "Share what you need from your website or everyday workflow. I’ll review your details and follow up by email.",
+  chatHeading: "Prefer a conversation?",
+  chatIntro: "A free 15-minute chat is optional. We can also talk through your project by email.",
+  followUp: "I’ll review your details and follow up by email.",
+};
+
 export const navLinks = [
   { id: "work", label: "Work" },
   { id: "about", label: "About" },
@@ -73,17 +84,17 @@ export const timelineOptions = ["As soon as possible", "Within 1–3 months", "W
 /** Public Calendly page for the Free 15-Minute Consultation. Set to null to hide every booking link. */
 export const bookingUrl: string | null = "https://calendly.com/alexisbeamdesign";
 
-export type BookingPlacement = "services" | "discovery_section" | "contact" | "automation";
+export type BookingPlacement = "services" | "discovery_section" | "contact" | "automation" | "opening";
 
 /** Booking URL tagged with the placement, keeping any existing query params. Null if not configured/invalid. */
-export function bookingLink(placement: BookingPlacement): string | null {
+export function bookingLink(placement: BookingPlacement, includeAttribution = true): string | null {
   if (!bookingUrl) return null;
   try {
     const u = new URL(bookingUrl);
     if (u.protocol !== "https:") return null;
     // Forward first-touch campaign attribution (already sanitized to safe tokens),
     // falling back to the site's own defaults when none was captured.
-    const captured = attributionUtmParams();
+    const captured = includeAttribution ? attributionUtmParams() : {};
     u.searchParams.set("utm_source", captured["utm_source"] ?? "alexisbeamdesign.com");
     u.searchParams.set("utm_medium", captured["utm_medium"] ?? "website");
     if (captured["utm_campaign"]) u.searchParams.set("utm_campaign", captured["utm_campaign"]);

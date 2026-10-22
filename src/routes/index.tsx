@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { BookingLink } from "@/components/site/BookingLink";
 import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
-import { navLinks, serviceOptions, services, socials, steps } from "@/data/site";
+import { homepageCopy, navLinks, serviceOptions, services, socials, steps } from "@/data/site";
 import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
 import headshot from "@/assets/alexis-headshot.png.asset.json";
@@ -66,8 +66,6 @@ function Home() {
         <Services />
         <Process />
         <Differentiator />
-        <Automation />
-        <Consultation />
         <Contact />
       </main>
       <Footer />
@@ -83,7 +81,7 @@ function SectionHead({ eyebrow, title, copy, className }: { eyebrow: string; tit
           <span className="h-px w-10 bg-accent" aria-hidden="true" />
           {eyebrow}
         </p>
-        <h2 className="mt-6 text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">{title}</h2>
+        <h2 className="mt-6 text-5xl leading-[0.95] sm:text-6xl lg:text-7xl text-balance">{title}</h2>
       </Reveal>
       {copy && (
         <Reveal delay={120} className="self-end md:col-span-4 md:col-start-9">
@@ -97,7 +95,7 @@ function SectionHead({ eyebrow, title, copy, className }: { eyebrow: string; tit
 /* ---------- Hero ---------- */
 function Hero() {
   return (
-    <section id="top" className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-6 pb-24 pt-32 md:px-10">
+    <section id="top" className="relative flex flex-col justify-center overflow-hidden px-6 pb-16 pt-28 md:min-h-[90svh] md:px-10 md:pb-24 md:pt-32">
       <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
         <path className="hero-line" d="M-40 720 C 320 640, 520 260, 860 300 S 1300 520, 1500 140" stroke="var(--terracotta)" strokeWidth="1" strokeDasharray="1200" />
         <circle cx="1130" cy="250" r="140" stroke="var(--aegean)" strokeOpacity="0.35" strokeWidth="1" />
@@ -111,22 +109,17 @@ function Hero() {
             Purposefully built<span className="not-italic text-terracotta">.</span>
           </span>
         </h1>
-        <div className="mt-14 grid gap-10 md:grid-cols-12">
-          <div className="rise space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-6" style={{ animationDelay: "420ms" }}>
-            <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">Beautiful websites. Smarter ways of working.</p>
-            <p>
-              <span className="text-foreground"></span> From beautiful, functional websites to automating the everyday tasks that slow you down, I help small businesses simplify their work and grow with confidence.
-            </p>
-            <p>
-              With a <span className="text-foreground">doctorate in psychology</span> and <span className="text-foreground">over 12 years</span> in data strategy and technology, I bring thoughtful design and practical problem-solving together to build things that look great and work even better.
-            </p>
-            <div className="flex flex-col gap-4 pt-5 sm:flex-row sm:items-center sm:gap-8">
-              <a href="#work" className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
-                Explore My Work <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+        <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-12">
+          <div className="rise space-y-4 text-lg leading-relaxed text-muted-foreground md:col-span-7 md:col-start-6" style={{ animationDelay: "420ms" }}>
+            <p className="max-w-xl font-serif text-2xl leading-snug text-foreground md:text-3xl">{homepageCopy.opening}</p>
+            <p>{homepageCopy.intro}</p>
+            <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
+              <a href="#contact" className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
+                Request a Quote <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
-              <a href="#contact" className="link-underline self-start py-2 text-sm text-foreground sm:self-auto">
-                Request a Quote →
-              </a>
+              <BookingLink placement="opening" className="link-underline self-start py-3 text-sm text-foreground sm:self-auto">
+                Schedule a Free 15-Minute Chat →
+              </BookingLink>
             </div>
           </div>
         </div>
@@ -225,7 +218,7 @@ function About() {
   return (
     <section id="about" className="px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-7xl">
-        <SectionHead eyebrow="A little about me" title={<>A creative mind.<br /><em className="text-accent">An analytical one, too.</em></>} />
+        <SectionHead eyebrow="A little about me" title={<>A creative mind.<br /><em className="text-accent">An analytical <span className="whitespace-nowrap">one, too.</span></em></>} />
         <div className="mt-12 grid items-start gap-12 md:grid-cols-12 md:gap-10">
           <Reveal className="md:col-span-5 md:sticky md:top-28 md:self-start">
             <div className="relative mx-auto w-full max-w-[300px] md:mx-0 md:max-w-[380px]">
@@ -278,7 +271,7 @@ function Services() {
         <SectionHead
           eyebrow="What I do"
           title={<>Good design is just <em className="text-accent">the beginning.</em></>}
-          copy="Every business is different. I focus on creating thoughtful digital solutions tailored to what you actually need, without unnecessary complexity."
+          copy={homepageCopy.servicesIntro}
         />
         <div className="mt-20 border-t border-foreground">
           {services.map((s, i) => (
@@ -307,10 +300,6 @@ function Services() {
         </div>
         <p className="mt-10 max-w-xl text-sm italic text-muted-foreground">
           Complex integrations and custom software projects are evaluated individually based on technical requirements.
-        </p>
-        <p className="mt-6 text-base text-foreground">
-          Not sure what you need? Let's talk it through.{" "}
-          <BookingLink placement="services" className="link-underline whitespace-nowrap text-accent">Schedule a Free 15-Minute Chat →</BookingLink>
         </p>
       </div>
     </section>
@@ -345,7 +334,7 @@ function Process() {
 /* ---------- Differentiator ---------- */
 function Differentiator() {
   return (
-    <section aria-labelledby="diff-title" className="bg-aegean px-6 py-28 text-accent-foreground md:px-10 md:py-40">
+    <section aria-labelledby="diff-title" className="bg-aegean px-6 py-24 text-accent-foreground md:px-10 md:py-28">
       <div className="mx-auto grid max-w-7xl gap-14 md:grid-cols-12">
         <Reveal className="md:col-span-6">
           <h2 id="diff-title" className="text-5xl leading-[0.95] sm:text-6xl lg:text-8xl">
@@ -353,62 +342,10 @@ function Differentiator() {
           </h2>
         </Reveal>
         <Reveal delay={120} className="space-y-5 self-end text-lg leading-relaxed text-accent-foreground/85 md:col-span-5 md:col-start-8">
-          <p>A great website should do more than look good.</p>
-          <p>It should help people understand what you do, make it easier for customers to connect with you, and support the way your business operates.</p>
-          <p>That's why I approach every project with equal parts creativity, curiosity, and strategy.</p>
+          <p>{homepageCopy.differentiator}</p>
           <p className="border-t border-accent-foreground/30 pt-6 font-serif text-2xl italic text-accent-foreground">
             Less unnecessary complexity. More thoughtful solutions.
           </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Automation ---------- */
-function Automation() {
-  return (
-    <section aria-labelledby="automation-title" className="px-6 py-24 md:px-10 md:py-32">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-12">
-        <Reveal className="md:col-span-6">
-          <h2 id="automation-title" className="text-5xl leading-[0.95] sm:text-6xl">
-            What's one task you wish you could <em className="text-accent">automate?</em>
-          </h2>
-        </Reveal>
-        <Reveal delay={120} className="self-end md:col-span-5 md:col-start-8">
-          <p className="text-lg leading-relaxed text-muted-foreground">
-            Every business has repetitive tasks that take up more time than they should. Whether it's managing inquiries, updating spreadsheets, sending follow-ups, or moving information between systems, there may be a simpler way. Tell me what's slowing you down, and I'll help you explore whether automation could make it easier.
-          </p>
-          <BookingLink
-            placement="automation"
-            className="group mt-8 inline-flex min-h-12 items-center justify-center gap-3 border border-foreground px-7 py-4 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
-          >
-            Let's Talk About Automation <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </BookingLink>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Consultation ---------- */
-function Consultation() {
-  return (
-    <section aria-labelledby="consult-title" className="bg-secondary px-6 py-24 md:px-10 md:py-32">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-12">
-        <Reveal className="md:col-span-6">
-          <p className="eyebrow flex items-center gap-4 text-accent"><span className="h-px w-10 bg-accent" aria-hidden="true" />Free 15-minute chat</p>
-          <h2 id="consult-title" className="mt-6 text-5xl leading-[0.95] sm:text-6xl">Have something <em className="text-accent">in mind?</em></h2>
-        </Reveal>
-        <Reveal delay={120} className="self-end md:col-span-5 md:col-start-8">
-          <p className="text-lg leading-relaxed text-muted-foreground">Whether you have a specific project or are still figuring things out, I'm happy to hear what you're working on.</p>
-          <BookingLink
-            placement="discovery_section"
-            className="group mt-8 inline-flex min-h-12 items-center justify-center gap-3 border border-foreground px-7 py-4 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
-          >
-            Schedule a Free 15-Minute Chat <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </BookingLink>
-          <p className="mt-4 text-sm italic text-muted-foreground">No obligation. Just a conversation about your business and what you're looking to build.</p>
         </Reveal>
       </div>
     </section>
@@ -426,10 +363,10 @@ function Contact() {
           <h2 className="mt-6 text-5xl leading-[0.95] sm:text-6xl">
             Ready to get <em className="text-accent">started?</em>
           </h2>
-          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">Know what you need? Share your project details and let's discuss next steps.</p>
+          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">{homepageCopy.contactIntro}</p>
           <div className="mt-12 border-t pt-8">
-            <p className="font-serif text-2xl">Still exploring?</p>
-            <p className="mt-2 leading-relaxed text-muted-foreground">Have questions or want to talk through an idea? Let's connect.</p>
+            <p className="font-serif text-2xl">{homepageCopy.chatHeading}</p>
+            <p className="mt-2 leading-relaxed text-muted-foreground">{homepageCopy.chatIntro}</p>
             <BookingLink placement="contact" className="group mt-4 inline-flex items-center gap-2 text-sm">
               <span className="link-underline">Schedule a Free 15-Minute Chat</span>
               <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>

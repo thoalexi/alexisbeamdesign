@@ -92,8 +92,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
               {serviceProcessSteps.map((s, i) => (
                 <Reveal as="li" key={s.title} delay={i * 110} className="relative pl-10 md:pl-0 md:pt-12">
                   <span aria-hidden="true" className="absolute left-0 top-1 h-[15px] w-[15px] rounded-full border border-terracotta bg-background md:top-0" />
-                  <span className="eyebrow text-muted-foreground">0{i + 1}</span>
-                  <h3 className="mt-2 text-3xl">{s.title}</h3>
+                  <h3 className="text-3xl">{s.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
                 </Reveal>
               ))}
@@ -113,7 +112,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
                 Common questions
               </p>
             </Reveal>
-            <div className="mt-12 grid gap-10 md:grid-cols-3">
+            <div className="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
               {service.faqs.map((f) => (
                 <Reveal key={f.q} as="article">
                   <h3 className="font-serif text-2xl leading-snug">{f.q}</h3>

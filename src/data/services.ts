@@ -8,6 +8,23 @@ import { steps } from "./site";
 
 export type ServiceFaq = { q: string; a: string };
 
+const quoteFollowUp: ServiceFaq = {
+  q: "What happens after I request a quote?",
+  a: "I’ll review your project details and follow up by email. Depending on what you need and how you prefer to communicate, we can continue by email or arrange a call to talk through the details.",
+};
+const contentPreparation: ServiceFaq = {
+  q: "Do I need to have my wording and photographs ready?",
+  a: "Share anything you already have. We’ll discuss what else is needed and agree on who will provide it before work begins.",
+};
+const quoteScope: ServiceFaq = {
+  q: "What will my quote cover?",
+  a: "Your quote will set out the proposed work, what’s included, what you’ll need to provide, and any exclusions. Any ongoing costs or support arrangements will be discussed separately and clarified before you commit.",
+};
+const ongoingArrangements: ServiceFaq = {
+  q: "What about hosting, software costs, and support after launch?",
+  a: "These depend on the project. We’ll discuss the setup, any ongoing costs, and whether support is needed as part of agreeing on the scope.",
+};
+
 export type ServicePagePath = "/small-business-web-design" | "/website-redesign" | "/workflow-automation";
 
 export type ServicePage = {
@@ -59,7 +76,7 @@ export const servicePages: ServicePage[] = [
       "Foundational SEO setup: page titles, descriptions, social sharing metadata, and clean structure",
     ],
     processNote:
-      "Every website project follows the same collaborative process: we start with a conversation about your business and goals, I develop a visual direction for your review, then I build and refine the site with you before launch.",
+      "Every website project follows the same collaborative process: we clarify your business and goals by email or an optional call, I develop a visual direction for your review, then I build and refine the site with you before launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. If your project needs something beyond a thoughtfully built website, I'll tell you honestly what's involved before we begin.",
     faqs: [
@@ -71,10 +88,10 @@ export const servicePages: ServicePage[] = [
         q: "Do I need to be in Atlanta to work with you?",
         a: "No. I'm based in Atlanta, but I work remotely with small businesses across the U.S. Our conversations happen over video or phone, and everything else is shared online.",
       },
-      {
-        q: "What do you need from me to get started?",
-        a: "Mainly your perspective: what your business does, who your customers are, and what you want the site to accomplish. If you have existing branding, copy, or photos, great — if not, we'll talk through what's needed.",
-      },
+      quoteFollowUp,
+      contentPreparation,
+      quoteScope,
+      ongoingArrangements,
     ],
   },
   {
@@ -120,6 +137,9 @@ export const servicePages: ServicePage[] = [
         q: "Do I need to be local to work with you?",
         a: "No. I'm based in Atlanta and work remotely with small businesses across the U.S. Everything — from our first conversation to design reviews — happens online or over the phone.",
       },
+      quoteFollowUp,
+      contentPreparation,
+      ongoingArrangements,
     ],
   },
   {
@@ -165,6 +185,9 @@ export const servicePages: ServicePage[] = [
         q: "Do I need to be technical to manage what you build?",
         a: "No. A good automation is designed to run quietly in the background. I build with maintainability in mind and make sure you understand what your systems do in plain language.",
       },
+      quoteFollowUp,
+      quoteScope,
+      ongoingArrangements,
     ],
   },
 ];

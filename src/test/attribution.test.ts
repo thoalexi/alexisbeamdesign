@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { sanitizeAttribution } from "@/lib/attribution";
 import { preselectService } from "@/data/services";
-import { serviceOptions } from "@/data/site";
+import { bookingLink, serviceOptions } from "@/data/site";
 
 describe("sanitizeAttribution", () => {
   it("keeps safe UTM tokens and a bare landing pathname", () => {
@@ -58,5 +58,16 @@ describe("preselectService", () => {
     expect(preselectService("<script>", serviceOptions)).toBe("");
     expect(preselectService("website redesign", serviceOptions)).toBe(""); // case-sensitive allowlist
     expect(preselectService("", serviceOptions)).toBe("");
+  });
+});
+
+describe("Opening booking destination", () => {
+  it("uses the existing Calendly destination and opening placement", () => {
+    const href = bookingLink("opening");
+    if (!href) throw new Error("Missing configured booking destination");
+    const url = new URL(href);
+    expect(url.origin).toBe("https://calendly.com");
+    expect(url.pathname).toBe("/alexisbeamdesign");
+    expect(url.searchParams.get("utm_content")).toBe("opening");
   });
 });

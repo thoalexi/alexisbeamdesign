@@ -21,7 +21,7 @@ describe("Service pages", () => {
     // Required sections
     expect(s.problems.length).toBeGreaterThanOrEqual(3);
     expect(s.included.length).toBeGreaterThanOrEqual(3);
-    expect(s.faqs).toHaveLength(3);
+    expect(s.faqs.length).toBeGreaterThanOrEqual(3);
     expect(s.scopeCaveat).toContain("evaluated individually");
     // Quote CTA preselection must map to a real form option
     expect(serviceOptions).toContain(s.inquiryService);

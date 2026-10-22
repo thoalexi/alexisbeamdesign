@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
-import { budgetOptions, serviceOptions, timelineOptions } from "@/data/site";
+import { budgetOptions, homepageCopy, serviceOptions, timelineOptions } from "@/data/site";
 import { normalizeWebsite } from "@/lib/inquiry.functions";
 import { submitInquiry } from "@/lib/inquiry.functions";
 import { cn } from "@/lib/utils";
@@ -133,7 +133,7 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
       </Field>
       <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground" aria-live="polite">
-          {errors.form ? <span className="text-destructive">{errors.form}</span> : "I usually reply within one business day."}
+          {errors.form ? <span className="text-destructive">{errors.form}</span> : homepageCopy.followUp}
         </p>
         <button
           type="submit"
