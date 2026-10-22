@@ -128,10 +128,6 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
         <p className="text-sm text-muted-foreground" aria-live="polite">
           {errors.form ? <span className="text-destructive">{errors.form}</span> : "I usually reply within a couple of business days."}
         </p>
-        <p className="text-xs text-muted-foreground sm:col-span-2">
-          By sending this form, you agree to the handling of your information as described in the{" "}
-          <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link>.
-        </p>
         <button
           type="submit"
           disabled={status === "sending"}
@@ -141,6 +137,10 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </button>
       </div>
+      <p className="text-xs text-muted-foreground sm:col-span-2">
+        By sending this form, you agree to the handling of your information as described in the{" "}
+        <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link>.
+      </p>
     </form>
   );
 }
