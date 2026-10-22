@@ -20,7 +20,7 @@ const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content"] as 
 /** Safe token: letters, digits, dash, underscore; 1–100 chars. */
 const TOKEN_RE = /^[A-Za-z0-9_-]{1,100}$/;
 /** Bare pathname: starts with /, no query string, no protocol-relative tricks. */
-const PATH_RE = /^\/[A-Za-z0-9\-._~/]{0,199}$/;
+const PATH_RE = /^\/(?!\/)[A-Za-z0-9\-._~/]{0,199}$/;
 
 /** Keep only valid values from an arbitrary input object. */
 export function sanitizeAttribution(input: unknown): Attribution {

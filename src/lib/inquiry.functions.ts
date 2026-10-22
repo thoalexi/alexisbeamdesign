@@ -48,7 +48,7 @@ export const inquirySchema = z.object({
       utm_medium: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(),
       utm_campaign: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(),
       utm_content: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(),
-      landingPath: z.string().regex(/^\/[A-Za-z0-9\-._~/]{0,199}$/).optional(),
+      landingPath: z.string().regex(/^\/(?!\/)[A-Za-z0-9\-._~/]{0,199}$/).optional(),
     })
     .optional(),
 });
