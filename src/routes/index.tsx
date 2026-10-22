@@ -99,7 +99,6 @@ function Hero() {
       <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
         <path className="hero-line" d="M-40 720 C 320 640, 520 260, 860 300 S 1300 520, 1500 140" stroke="var(--terracotta)" strokeWidth="1" strokeDasharray="1200" />
         <circle cx="1130" cy="250" r="140" stroke="var(--aegean)" strokeOpacity="0.35" strokeWidth="1" />
-        <circle cx="1130" cy="250" r="4" fill="var(--terracotta)" />
       </svg>
       <div className="relative mx-auto w-full max-w-7xl">
         <p className="eyebrow rise text-muted-foreground">Independent web design &amp; digital solutions</p>
