@@ -13,7 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { getAnalyticsId } from "../lib/analytics.functions";
-import { initAnalytics, trackPageView } from "../lib/analytics";
+import { initAnalytics } from "../lib/analytics";
 import { captureAttribution } from "../lib/attribution";
 
 function NotFoundComponent() {
@@ -124,7 +124,6 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const router = useRouter();
 
   useEffect(() => {
     captureAttribution();
@@ -132,20 +131,6 @@ function RootComponent() {
       .then((id) => id && initAnalytics(id))
       .catch(() => {});
   }, []);
-
-  // GA4's config fires the initial page view; send one per subsequent SPA navigation.
-  // Compare pathnames rather than skipping the first event: the initial resolution
-  // may already have happened before this subscription exists.
-  useEffect(() => {
-    let last = window.location.pathname;
-    const unsub = router.subscribe("onResolved", () => {
-      const p = window.location.pathname;
-      if (p === last) return;
-      last = p;
-      trackPageView(p);
-    });
-    return unsub;
-  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
