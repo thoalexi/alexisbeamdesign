@@ -73,7 +73,7 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
       <div role="status" className="border-t border-foreground pt-10">
         <p className="eyebrow text-accent">Message received</p>
         <p className="mt-5 font-serif text-3xl leading-snug md:text-4xl">
-          Thanks for reaching out! Your project details have been received and saved. I look forward to learning more about your project.
+          Thanks for reaching out! Your project details have been received. I look forward to learning more about your project.
         </p>
       </div>
     );
