@@ -34,6 +34,7 @@ export type ServicePage = {
 export const servicePages: ServicePage[] = [
   {
     slug: "small-business-web-design",
+    path: "/small-business-web-design",
     inquiryService: "New Website",
     title: "Website Design & Development",
     metaTitle: "Small Business Web Design & Development | Alexis Beam",
@@ -78,6 +79,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "website-redesign",
+    path: "/website-redesign",
     inquiryService: "Website Redesign",
     title: "Website Redesign",
     metaTitle: "Website Redesign for Small Businesses | Alexis Beam",
@@ -122,6 +124,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "workflow-automation",
+    path: "/workflow-automation",
     inquiryService: "Automation / Workflow Improvement",
     title: "Digital Solutions & Workflow Automation",
     metaTitle: "Workflow Automation for Small Businesses | Alexis Beam",

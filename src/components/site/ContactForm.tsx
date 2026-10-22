@@ -12,7 +12,7 @@ type Errors = Partial<Record<"name" | "email" | "service" | "message" | "website
 const fieldBase =
   "w-full border-0 border-b border-input bg-transparent px-0 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-0 transition-colors";
 
-export function ContactForm({ preselectedService = "" }: { preselectedService?: string }) {
+export function ContactForm({ preselectedService = "" }: { preselectedService?: string | undefined }) {
   const startedAt = useRef(Date.now());
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [errors, setErrors] = useState<Errors>({});
