@@ -102,15 +102,15 @@ function Hero() {
         <circle cx="1130" cy="250" r="140" stroke="var(--aegean)" strokeOpacity="0.35" strokeWidth="1" />
       </svg>
       <div className="relative mx-auto w-full max-w-7xl">
-        <p className="eyebrow rise text-muted-foreground">Independent web design &amp; digital solutions</p>
+        <p className="eyebrow text-muted-foreground">Independent web design &amp; digital solutions</p>
         <h1 className="hero-heading mt-8">
-          <span className="rise block" style={{ animationDelay: "120ms" }}>Thoughtfully designed.</span>
-          <span className="rise block italic text-accent sm:pl-3 lg:pl-8" style={{ animationDelay: "260ms" }}>
+          <span className="block">Thoughtfully designed.</span>
+          <span className="block italic text-accent sm:pl-3 lg:pl-8">
             Purposefully built<span className="not-italic text-terracotta">.</span>
           </span>
         </h1>
         <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-12">
-          <div className="rise space-y-4 text-lg leading-relaxed text-muted-foreground md:col-span-7 md:col-start-6" style={{ animationDelay: "420ms" }}>
+          <div className="space-y-4 text-lg leading-relaxed text-muted-foreground md:col-span-7 md:col-start-6">
             <p className="hero-support max-w-xl text-foreground">{homepageCopy.opening}</p>
             <p className="max-w-xl font-sans text-sm leading-relaxed md:text-base">{homepageCopy.intro}</p>
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
