@@ -40,6 +40,17 @@ export const inquirySchema = z.object({
   timeline: z.enum(timelineOptions).optional().or(z.literal("")),
   website: z.string().max(0).optional(), // honeypot
   startedAt: z.number(),
+  // Optional first-touch acquisition context. Allowlisted keys, safe token
+  // characters only, bounded lengths — never full URLs, query strings, or referrer.
+  attribution: z
+    .object({
+      utm_source: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(),
+      utm_medium: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(),
+      utm_campaign: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(),
+      utm_content: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(),
+      landingPath: z.string().regex(/^\/(?!\/)[A-Za-z0-9\-._~/]{0,199}$/).optional(),
+    })
+    .optional(),
 });
 
 export const submitInquiry = createServerFn({ method: "POST" })
@@ -80,6 +91,11 @@ export const submitInquiry = createServerFn({ method: "POST" })
           websiteUrl: data.websiteUrl || "",
           timeline: data.timeline || "",
           message: data.message,
+          utmSource: data.attribution?.utm_source || "",
+          utmMedium: data.attribution?.utm_medium || "",
+          utmCampaign: data.attribution?.utm_campaign || "",
+          utmContent: data.attribution?.utm_content || "",
+          landingPath: data.attribution?.landingPath || "",
         },
         replyTo: data.email,
         idempotencyKey: `new-inquiry-alert-${crypto.randomUUID()}`,

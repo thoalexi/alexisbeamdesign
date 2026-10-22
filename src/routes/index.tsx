@@ -5,7 +5,8 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { BookingLink } from "@/components/site/BookingLink";
 import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
-import { navLinks, services, socials, steps } from "@/data/site";
+import { navLinks, serviceOptions, services, socials, steps } from "@/data/site";
+import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
 import headshot from "@/assets/alexis-headshot.png.asset.json";
 
@@ -15,6 +16,11 @@ const DESC =
 const URL_HOME = "https://alexisbeamdesign.com/";
 
 export const Route = createFileRoute("/")({
+  // Quote CTAs arrive as /?service=<option>#contact; only allowlisted form options preselect.
+  validateSearch: (search: Record<string, unknown>) => {
+    const service = preselectService(typeof search["service"] === "string" ? search["service"] : "", serviceOptions);
+    return service ? { service } : {};
+  },
   head: () => ({
     meta: [
       { title: TITLE },
@@ -282,6 +288,15 @@ function Services() {
               <div className="md:col-span-6">
                 <h3 className="text-4xl transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">{s.title}</h3>
                 <p className="mt-5 max-w-lg leading-relaxed text-muted-foreground">{s.blurb}</p>
+                {(() => {
+                  const page = servicePages.find((p) => p.title === s.title);
+                  return page ? (
+                    <Link to={page.path} className="group/link mt-6 inline-flex items-center gap-2 text-sm text-foreground">
+                      <span className="link-underline">Learn more about {s.title}</span>
+                      <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+                    </Link>
+                  ) : null;
+                })()}
               </div>
               <ul className="space-y-2.5 text-sm md:col-span-4 md:col-start-9">
                 {s.includes.map((x) => (
@@ -404,6 +419,7 @@ function Consultation() {
 
 /* ---------- Contact ---------- */
 function Contact() {
+  const { service } = Route.useSearch();
   return (
     <section id="contact" className="px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-12">
@@ -423,7 +439,7 @@ function Contact() {
           </div>
         </Reveal>
         <Reveal delay={120} className="relative md:col-span-6 md:col-start-7">
-          <ContactForm />
+          <ContactForm preselectedService={service} />
         </Reveal>
       </div>
     </section>
@@ -443,7 +459,7 @@ function Footer() {
           <nav aria-label="Footer" className="flex flex-col gap-6 sm:flex-row sm:gap-14">
             <ul className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
               {navLinks.map((l) => (
-                <li key={l.id}><a href={`#${l.id}`} className="link-underline">{l.label}</a></li>
+                <li key={l.id}><a href={`/#${l.id}`} className="link-underline">{l.label}</a></li>
               ))}
             </ul>
             {(socials.linkedin || socials.email) && (

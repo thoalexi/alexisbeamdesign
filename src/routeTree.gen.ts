@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SmallBusinessWebDesignRouteImport } from './routes/small-business-web-design'
+import { Route as WebsiteRedesignRouteImport } from './routes/website-redesign'
+import { Route as WorkflowAutomationRouteImport } from './routes/workflow-automation'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +27,26 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SmallBusinessWebDesignRoute = SmallBusinessWebDesignRouteImport.update({
+  id: '/small-business-web-design',
+  path: '/small-business-web-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebsiteRedesignRoute = WebsiteRedesignRouteImport.update({
+  id: '/website-redesign',
+  path: '/website-redesign',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkflowAutomationRoute = WorkflowAutomationRouteImport.update({
+  id: '/workflow-automation',
+  path: '/workflow-automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LovableEmailTransactionalPreviewRoute =
   LovableEmailTransactionalPreviewRouteImport.update({
     id: '/lovable/email/transactional/preview',
@@ -33,34 +57,68 @@ const LovableEmailTransactionalPreviewRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/small-business-web-design': typeof SmallBusinessWebDesignRoute
+  '/website-redesign': typeof WebsiteRedesignRoute
+  '/workflow-automation': typeof WorkflowAutomationRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/small-business-web-design': typeof SmallBusinessWebDesignRoute
+  '/website-redesign': typeof WebsiteRedesignRoute
+  '/workflow-automation': typeof WorkflowAutomationRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/small-business-web-design': typeof SmallBusinessWebDesignRoute
+  '/website-redesign': typeof WebsiteRedesignRoute
+  '/workflow-automation': typeof WorkflowAutomationRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy-policy' | '/lovable/email/transactional/preview'
+  fullPaths:
+    | '/'
+    | '/privacy-policy'
+    | '/sitemap.xml'
+    | '/small-business-web-design'
+    | '/website-redesign'
+    | '/workflow-automation'
+    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy-policy' | '/lovable/email/transactional/preview'
+  to:
+    | '/'
+    | '/privacy-policy'
+    | '/sitemap.xml'
+    | '/small-business-web-design'
+    | '/website-redesign'
+    | '/workflow-automation'
+    | '/lovable/email/transactional/preview'
   id:
     | '__root__'
     | '/'
     | '/privacy-policy'
+    | '/sitemap.xml'
+    | '/small-business-web-design'
+    | '/website-redesign'
+    | '/workflow-automation'
     | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SmallBusinessWebDesignRoute: typeof SmallBusinessWebDesignRoute
+  WebsiteRedesignRoute: typeof WebsiteRedesignRoute
+  WorkflowAutomationRoute: typeof WorkflowAutomationRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
@@ -80,6 +138,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/small-business-web-design': {
+      id: '/small-business-web-design'
+      path: '/small-business-web-design'
+      fullPath: '/small-business-web-design'
+      preLoaderRoute: typeof SmallBusinessWebDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/website-redesign': {
+      id: '/website-redesign'
+      path: '/website-redesign'
+      fullPath: '/website-redesign'
+      preLoaderRoute: typeof WebsiteRedesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/workflow-automation': {
+      id: '/workflow-automation'
+      path: '/workflow-automation'
+      fullPath: '/workflow-automation'
+      preLoaderRoute: typeof WorkflowAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/transactional/preview': {
       id: '/lovable/email/transactional/preview'
       path: '/lovable/email/transactional/preview'
@@ -93,6 +179,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SmallBusinessWebDesignRoute: SmallBusinessWebDesignRoute,
+  WebsiteRedesignRoute: WebsiteRedesignRoute,
+  WorkflowAutomationRoute: WorkflowAutomationRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport

@@ -33,21 +33,21 @@ export function Header() {
       )}
     >
       <nav aria-label="Main" className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-        <a href="#top" aria-label="alexis beam, back to top" onClick={() => setOpen(false)}>
+        <a href="/" aria-label="alexis beam, back to top" onClick={() => setOpen(false)}>
           <Wordmark />
         </a>
         <div className="hidden items-center gap-10 md:flex">
           <ul className="flex items-center gap-8 text-sm">
             {navLinks.map((l) => (
               <li key={l.id}>
-                <a href={`#${l.id}`} className="link-underline pb-0.5 text-foreground/80 hover:text-foreground">
+                <a href={`/#${l.id}`} className="link-underline pb-0.5 text-foreground/80 hover:text-foreground">
                   {l.label}
                 </a>
               </li>
             ))}
           </ul>
           <a
-            href="#contact"
+            href="/#contact"
             className="group inline-flex items-center gap-2 border border-foreground px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
           >
             Request a Quote <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -73,7 +73,7 @@ export function Header() {
         <ul className="space-y-2">
           {navLinks.map((l, i) => (
             <li key={l.id} className="rise" style={{ animationDelay: `${i * 60}ms` }}>
-              <a href={`#${l.id}`} onClick={() => setOpen(false)} className="flex items-baseline gap-4 border-b py-4 font-serif text-4xl">
+              <a href={`/#${l.id}`} onClick={() => setOpen(false)} className="flex items-baseline gap-4 border-b py-4 font-serif text-4xl">
                 <span className="eyebrow text-muted-foreground">0{i + 1}</span>
                 {l.label}
               </a>
@@ -81,7 +81,7 @@ export function Header() {
           ))}
         </ul>
         <a
-          href="#contact"
+          href="/#contact"
           onClick={() => setOpen(false)}
           className="mt-10 flex items-center justify-center bg-foreground py-4 text-background"
         >

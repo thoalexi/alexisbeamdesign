@@ -1,17 +1,26 @@
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Link } from "@tanstack/react-router";
 import { budgetOptions, serviceOptions, timelineOptions } from "@/data/site";
 import { normalizeWebsite } from "@/lib/inquiry.functions";
 import { submitInquiry } from "@/lib/inquiry.functions";
 import { cn } from "@/lib/utils";
 import { track, trackOnce } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
 
 type Errors = Partial<Record<"name" | "email" | "service" | "message" | "websiteUrl" | "form", string>>;
 
 const fieldBase =
   "w-full border-0 border-b border-input bg-transparent px-0 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-0 transition-colors";
 
-export function ContactForm() {
+export function ContactForm({ preselectedService = "" }: { preselectedService?: string | undefined }) {
   const startedAt = useRef(Date.now());
+  const serviceRef = useRef<HTMLSelectElement>(null);
+
+  // Browsers auto-select the first enabled option when none matches; set the
+  // value explicitly so an empty preselection lands on the disabled placeholder.
+  useEffect(() => {
+    if (serviceRef.current) serviceRef.current.value = preselectedService;
+  }, [preselectedService]);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [errors, setErrors] = useState<Errors>({});
 
@@ -42,6 +51,7 @@ export function ContactForm() {
           timeline: v("timeline") as (typeof timelineOptions)[number] | "",
           website: v("website"),
           startedAt: startedAt.current,
+          attribution: getAttribution(),
         },
       });
       if (res.ok) {
@@ -63,7 +73,7 @@ export function ContactForm() {
       <div role="status" className="border-t border-foreground pt-10">
         <p className="eyebrow text-accent">Message received</p>
         <p className="mt-5 font-serif text-3xl leading-snug md:text-4xl">
-          Thanks for reaching out! Your message is on its way. I look forward to learning more about your project.
+          Thanks for reaching out! Your project details have been received and saved. I look forward to learning more about your project.
         </p>
       </div>
     );
@@ -84,18 +94,18 @@ export function ContactForm() {
         </label>
       </div>
       <Field label="Name" required>
-        <input name="name" autoComplete="name" maxLength={100} className={fieldBase} aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
+        <input name="name" required autoComplete="name" maxLength={100} className={fieldBase} aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
         {err("name")}
       </Field>
       <Field label="Email" required>
-        <input name="email" type="email" autoComplete="email" maxLength={255} className={fieldBase} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
+        <input name="email" type="email" required autoComplete="email" maxLength={255} className={fieldBase} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
         {err("email")}
       </Field>
       <Field label="Business name" className="sm:col-span-2">
         <input name="businessName" autoComplete="organization" maxLength={150} className={fieldBase} />
       </Field>
       <Field label="What can I help you with?" required>
-        <select name="service" defaultValue="" className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
+        <select ref={serviceRef} name="service" required defaultValue={preselectedService} className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
           <option value="" disabled>Choose one</option>
           {serviceOptions.map((o) => <option key={o}>{o}</option>)}
         </select>
@@ -118,7 +128,7 @@ export function ContactForm() {
         </select>
       </Field>
       <Field label="Tell me about your project" required className="sm:col-span-2">
-        <textarea name="message" rows={5} maxLength={5000} className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
+        <textarea name="message" required rows={5} maxLength={5000} placeholder="What would a great outcome look like for you?" className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
         {err("message")}
       </Field>
       <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
@@ -134,6 +144,10 @@ export function ContactForm() {
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </button>
       </div>
+      <p className="text-xs text-muted-foreground sm:col-span-2">
+        By sending this form, you agree to the handling of your information as described in the{" "}
+        <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link>.
+      </p>
     </form>
   );
 }

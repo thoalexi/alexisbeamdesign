@@ -11,6 +11,11 @@ interface Props {
   websiteUrl?: string
   timeline?: string
   message?: string
+  utmSource?: string
+  utmMedium?: string
+  utmCampaign?: string
+  utmContent?: string
+  landingPath?: string
 }
 
 const Row = ({ label, value }: { label: string; value?: string | undefined }) => (
@@ -20,7 +25,9 @@ const Row = ({ label, value }: { label: string; value?: string | undefined }) =>
   </Section>
 )
 
-const Email = ({ name, email, businessName, service, budget, websiteUrl, timeline, message }: Props) => (
+const Email = ({ name, email, businessName, service, budget, websiteUrl, timeline, message, utmSource, utmMedium, utmCampaign, utmContent, landingPath }: Props) => {
+  const hasAttribution = !!(utmSource || utmMedium || utmCampaign || utmContent || landingPath)
+  return (
   <Html lang="en" dir="ltr">
     <Head />
     <Preview>New inquiry from {name || 'a visitor'}</Preview>
@@ -38,12 +45,24 @@ const Email = ({ name, email, businessName, service, budget, websiteUrl, timelin
         <Row label="Timeline" value={timeline} />
         <Text style={labelStyle}>Message</Text>
         <Text style={{ ...valueStyle, whiteSpace: 'pre-wrap' }}>{message || '—'}</Text>
+        {hasAttribution && (
+          <>
+            <Hr style={hr} />
+            <Text style={labelStyle}>How they found the site</Text>
+            <Row label="Source" value={utmSource} />
+            <Row label="Medium" value={utmMedium} />
+            <Row label="Campaign" value={utmCampaign} />
+            <Row label="Content" value={utmContent} />
+            <Row label="Landing page" value={landingPath} />
+          </>
+        )}
         <Hr style={hr} />
         <Text style={foot}>Reply to this email to respond directly to {name || 'them'}.</Text>
       </Container>
     </Body>
   </Html>
-)
+  )
+}
 
 export const template = {
   component: Email,
