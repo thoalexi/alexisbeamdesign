@@ -1,16 +1,18 @@
 import { useRef, useState, type FormEvent } from "react";
+import { Link } from "@tanstack/react-router";
 import { budgetOptions, serviceOptions, timelineOptions } from "@/data/site";
 import { normalizeWebsite } from "@/lib/inquiry.functions";
 import { submitInquiry } from "@/lib/inquiry.functions";
 import { cn } from "@/lib/utils";
 import { track, trackOnce } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
 
 type Errors = Partial<Record<"name" | "email" | "service" | "message" | "websiteUrl" | "form", string>>;
 
 const fieldBase =
   "w-full border-0 border-b border-input bg-transparent px-0 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-0 transition-colors";
 
-export function ContactForm() {
+export function ContactForm({ preselectedService = "" }: { preselectedService?: string }) {
   const startedAt = useRef(Date.now());
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [errors, setErrors] = useState<Errors>({});
@@ -42,6 +44,7 @@ export function ContactForm() {
           timeline: v("timeline") as (typeof timelineOptions)[number] | "",
           website: v("website"),
           startedAt: startedAt.current,
+          attribution: getAttribution(),
         },
       });
       if (res.ok) {
@@ -63,7 +66,7 @@ export function ContactForm() {
       <div role="status" className="border-t border-foreground pt-10">
         <p className="eyebrow text-accent">Message received</p>
         <p className="mt-5 font-serif text-3xl leading-snug md:text-4xl">
-          Thanks for reaching out! Your message is on its way. I look forward to learning more about your project.
+          Thanks for reaching out! Your project details have been received and saved. I look forward to learning more about your project.
         </p>
       </div>
     );
