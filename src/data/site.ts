@@ -1,3 +1,5 @@
+import { attributionUtmParams } from "@/lib/attribution";
+
 export const navLinks = [
   { id: "work", label: "Work" },
   { id: "about", label: "About" },

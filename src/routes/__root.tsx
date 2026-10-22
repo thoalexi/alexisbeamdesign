@@ -124,12 +124,27 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
 
   useEffect(() => {
+    captureAttribution();
     getAnalyticsId()
       .then((id) => id && initAnalytics(id))
       .catch(() => {});
   }, []);
+
+  // GA4's config fires the initial page view; send one per subsequent SPA navigation.
+  useEffect(() => {
+    let first = true;
+    const unsub = router.subscribe("onResolved", () => {
+      if (first) {
+        first = false;
+        return;
+      }
+      trackPageView(window.location.pathname);
+    });
+    return unsub;
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
