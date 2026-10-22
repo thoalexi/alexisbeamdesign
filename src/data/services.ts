@@ -55,7 +55,7 @@ export const servicePages: ServicePage[] = [
       "Custom website design tailored to your brand and audience",
       "Responsive layouts that work beautifully on phones, tablets, and desktops",
       "Mobile-friendly experiences designed for real visitors",
-      "Contact and lead-generation forms so inquiries reach you reliably",
+      "Contact and lead-generation forms so inquiries can reach you directly",
       "Foundational SEO setup: page titles, descriptions, social sharing metadata, and clean structure",
     ],
     processNote:
@@ -65,7 +65,7 @@ export const servicePages: ServicePage[] = [
     faqs: [
       {
         q: "How much does a new website cost?",
-        a: "Every project is different, so I don't publish fixed prices. After a short conversation about what you need, I'll provide a clear, scoped quote before any work begins — no surprises.",
+        a: "Every project is different, so I don't publish fixed prices. After a short conversation about what you need, I'll provide a clear, scoped quote before any work begins, so you know what to expect.",
       },
       {
         q: "Do I need to be in Atlanta to work with you?",
@@ -110,7 +110,7 @@ export const servicePages: ServicePage[] = [
     faqs: [
       {
         q: "Will I lose my existing content or search rankings?",
-        a: "A careful redesign preserves what matters. We review your existing content together, keep what's working, and carry over the foundational SEO elements — page titles, descriptions, and structure — so the new site builds on the old one rather than starting from zero.",
+        a: "No one can honestly guarantee search rankings — they depend on many factors outside any designer's control. What I can do is handle the fundamentals carefully: we review your existing content together, keep what's working, carry over the foundational SEO elements — page titles, descriptions, and structure — and review URL changes and redirect needs as part of the project scope.",
       },
       {
         q: "How is a redesign different from starting over?",
@@ -142,7 +142,7 @@ export const servicePages: ServicePage[] = [
     ],
     includedTitle: "What's included",
     included: [
-      "Automated customer follow-ups so no inquiry falls through the cracks",
+      "Automated customer follow-ups that help inquiries get a timely response",
       "Connected forms and spreadsheets that keep information in sync",
       "Automated reporting and dashboards that are ready when you are",
       "Administrative workflow automation for the repeatable parts of your operations",
@@ -163,7 +163,7 @@ export const servicePages: ServicePage[] = [
       },
       {
         q: "Do I need to be technical to manage what you build?",
-        a: "No. The point of a good automation is that it runs without you thinking about it. I build with maintainability in mind and make sure you understand what your systems do in plain language.",
+        a: "No. A good automation is designed to run quietly in the background. I build with maintainability in mind and make sure you understand what your systems do in plain language.",
       },
     ],
   },

@@ -65,6 +65,7 @@ function PrivacyPolicy() {
           <Section title="Analytics">
             <p>This site uses Google Analytics to understand how visitors find and use it, for example which pages are viewed and which buttons are clicked. Google Analytics uses cookies and collects information such as your approximate location, device and browser type, and the website that referred you.</p>
             <p>Advertising personalization and Google signals are turned off. Your name, email address and form answers are not sent to Google Analytics. Google's own use of this data is described in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Google's Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a>.</p>
+            <p>If you arrive through a tagged link (for example from an ad or a social post), the site may remember the link's campaign tags and the page you first landed on, stored only in your browser's session storage for that visit. If you later send an inquiry or open the scheduling page, those tags are included with the inquiry notification email or passed to Calendly so I can understand how people find the site. If your browser blocks this storage, that context is simply omitted.</p>
           </Section>
 
           <Section title="Scheduling with Calendly">

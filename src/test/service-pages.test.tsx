@@ -28,7 +28,8 @@ describe("Service pages", () => {
     // No invented proof points
     const allText = JSON.stringify(s);
     expect(allText).not.toMatch(/\$\d/); // no prices
-    expect(allText).not.toMatch(/guarantee/i);
+    // No guarantee promises ("cannot be guaranteed" disclaimers are allowed and required)
+    expect(allText.replace(/can(no|')t be guaranteed|cannot be guaranteed/gi, "")).not.toMatch(/guarantee/i);
   });
 
   it("has unique slugs, titles, and meta descriptions", () => {
