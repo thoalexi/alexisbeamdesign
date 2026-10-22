@@ -73,7 +73,7 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
+  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; letter-spacing: 0; }
   :focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
   ::selection { background: color-mix(in oklab, var(--terracotta) 35%, transparent); }
 }
@@ -81,9 +81,65 @@
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.7rem;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.16em;
+  line-height: 1.6;
   text-transform: uppercase;
   font-weight: 500;
+}
+
+/* Fixed breakpoint sizes keep browser text scaling predictable. */
+@utility editorial-heading {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  line-height: 1.08;
+  text-wrap: balance;
+  @media (min-width: 640px) { font-size: 3rem; }
+  @media (min-width: 1024px) { font-size: 3.75rem; }
+  @media (min-width: 1280px) { font-size: 4.5rem; }
+}
+
+@utility editorial-page-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 1.06;
+  text-wrap: balance;
+  @media (min-width: 640px) { font-size: 3.75rem; }
+  @media (min-width: 1024px) { font-size: 4.5rem; }
+  @media (min-width: 1280px) { font-size: 5rem; }
+}
+
+@utility editorial-subheading {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+@utility editorial-body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+@utility hero-heading {
+  font-family: var(--font-serif);
+  font-size: 2.875rem;
+  line-height: 1.02;
+  letter-spacing: 0;
+  text-wrap: balance;
+  @media (min-width: 640px) { font-size: 4rem; }
+  @media (min-width: 768px) { font-size: 4.5rem; }
+  @media (min-width: 1024px) { font-size: 5.5rem; }
+  @media (min-width: 1280px) { font-size: 7rem; }
+  @media (min-width: 1536px) { font-size: 8rem; }
+}
+
+@utility hero-support {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.55;
+  @media (min-width: 768px) { font-size: 1.25rem; }
 }
 
 @utility link-underline {

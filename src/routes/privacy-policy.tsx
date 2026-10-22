@@ -27,8 +27,8 @@ const CONTACT = "alexisbeamdesign@gmail.com";
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="border-t pt-8">
-      <h2 className="text-3xl md:text-4xl">{title}</h2>
-      <div className="mt-4 space-y-4 leading-relaxed text-muted-foreground">{children}</div>
+      <h2 className="font-serif text-3xl leading-tight md:text-4xl">{title}</h2>
+      <div className="editorial-body mt-4 space-y-4 text-muted-foreground">{children}</div>
     </section>
   );
 }
@@ -37,7 +37,7 @@ function PrivacyPolicy() {
   return (
     <>
       <header className="border-b px-6 py-5 md:px-10">
-        <div className="mx-auto flex max-w-3xl items-center justify-between">
+        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-3">
           <Link to="/" aria-label="alexis beam, home"><Wordmark /></Link>
           <Link to="/" className="link-underline text-sm">← Back to site</Link>
         </div>
@@ -46,7 +46,7 @@ function PrivacyPolicy() {
         <article className="mx-auto max-w-3xl space-y-12">
           <div>
             <p className="eyebrow text-accent">Effective October 12, 2026</p>
-            <h1 className="mt-4 text-5xl leading-[0.95] sm:text-6xl">Privacy Policy</h1>
+            <h1 className="editorial-page-title mt-4">Privacy Policy</h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               This website, alexisbeamdesign.com, is operated by Meant To Beam LLC, doing business as Alexis Beam Design ("I", "me"). This policy explains what information the site collects and how it's used.
             </p>
