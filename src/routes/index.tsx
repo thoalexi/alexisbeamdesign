@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, type PointerEvent as ReactPointerEvent } from "react";
+import { useTheme } from "@/components/site/ThemeProvider";
 import { Header, Wordmark } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
 import { ContactForm } from "@/components/site/ContactForm";
@@ -129,9 +131,36 @@ function Hero() {
 
 /* ---------- Work ---------- */
 function Work() {
+  const { theme } = useTheme();
+  const frameRef = useRef(0);
+  // Pointer position feeds the Playful sticker drift and Moody spotlight; mouse only, skipped for reduced motion.
+  const onPointerMove = (e: ReactPointerEvent<HTMLElement>) => {
+    if (theme !== "playful" && theme !== "after-dark") return;
+    if (e.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const section = e.currentTarget;
+    const stage = (e.target as HTMLElement).closest<HTMLElement>(".project-stage");
+    const { clientX, clientY } = e;
+    cancelAnimationFrame(frameRef.current);
+    frameRef.current = requestAnimationFrame(() => {
+      const r = section.getBoundingClientRect();
+      section.style.setProperty("--px", ((clientX - r.left) / r.width - 0.5).toFixed(3));
+      section.style.setProperty("--py", ((clientY - r.top) / r.height - 0.5).toFixed(3));
+      if (stage) {
+        const st = stage.getBoundingClientRect();
+        stage.style.setProperty("--sx", `${Math.round(clientX - st.left)}px`);
+        stage.style.setProperty("--sy", `${Math.round(clientY - st.top)}px`);
+      }
+    });
+  };
+  useEffect(() => () => cancelAnimationFrame(frameRef.current), []);
   return (
-    <section id="work" className="bg-secondary px-6 py-28 md:px-10 md:py-40">
-      <div className="mx-auto max-w-7xl">
+    <section id="work" onPointerMove={onPointerMove} className="work-section relative bg-secondary px-6 py-28 md:px-10 md:py-40">
+      <span className="work-stickers" aria-hidden="true">
+        <svg className="sticker sticker-star" viewBox="0 0 40 40"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" /></svg>
+        <svg className="sticker sticker-arrow" viewBox="0 0 60 30"><path d="M2 22 C18 4 36 4 50 16 M42 8 l9 8 -11 4" fill="none" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        <svg className="sticker sticker-blob" viewBox="0 0 40 40"><path d="M8 10c8-10 26-6 28 8s-12 22-22 18S0 20 8 10z" /></svg>
+      </span>
+      <div className="relative mx-auto max-w-7xl">
         <SectionHead
           eyebrow="Selected work"
           title={<>Good ideas, <em className="text-accent">brought to life.</em></>}
@@ -152,7 +181,10 @@ function ProjectRow({ project: p, index }: { project: Project; index: number }) 
   return (
     <article className="grid items-center gap-10 md:grid-cols-12 md:gap-12" aria-labelledby={`${p.slug}-title`}>
       <Reveal className={cn("md:col-span-7", flip && "md:order-2 md:col-start-6")}>
-        <ProjectImage project={p} />
+        <div className="project-stage relative isolate">
+          <svg className="stage-sticker" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" /></svg>
+          <ProjectImage project={p} />
+        </div>
       </Reveal>
       <Reveal delay={120} className={cn("md:col-span-4", flip ? "md:order-1 md:col-start-1" : "md:col-start-9")}>
         <div className="flex items-center gap-4">
@@ -191,7 +223,7 @@ function ProjectImage({ project: p }: { project: Project }) {
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
       </div>
-      <div className="aspect-[16/10] overflow-hidden">
+      <div className="project-media aspect-[16/10] overflow-hidden">
         {p.image ? (
           <img src={p.image} alt={p.imageAlt} loading="lazy" width={1440} height={900} className="h-full w-full object-cover object-top transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]" />
         ) : (

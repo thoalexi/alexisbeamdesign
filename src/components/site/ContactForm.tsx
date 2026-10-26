@@ -70,7 +70,11 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
 
   if (status === "sent") {
     return (
-      <div role="status" className="border-t border-foreground pt-10">
+      <div role="status" className="form-success relative border-t border-foreground pt-10">
+        <span className="success-stamp" aria-hidden="true">Sent!</span>
+        <span className="success-confetti" aria-hidden="true">
+          {Array.from({ length: 10 }, (_, i) => <i key={i} />)}
+        </span>
         <p className="eyebrow text-accent">Message received</p>
         <p className="mt-5 font-serif text-3xl leading-snug md:text-4xl">
           Thanks for reaching out! Your project details have been received. I look forward to learning more about your project.
@@ -138,7 +142,7 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
         <button
           type="submit"
           disabled={status === "sending"}
-          className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-8 py-4 text-sm tracking-wide text-background transition-colors duration-300 hover:bg-accent disabled:opacity-60"
+          className="site-button group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-8 py-4 text-sm tracking-wide text-background transition-colors duration-300 hover:bg-accent disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : "Send My Project Details"}
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
