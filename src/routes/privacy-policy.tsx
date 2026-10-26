@@ -42,7 +42,7 @@ function PrivacyPolicy() {
           <Link to="/" className="link-underline text-sm">← Back to site</Link>
         </div>
       </header>
-      <main id="main" className="px-6 py-20 md:px-10 md:py-28">
+      <main id="main" className="px-6 pb-20 pt-32 md:px-10 md:pb-28 md:pt-40">
         <article className="mx-auto max-w-3xl space-y-12">
           <div>
             <p className="eyebrow text-accent">Effective October 12, 2026</p>
