@@ -2,9 +2,18 @@ import { Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
 import { BookingLink } from "@/components/site/BookingLink";
-import { servicePages, serviceProcessSteps, type ServicePage } from "@/data/services";
+import { backToServices, servicePages, serviceProcessSteps, type ServicePage } from "@/data/services";
 
 /** Shared layout for the standalone service pages. Content lives in src/data/services.ts. */
+function BackToServices({ className }: { className?: string }) {
+  return (
+    <a href={backToServices.href} className={`group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground ${className ?? ""}`}>
+      <span aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
+      <span className="link-underline">{backToServices.label}</span>
+    </a>
+  );
+}
+
 export function ServicePageLayout({ service }: { service: ServicePage }) {
   const others = servicePages.filter((s) => s.slug !== service.slug);
   const quoteHref = `/?service=${encodeURIComponent(service.inquiryService)}#contact`;
@@ -16,6 +25,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
         {/* Hero */}
         <section className="personality-hero px-6 pb-20 pt-44 md:px-10 md:pb-28 md:pt-52">
           <div className="mx-auto max-w-7xl">
+            <BackToServices className="mb-10" />
             <Reveal>
               <p className="eyebrow flex items-center gap-4 text-accent">
                 <span className="h-px w-10 bg-accent" aria-hidden="true" />
@@ -155,6 +165,9 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
             </Reveal>
           </div>
         </section>
+        <div className="mx-auto max-w-7xl px-6 py-12 md:px-10">
+          <BackToServices />
+        </div>
       </main>
       <footer className="bg-ink px-6 py-10 text-ink-foreground md:px-10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 text-xs text-ink-foreground/60 sm:flex-row sm:items-center sm:justify-between">

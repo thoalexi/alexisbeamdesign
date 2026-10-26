@@ -192,6 +192,9 @@ export const servicePages: ServicePage[] = [
   },
 ];
 
+/** Return link shown at the top and bottom of every service page. */
+export const backToServices = { label: "Back to services", href: "/#services" } as const;
+
 export function servicePageBySlug(slug: string): ServicePage | undefined {
   return servicePages.find((s) => s.slug === slug);
 }
