@@ -165,9 +165,6 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
             </Reveal>
           </div>
         </section>
-        <div className="mx-auto max-w-7xl px-6 py-12 md:px-10">
-          <BackToServices />
-        </div>
       </main>
       <footer className="bg-ink px-6 py-10 text-ink-foreground md:px-10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 text-xs text-ink-foreground/60 sm:flex-row sm:items-center sm:justify-between">
