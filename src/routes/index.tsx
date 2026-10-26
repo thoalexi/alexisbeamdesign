@@ -95,7 +95,7 @@ function SectionHead({ eyebrow, title, copy, className }: { eyebrow: string; tit
 /* ---------- Hero ---------- */
 function Hero() {
   return (
-    <section id="top" className="relative flex flex-col justify-center overflow-hidden px-6 pb-16 pt-28 md:min-h-[90svh] md:px-10 md:pb-24 md:pt-32">
+    <section id="top" className="personality-hero relative flex flex-col justify-center overflow-hidden px-6 pb-16 pt-36 md:min-h-[90svh] md:px-10 md:pb-24 md:pt-40">
       <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
         <path className="hero-line" d="M-40 720 C 320 640, 520 260, 860 300 S 1300 520, 1500 140" stroke="var(--terracotta)" strokeWidth="1" strokeDasharray="1200" />
         <circle cx="1130" cy="250" r="140" stroke="var(--aegean)" strokeOpacity="0.35" strokeWidth="1" />
@@ -113,7 +113,7 @@ function Hero() {
             <p className="hero-support max-w-xl text-foreground">{homepageCopy.opening}</p>
             <p className="max-w-xl font-sans text-sm leading-relaxed md:text-base">{homepageCopy.intro}</p>
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
-              <a href="#contact" className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
+              <a href="#contact" className="site-cta group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
                 Request a Quote <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
               <BookingLink placement="opening" className="link-underline self-start py-3 text-sm text-foreground sm:self-auto">
@@ -185,7 +185,7 @@ function ProjectRow({ project: p, index }: { project: Project; index: number }) 
 
 function ProjectImage({ project: p }: { project: Project }) {
   const frame = (
-    <div className="group relative overflow-hidden bg-card shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--ink)_35%,transparent)]">
+    <div className="project-frame group relative overflow-hidden bg-card shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--ink)_35%,transparent)]">
       <div className="flex items-center gap-1.5 border-b bg-background px-4 py-2.5" aria-hidden="true">
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
