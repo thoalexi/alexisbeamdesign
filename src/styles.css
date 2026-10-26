@@ -434,7 +434,7 @@ html[data-theme="after-dark"] { --ix-ease: cubic-bezier(0.65, 0, 0.35, 1); --ix-
 .success-stamp, .success-confetti { display: none; pointer-events: none; }
 
 /* Form focus (always visible, no motion needed) */
-form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline: 2px solid var(--ix-focus); outline-offset: 2px; }
+html:not([data-theme="classic"]) form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline: 2px solid var(--ix-focus); outline-offset: 2px; }
 html[data-theme="retro"] form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline-color: #C65D36; box-shadow: 4px 4px 0 #573B32; }
 html[data-theme="playful"] form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline: 3px solid var(--foreground); box-shadow: 0 0 0 6px #FF50A4; }
 html[data-theme="after-dark"] form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline: 2px solid #C9545B; box-shadow: 0 0 0 4px color-mix(in oklab, #9B353B 35%, transparent); }
@@ -448,8 +448,8 @@ html[data-theme="retro"] .link-underline { background-size: 100% 2px; }
 html[data-theme="playful"] .link-underline { background-image: linear-gradient(#FF50A4, #FF50A4); }
 
 @media (prefers-reduced-motion: no-preference) {
-  :is(.site-cta, .site-button) { transition: background-color var(--ix-slow), color var(--ix-slow), transform var(--ix-fast), box-shadow var(--ix-slow); }
-  .project-frame, #services article { transition: transform var(--ix-slow) cubic-bezier(0.22,1,0.36,1), box-shadow var(--ix-slow), border-color var(--ix-slow); }
+  html:not([data-theme="classic"]) :is(.site-cta, .site-button) { transition: background-color var(--ix-slow), color var(--ix-slow), transform var(--ix-fast), box-shadow var(--ix-slow); }
+  html:not([data-theme="classic"]) :is(.project-frame, #services article) { transition: transform var(--ix-slow) cubic-bezier(0.22,1,0.36,1), box-shadow var(--ix-slow), border-color var(--ix-slow); }
 
   /* Page entrances: run once per page load, never delay interaction */
   html[data-theme="retro"] main { animation: ix-wipe 380ms steps(6, end) both; }
