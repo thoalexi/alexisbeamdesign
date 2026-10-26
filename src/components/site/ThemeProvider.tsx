@@ -23,7 +23,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   function setTheme(value: ThemeId) {
     const next = resolveTheme(value);
-    document.documentElement.dataset["themeTransition"] = "true";
+    const root = document.documentElement;
+    root.dataset["themeTransition"] = "true";
+    // Colour cross-fade only while switching; leaving it on kept extra transitions on every link and button.
+    window.clearTimeout(Number(root.dataset["themeTransitionTimer"] ?? 0));
+    root.dataset["themeTransitionTimer"] = String(window.setTimeout(() => {
+      delete root.dataset["themeTransition"];
+      delete root.dataset["themeTransitionTimer"];
+    }, 300));
     applyTheme(next);
     updateTheme(next);
     try { saveTheme(window.localStorage, next); } catch { /* Keep the in-memory preference. */ }
