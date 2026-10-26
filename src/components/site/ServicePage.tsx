@@ -133,6 +133,10 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
           </div>
         </section>
 
+        <div className="mx-auto max-w-7xl px-6 pb-20 md:px-10">
+          <BackToServices />
+        </div>
+
         {/* Other services + CTA */}
         <section className="bg-aegean px-6 py-24 text-accent-foreground md:px-10 md:py-32">
           <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12">
