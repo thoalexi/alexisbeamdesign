@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  ScriptOnce,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
@@ -15,6 +16,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { getAnalyticsId } from "../lib/analytics.functions";
 import { initAnalytics } from "../lib/analytics";
 import { captureAttribution } from "../lib/attribution";
+import { ThemeProvider } from "@/components/site/ThemeProvider";
+import { themeBootstrap } from "@/data/themes";
 
 function NotFoundComponent() {
   return (
@@ -110,8 +113,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="classic" suppressHydrationWarning>
       <head>
+        <ScriptOnce>{themeBootstrap}</ScriptOnce>
         <HeadContent />
       </head>
       <body>
@@ -135,7 +139,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeProvider><Outlet /></ThemeProvider>
     </QueryClientProvider>
   );
 }

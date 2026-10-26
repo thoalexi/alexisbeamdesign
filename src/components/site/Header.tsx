@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { navLinks } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { ThemeSelector } from "@/components/site/ThemeSelector";
 
 export function Wordmark({ className }: { className?: string }) {
   return (
@@ -28,7 +29,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        "site-header fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled || open ? "border-b bg-background/90 backdrop-blur-md" : "bg-transparent",
       )}
     >
@@ -48,7 +49,7 @@ export function Header() {
           </ul>
           <a
             href="/#contact"
-            className="group inline-flex items-center gap-2 border border-foreground px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
+            className="site-cta group inline-flex items-center gap-2 border border-foreground px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
           >
             Request a Quote <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
@@ -65,10 +66,15 @@ export function Header() {
           <span className={cn("absolute h-px w-6 bg-foreground transition-transform duration-300", open ? "-rotate-45" : "translate-y-1.5")} />
         </button>
       </nav>
+      <div className={cn("border-t transition-colors duration-500", scrolled || open ? "" : "border-transparent")}>
+        <div className="mx-auto flex h-9 max-w-7xl items-center px-6 md:px-10">
+          <ThemeSelector />
+        </div>
+      </div>
       <div
         id="mobile-menu"
         hidden={!open}
-        className="h-[calc(100dvh-4.5rem)] bg-background px-6 pb-10 pt-8 md:hidden"
+        className="h-[calc(100dvh-6.75rem)] overflow-y-auto bg-background px-6 pb-10 pt-8 md:hidden"
       >
         <ul className="space-y-2">
           {navLinks.map((l, i) => (
@@ -83,7 +89,7 @@ export function Header() {
         <a
           href="/#contact"
           onClick={() => setOpen(false)}
-          className="mt-10 flex items-center justify-center bg-foreground py-4 text-background"
+          className="site-cta mt-10 flex items-center justify-center bg-foreground py-4 text-background"
         >
           Request a Quote →
         </a>

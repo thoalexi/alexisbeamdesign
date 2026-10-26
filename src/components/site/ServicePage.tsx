@@ -14,7 +14,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
       <Header />
       <main id="main">
         {/* Hero */}
-        <section className="px-6 pb-20 pt-36 md:px-10 md:pb-28 md:pt-44">
+        <section className="personality-hero px-6 pb-20 pt-44 md:px-10 md:pb-28 md:pt-52">
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <p className="eyebrow flex items-center gap-4 text-accent">
@@ -26,7 +26,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
                 <a
                   href={quoteHref}
-                  className="group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent"
+                  className="site-cta group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent"
                 >
                   Request a Quote <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
@@ -131,7 +131,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
                 <a
                   href={quoteHref}
-                  className="group inline-flex min-h-12 items-center justify-center gap-3 bg-accent-foreground px-7 py-4 text-sm text-aegean transition-colors duration-300 hover:opacity-90"
+                  className="site-cta group inline-flex min-h-12 items-center justify-center gap-3 bg-accent-foreground px-7 py-4 text-sm text-aegean transition-colors duration-300 hover:opacity-90"
                 >
                   Request a Quote <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>

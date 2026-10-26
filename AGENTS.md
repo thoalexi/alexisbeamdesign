@@ -17,3 +17,4 @@
 - Homepage invitation copy lives in `src/data/site.ts`; the homepage has one combined contact section and an opening BookingLink so quote and optional chat paths stay centralized.
 - BookingLink renders a campaign-free destination initially and applies sanitized session attribution after hydration, keeping server and browser output consistent.
 - Shared editorial typography lives in src/styles.css as reusable fixed-breakpoint utilities; use them for page, section, and supporting text hierarchy without viewport-scaled fonts.
+- Visual personalities (src/data/themes.ts, ThemeProvider/ThemeSelector) are CSS-token overrides keyed by `html[data-theme]` in src/styles.css; content and behavior never depend on the theme, and Classic must equal the base tokens.
