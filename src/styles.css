@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-serif: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --font-serif: var(--personality-display);
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
@@ -37,6 +37,16 @@
 }
 
 :root {
+  --personality-display: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --personality-weight: 400;
+  --personality-radius: 2px;
+  --personality-border: 1px;
+  --personality-shadow: none;
+  --decoration: var(--terracotta);
+  --swatch-classic: oklch(0.53 0.04 215);
+  --swatch-retro: oklch(0.85 0.13 90);
+  --swatch-playful: oklch(0.9 0.22 125);
+  --swatch-dark: oklch(0.47 0.14 20);
   --radius: 2px;
   --background: oklch(0.974 0.007 85);      /* warm ivory #F8F6F1 */
   --foreground: oklch(0.254 0 0);           /* charcoal #252525 */
@@ -164,3 +174,417 @@
 @keyframes draw { from { stroke-dashoffset: 1200; } to { stroke-dashoffset: 0; } }
 @keyframes drop { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(28px); opacity: 0; } }
 @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* Shared personalities: Classic retains the original tokens and layout above. */
+.theme-swatch { display: inline-block; width: 14px; height: 14px; flex-shrink: 0; border: 1px solid currentColor; border-radius: 50%; }
+.theme-swatch-classic { background: var(--swatch-classic); }
+.theme-swatch-retro { background: var(--swatch-retro); }
+.theme-swatch-playful { background: var(--swatch-playful); }
+.theme-swatch-after-dark { background: var(--swatch-dark); }
+.theme-trigger > span { display: flex; align-items: center; }
+.theme-selector label { letter-spacing: 0; }
+.theme-options { border-width: var(--personality-border); box-shadow: var(--personality-shadow); }
+/* Keep the existing accent band readable without changing its palette. */
+section.bg-aegean p { color: color-mix(in oklab, var(--accent-foreground) 95%, transparent); }
+html[data-theme="after-dark"] .theme-options [role="option"]:focus { background: var(--foreground); color: var(--background); }
+
+html[data-theme="retro"] {
+  --personality-display: "Fraunces", Georgia, serif;
+  --personality-weight: 700;
+  --personality-radius: 26px;
+  --personality-border: 2px;
+  --background: #F7E5BE;
+  --foreground: #573B32;
+  --card: #F7E5BE;
+  --card-foreground: #573B32;
+  --popover: #F7E5BE;
+  --popover-foreground: #573B32;
+  --primary: #573B32;
+  --primary-foreground: #F7E5BE;
+  --secondary: #F4D66C;
+  --secondary-foreground: #573B32;
+  --muted: #F4D66C;
+  --muted-foreground: #68483B;
+  --accent: #8E3D22;
+  --accent-foreground: #F7E5BE;
+  --aegean: #8E3D22;
+  --terracotta: #8E3D22;
+  --ink: #573B32;
+  --ink-foreground: #F7E5BE;
+  --destructive: #8E3D22;
+  --destructive-foreground: #F7E5BE;
+  --border: color-mix(in oklab, #573B32 35%, transparent);
+  --input: #8E3D22;
+  --ring: #573B32;
+  --decoration: #C65D36;
+  --personality-shadow: 4px 5px 0 var(--foreground);
+}
+
+html[data-theme="playful"] {
+  --personality-display: "Archivo Black", "Arial Black", sans-serif;
+  --personality-weight: 400;
+  --personality-radius: 0px;
+  --personality-border: 2px;
+  --background: #FFF9F0;
+  --foreground: #452180;
+  --card: #FFF9F0;
+  --card-foreground: #452180;
+  --popover: #FFF9F0;
+  --popover-foreground: #452180;
+  --primary: #452180;
+  --primary-foreground: #FFF9F0;
+  --secondary: #C6FF4D;
+  --secondary-foreground: #452180;
+  --muted: #C6FF4D;
+  --muted-foreground: #593D70;
+  --accent: #452180;
+  --accent-foreground: #FFF9F0;
+  --aegean: #452180;
+  --terracotta: #8E2357;
+  --ink: #452180;
+  --ink-foreground: #FFF9F0;
+  --destructive: #8E2357;
+  --destructive-foreground: #FFF9F0;
+  --border: color-mix(in oklab, #452180 45%, transparent);
+  --input: #452180;
+  --ring: #8E2357;
+  --decoration: #FF50A4;
+  --personality-shadow: 5px 5px 0 var(--foreground);
+}
+
+html[data-theme="after-dark"] {
+  color-scheme: dark;
+  --personality-display: "Grenze Gotisch", "Cormorant Garamond", Georgia, serif;
+  --personality-weight: 500;
+  --personality-radius: 0px;
+  --personality-border: 1px;
+  --background: #141519;
+  --foreground: #DDD4C4;
+  --card: #1D1B20;
+  --card-foreground: #DDD4C4;
+  --popover: #1D1B20;
+  --popover-foreground: #DDD4C4;
+  --primary: #DDD4C4;
+  --primary-foreground: #141519;
+  --secondary: #201C21;
+  --secondary-foreground: #DDD4C4;
+  --muted: #494448;
+  --muted-foreground: #BDB2A8;
+  --accent: #DEA8A4;
+  --accent-foreground: #DDD4C4;
+  --aegean: #49262D;
+  --terracotta: #DEA8A4;
+  --ink: #0F1013;
+  --ink-foreground: #DDD4C4;
+  --destructive: #DEA8A4;
+  --destructive-foreground: #141519;
+  --border: color-mix(in oklab, #DDD4C4 25%, transparent);
+  --input: #827578;
+  --ring: #DEA8A4;
+  --decoration: #9B353B;
+  --personality-shadow: 0 8px 28px color-mix(in oklab, var(--decoration) 18%, transparent);
+}
+
+html:not([data-theme="classic"]) :is(h1,h2,h3,h4,.font-serif,.editorial-subheading) { font-weight: var(--personality-weight); }
+html:not([data-theme="classic"]) :is(.site-cta, form button[type="submit"], .theme-trigger) {
+  border-radius: var(--personality-radius);
+  border-width: var(--personality-border);
+}
+html:not([data-theme="classic"]) .site-cta { border-style: solid; border-color: currentColor; box-shadow: var(--personality-shadow); }
+html:not([data-theme="classic"]) .project-frame { border: var(--personality-border) solid var(--foreground); border-radius: var(--personality-radius); box-shadow: var(--personality-shadow); }
+html:not([data-theme="classic"]) form :is(input:not([type="checkbox"]),select,textarea) { border-width: var(--personality-border); border-radius: calc(var(--personality-radius) / 3); }
+html:not([data-theme="classic"]) main > section { position: relative; }
+html:not([data-theme="classic"]) .personality-hero { isolation: isolate; }
+html:not([data-theme="classic"]) .personality-hero > div { position: relative; z-index: 1; }
+html:not([data-theme="classic"]) .personality-hero > svg { opacity: 0; }
+
+/* Retro: record-sleeve typography, double rules, waves and restrained print texture. */
+html[data-theme="retro"] h1 { font-variation-settings: "SOFT" 100, "WONK" 1; }
+html[data-theme="retro"] :is(h1,h2) em,
+html[data-theme="retro"] h1 .italic { font-style: normal; }
+html[data-theme="retro"] .personality-hero {
+  background-image: repeating-linear-gradient(0deg, transparent 0 4px, color-mix(in oklab, var(--foreground) 3%, transparent) 4px 5px);
+}
+html[data-theme="retro"] .personality-hero::before {
+  content: ""; position: absolute; z-index: 0; right: -5%; top: 18%; width: 32%; height: 55%;
+  border: 24px double var(--decoration); border-radius: 44% 44% 0 0; opacity: .2; transform: rotate(15deg);
+}
+html[data-theme="retro"] main > .bg-secondary { border-block: 3px solid var(--foreground); }
+html[data-theme="retro"] main > .bg-secondary::before {
+  content: ""; position: absolute; inset: -14px 0 auto; height: 24px;
+  background: var(--secondary); clip-path: polygon(0 50%,5% 10%,10% 50%,15% 90%,20% 50%,25% 10%,30% 50%,35% 90%,40% 50%,45% 10%,50% 50%,55% 90%,60% 50%,65% 10%,70% 50%,75% 90%,80% 50%,85% 10%,90% 50%,95% 90%,100% 50%,100% 100%,0 100%);
+}
+html[data-theme="retro"] .eyebrow { letter-spacing: 0; font-weight: 500; }
+html[data-theme="retro"] #services article { border-bottom-width: 3px; }
+html[data-theme="retro"] .personality-intro { color: var(--accent); }
+
+/* Playful: oversized ink, sticker geometry and tangible outlined controls. */
+html[data-theme="playful"] :is(h1,h2,h3) { text-wrap: balance; }
+html[data-theme="playful"] :is(h1,h2) em,
+html[data-theme="playful"] h1 .italic { font-style: normal; }
+html[data-theme="playful"] .hero-heading { font-size: 2.125rem; line-height: 1.12; }
+html[data-theme="playful"] .editorial-heading { font-size: 2rem; line-height: 1.2; }
+html[data-theme="playful"] .editorial-page-title { font-size: 2.25rem; line-height: 1.15; }
+html[data-theme="playful"] .personality-hero::before {
+  content: ""; position: absolute; z-index: 0; right: 4%; top: 16%; width: 150px; aspect-ratio: 1;
+  background: var(--decoration); transform: rotate(-12deg);
+  clip-path: polygon(50% 0,59% 25%,75% 7%,75% 33%,97% 25%,83% 47%,100% 58%,75% 64%,84% 88%,61% 77%,50% 100%,41% 75%,25% 93%,25% 67%,3% 75%,17% 53%,0 42%,25% 36%,16% 12%,39% 23%);
+}
+html[data-theme="playful"] .personality-hero::after {
+  content: ""; position: absolute; bottom: 28px; left: 0; right: 0; height: 16px;
+  background: repeating-linear-gradient(90deg,var(--foreground) 0 16px,transparent 16px 32px);
+}
+html[data-theme="playful"] main > .bg-secondary { border-block: 3px solid var(--foreground); }
+html[data-theme="playful"] .site-cta { background: var(--secondary); color: var(--foreground); border-color: var(--foreground); }
+html[data-theme="playful"] .site-cta:hover { background: var(--background); }
+html[data-theme="playful"] .personality-intro { font-weight: 500; border-left: 4px solid var(--decoration); padding-left: 12px; }
+html[data-theme="playful"] #services article { border-bottom-width: 3px; }
+html[data-theme="playful"] .eyebrow { letter-spacing: 0; font-weight: 500; }
+html[data-theme="playful"] .site-header .font-serif { font-family: var(--font-sans); font-weight: 500; }
+
+/* After Dark: gothic editorial scale, etched lines and subtle cinematic light. */
+html[data-theme="after-dark"] .personality-hero {
+  background-image: radial-gradient(ellipse at 80% 30%,color-mix(in oklab,var(--decoration) 16%,transparent),transparent 65%), repeating-linear-gradient(115deg,transparent 0 3px,color-mix(in oklab,var(--foreground) 2%,transparent) 3px 4px);
+}
+html[data-theme="after-dark"] .personality-hero::before {
+  content: ""; position: absolute; inset: 100px 24px 24px; pointer-events: none;
+  border: 1px solid color-mix(in oklab,var(--foreground) 15%,transparent);
+}
+html[data-theme="after-dark"] .personality-hero::after {
+  content: ""; position: absolute; top: 90px; right: 7%; width: 80px; height: 180px;
+  border: 1px solid var(--decoration); border-radius: 50% 50% 0 0; opacity: .55;
+}
+html[data-theme="after-dark"] main > .bg-secondary { border-block: 1px solid var(--border); }
+html[data-theme="after-dark"] .site-cta { background: var(--decoration); color: var(--foreground); border-color: var(--muted-foreground); }
+html[data-theme="after-dark"] .site-cta:hover { background: var(--foreground); color: var(--background); }
+html[data-theme="after-dark"] #services h3 { font-weight: 600; }
+html[data-theme="after-dark"] .personality-intro { font-style: italic; }
+
+@media (min-width: 640px) {
+  html[data-theme="playful"] .hero-heading { font-size: 3.25rem; }
+  html[data-theme="playful"] .editorial-heading { font-size: 2.75rem; }
+  html[data-theme="playful"] .editorial-page-title { font-size: 3rem; }
+}
+@media (min-width: 1024px) {
+  html[data-theme="playful"] .hero-heading { font-size: 4.5rem; }
+  html[data-theme="playful"] .editorial-heading { font-size: 3.25rem; }
+  html[data-theme="playful"] .editorial-page-title { font-size: 3.75rem; }
+}
+@media (min-width: 1536px) {
+  html[data-theme="playful"] .hero-heading { font-size: 5rem; }
+}
+@media (max-width: 639px) {
+  .site-header nav > a { min-width: 0; }
+  html:not([data-theme="classic"]) .site-header nav > a .font-serif { font-size: 1.5rem; }
+  html:not([data-theme="classic"]) .hero-heading { overflow-wrap: anywhere; }
+  html[data-theme="retro"] .hero-heading { font-size: 2.375rem; }
+  html[data-theme="retro"] .editorial-page-title { font-size: 2.625rem; }
+  html[data-theme="playful"] :is(h3.text-4xl,h3.text-5xl) { font-size: 1.625rem; line-height: 1.25; }
+  html[data-theme="playful"] .editorial-subheading { font-size: 1.125rem; }
+  html[data-theme="playful"] .personality-hero::before { width: 64px; top: 84px; right: 12px; }
+  html[data-theme="retro"] .personality-hero::before { right: -15%; opacity: .12; }
+  html[data-theme="after-dark"] .personality-hero::before { inset: 86px 12px 12px; }
+  html[data-theme="after-dark"] .personality-hero::after { display: none; }
+}
+@media (max-width: 359px) {
+  .site-header nav > a .font-serif { font-size: 1.5rem; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #work h3 { font-size: 2rem; }
+  html[data-theme="retro"] #work h3 { font-size: 1.875rem; }
+  html[data-theme="playful"] #services h3 { font-size: 2rem; }
+  html:is([data-theme="retro"],[data-theme="playful"]) .editorial-heading { font-size: 2.25rem; }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  html[data-theme="playful"] #work h3 { font-size: 1.75rem; }
+}
+html:not([data-theme="classic"]) form ::placeholder { color: var(--muted-foreground); opacity: 1; }
+html:not([data-theme="classic"]) :is(h1,h2,h3) { overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: no-preference) {
+  html[data-theme-transition="true"] :is(body,header,main > section,footer,a,button,input,textarea,select) {
+    transition-property: background-color,color,border-color,box-shadow;
+    transition-duration: 180ms;
+  }
+  html[data-theme="retro"] .site-cta:hover { transform: rotate(-1deg); }
+  html[data-theme="playful"] .site-cta:hover { transform: translate(-2px,-2px); }
+  html[data-theme="after-dark"] .site-cta { transition-duration: 320ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation: none !important; transition-duration: 0ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* Classic homepage hero: typography-led, fluid scale per the approved brief */
+html[data-theme="classic"] .hero-classic { font-size: clamp(2.25rem, 1.4rem + 4.6vw, 6.25rem); line-height: 1.02; text-wrap: pretty; }
+
+/* ===== Phase 2: theme interaction system =====
+   Shared targets: .site-cta/.site-button (buttons), .site-header .link-underline (nav),
+   .project-frame + #services article (cards), .link-underline (links), form fields, .form-success.
+   Only transform/opacity/colour/shadow animate, so nothing shifts layout. */
+:root {
+  --ix-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ix-fast: 180ms;
+  --ix-slow: 420ms;
+  --ix-focus: var(--accent);
+}
+html[data-theme="retro"] { --ix-ease: steps(1, end); --ix-focus: #C65D36; }
+html[data-theme="playful"] { --ix-ease: cubic-bezier(0.34, 1.56, 0.64, 1); --ix-focus: #452180; }
+html[data-theme="after-dark"] { --ix-ease: cubic-bezier(0.65, 0, 0.35, 1); --ix-slow: 600ms; --ix-focus: #C9545B; }
+
+/* Decorative success pieces are hidden unless their theme claims them. */
+.success-stamp, .success-confetti { display: none; pointer-events: none; }
+
+/* Form focus (always visible, no motion needed) */
+form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline: 2px solid var(--ix-focus); outline-offset: 2px; }
+html[data-theme="classic"] form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline-width: 1px; outline-color: var(--accent); }
+html[data-theme="retro"] form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline-color: #C65D36; box-shadow: 4px 4px 0 #573B32; }
+html[data-theme="playful"] form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline: 3px solid var(--foreground); box-shadow: 0 0 0 6px #FF50A4; }
+html[data-theme="after-dark"] form :is(input:not([type="checkbox"]), select, textarea):focus-visible { outline: 2px solid #C9545B; box-shadow: 0 0 0 4px color-mix(in oklab, #9B353B 35%, transparent); }
+
+/* Pressed states work on touch too */
+html[data-theme="retro"] :is(.site-cta, .site-button):active { transform: translate(3px, 3px); box-shadow: none; }
+html[data-theme="playful"] :is(.site-cta, .site-button):active { transform: scale(0.96); }
+
+/* Static link treatments that don't rely on motion */
+html[data-theme="retro"] .link-underline { background-size: 100% 2px; }
+html[data-theme="playful"] .link-underline { background-image: linear-gradient(#FF50A4, #FF50A4); }
+
+@media (prefers-reduced-motion: no-preference) {
+  :is(.site-cta, .site-button) { transition: background-color var(--ix-slow), color var(--ix-slow), transform var(--ix-fast), box-shadow var(--ix-slow); }
+  .project-frame, #services article { transition: transform var(--ix-slow) cubic-bezier(0.22,1,0.36,1), box-shadow var(--ix-slow), border-color var(--ix-slow); }
+
+  /* Page entrances: run once per page load, never delay interaction */
+  html[data-theme="classic"] main { animation: ix-fade 500ms ease-out both; }
+  html[data-theme="retro"] main { animation: ix-wipe 380ms steps(6, end) both; }
+  html[data-theme="playful"] main { animation: ix-pop 420ms cubic-bezier(0.34,1.56,0.64,1) both; }
+  html[data-theme="after-dark"] main { animation: ix-fade 900ms cubic-bezier(0.65,0,0.35,1) both; }
+
+  /* Classic: calm fades, restrained arrows */
+  html[data-theme="classic"] .link-underline { transition-duration: 600ms; }
+
+  /* Retro: chunky stepped underline, tactile buttons */
+  html[data-theme="retro"] :is(.site-cta, .site-button) { box-shadow: 4px 4px 0 var(--foreground); }
+  html[data-theme="retro"] .site-header .link-underline { transition: background-size 240ms steps(4, end); background-size: 0% 3px; }
+  html[data-theme="retro"] .project-frame { box-shadow: 8px 8px 0 var(--foreground); }
+
+  /* After Dark: glow */
+  html[data-theme="after-dark"] .link-underline { transition-duration: 800ms; }
+
+  @media (hover: hover) {
+    html[data-theme="classic"] .project-frame:hover { transform: translateY(-4px); }
+    html[data-theme="classic"] #services article:hover { border-color: var(--accent); }
+
+    html[data-theme="retro"] .site-cta:hover, html[data-theme="retro"] .site-button:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--foreground); }
+    html[data-theme="retro"] .site-header .link-underline:hover { background-size: 100% 3px; }
+    html[data-theme="retro"] main .link-underline:hover { background-color: var(--foreground); color: var(--background); }
+    html[data-theme="retro"] .project-frame:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--foreground); }
+
+    html[data-theme="playful"] :is(.site-cta, .site-button):hover { animation: ix-bounce 420ms cubic-bezier(0.34,1.56,0.64,1); }
+    html[data-theme="playful"] .site-header .link-underline:hover { animation: ix-wiggle 360ms ease-in-out; }
+    html[data-theme="playful"] .link-underline { transition: background-size 320ms cubic-bezier(0.34,1.56,0.64,1); }
+    html[data-theme="playful"] .link-underline:hover { background-size: 100% 4px; }
+    html[data-theme="playful"] .project-frame:hover { transform: rotate(-1deg) translateY(-6px); }
+    html[data-theme="playful"] #services article:hover { transform: translateY(-3px); }
+
+    html[data-theme="after-dark"] :is(.site-cta, .site-button):hover { box-shadow: 0 0 24px -2px color-mix(in oklab, #9B353B 70%, transparent); }
+    html[data-theme="after-dark"] .link-underline:hover { text-shadow: 0 0 12px color-mix(in oklab, #DDD4C4 45%, transparent); }
+    html[data-theme="after-dark"] .project-frame:hover { box-shadow: 0 0 0 1px color-mix(in oklab, #DDD4C4 30%, transparent), 0 30px 60px -20px #000; }
+  }
+}
+
+/* Keyboard users get the same feedback as hover */
+html[data-theme="after-dark"] :is(.site-cta, .site-button):focus-visible { box-shadow: 0 0 24px -2px color-mix(in oklab, #9B353B 70%, transparent); }
+html[data-theme="retro"] .site-header .link-underline:focus-visible { background-size: 100% 3px; }
+
+/* Form success (rendered only after the server confirms) */
+html[data-theme="retro"] .success-stamp {
+  display: block; position: absolute; right: 0; top: 1.5rem; padding: .25rem .9rem;
+  border: 3px solid #C65D36; color: #C65D36; font-weight: 700; font-size: 1.5rem; text-transform: uppercase;
+  transform: rotate(-8deg);
+}
+html[data-theme="playful"] .success-confetti { display: block; position: absolute; inset: 0 0 auto; height: 0; overflow: visible; }
+.success-confetti i { position: absolute; top: 0; width: 8px; height: 12px; opacity: 0; }
+.success-confetti i:nth-child(odd) { background: #FF50A4; }
+.success-confetti i:nth-child(even) { background: #C6FF4D; outline: 1px solid #452180; }
+.success-confetti i:nth-child(3n) { background: #452180; }
+@media (prefers-reduced-motion: no-preference) {
+  html[data-theme="classic"] .form-success { animation: ix-fade 700ms ease-out both; }
+  html[data-theme="retro"] .success-stamp { animation: ix-stamp 420ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
+  html[data-theme="playful"] .form-success > p { animation: ix-pop 420ms cubic-bezier(0.34,1.56,0.64,1) both; }
+  html[data-theme="after-dark"] .form-success { animation: ix-reveal 1100ms cubic-bezier(0.65,0,0.35,1) both; }
+  .success-confetti i { animation: ix-confetti 1300ms ease-out forwards; }
+  .success-confetti i:nth-child(1) { left: 5%; --x: -30px; }
+  .success-confetti i:nth-child(2) { left: 15%; --x: 20px; animation-delay: 60ms; }
+  .success-confetti i:nth-child(3) { left: 25%; --x: -10px; animation-delay: 120ms; }
+  .success-confetti i:nth-child(4) { left: 36%; --x: 35px; animation-delay: 30ms; }
+  .success-confetti i:nth-child(5) { left: 47%; --x: -25px; animation-delay: 90ms; }
+  .success-confetti i:nth-child(6) { left: 58%; --x: 15px; animation-delay: 150ms; }
+  .success-confetti i:nth-child(7) { left: 68%; --x: -35px; animation-delay: 45ms; }
+  .success-confetti i:nth-child(8) { left: 78%; --x: 25px; animation-delay: 105ms; }
+  .success-confetti i:nth-child(9) { left: 88%; --x: -15px; animation-delay: 75ms; }
+  .success-confetti i:nth-child(10) { left: 96%; --x: 10px; animation-delay: 135ms; }
+}
+@keyframes ix-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ix-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes ix-pop { 0% { opacity: 0; transform: translateY(14px) scale(.98); } 100% { opacity: 1; transform: none; } }
+@keyframes ix-bounce { 0%,100% { transform: none; } 40% { transform: translateY(-4px) scale(1.03); } 70% { transform: translateY(1px); } }
+@keyframes ix-wiggle { 0%,100% { transform: none; } 33% { transform: rotate(-3deg); } 66% { transform: rotate(3deg); } }
+@keyframes ix-stamp { 0% { opacity: 0; transform: rotate(-8deg) scale(2.2); } 100% { opacity: 1; transform: rotate(-8deg) scale(1); } }
+@keyframes ix-reveal { from { opacity: 0; clip-path: inset(0 0 100% 0); filter: blur(4px); } to { opacity: 1; clip-path: inset(0 0 0 0); filter: none; } }
+@keyframes ix-confetti { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 100% { opacity: 0; transform: translate(var(--x), 140px) rotate(320deg); } }
+
+/* ===== Phase 3: one signature experience per personality (Selected Work only) ===== */
+.work-stickers, .stage-sticker { display: none; pointer-events: none; }
+.project-stage::before { content: ""; position: absolute; inset: -22px; z-index: -1; pointer-events: none; opacity: 0; }
+
+/* Classic — editorial mask reveal on the screenshot only, once (Reveal disconnects after first entry) */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-theme="classic"] .project-reveal .project-media { clip-path: inset(0 0 100% 0); transition: clip-path 1.1s cubic-bezier(0.77,0,0.18,1) 200ms; }
+  html[data-theme="classic"] .project-reveal.is-visible .project-media { clip-path: inset(0 0 0 0); }
+}
+
+/* Retro — halftone print plate behind the card */
+html[data-theme="retro"] .project-stage::before {
+  background-image: radial-gradient(color-mix(in oklab, #C65D36 55%, transparent) 1.4px, transparent 1.6px);
+  background-size: 9px 9px;
+  transform: translate(10px, 10px);
+}
+@media (hover: none) { html[data-theme="retro"] .project-stage::before { opacity: .55; } }
+@media (hover: hover) {
+  html[data-theme="retro"] .project-stage:is(:hover, :focus-within)::before { opacity: 1; transform: translate(16px, 16px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-theme="retro"] .project-stage::before { transition: opacity 260ms steps(3, end), transform 260ms steps(3, end); }
+}
+html[data-theme="retro"] .project-stage:focus-within::before { opacity: 1; }
+
+/* Playful — three section stickers + one per project */
+html[data-theme="playful"] .work-stickers { display: block; position: absolute; inset: 0; overflow: hidden; }
+html[data-theme="playful"] .sticker { position: absolute; display: block; filter: drop-shadow(3px 3px 0 #452180); }
+html[data-theme="playful"] .sticker-star { top: 2.5%; right: 6%; width: 56px; fill: #C6FF4D; stroke: #452180; stroke-width: 2; --d: 30px; }
+html[data-theme="playful"] .sticker-arrow { top: 22%; left: 4%; width: 84px; stroke: #FF50A4; --d: -22px; }
+html[data-theme="playful"] .sticker-blob { bottom: 6%; right: 5%; width: 64px; fill: #FF50A4; stroke: #452180; stroke-width: 2; --d: 18px; }
+html[data-theme="playful"] .stage-sticker {
+  display: block; position: absolute; z-index: 2; top: -18px; right: -14px; width: 44px;
+  fill: #C6FF4D; stroke: #452180; stroke-width: 2.5; transform: rotate(-12deg);
+}
+@media (max-width: 767px) { html[data-theme="playful"] :is(.sticker-arrow, .sticker-blob) { display: none; } html[data-theme="playful"] .sticker-star { width: 40px; top: 3%; } }
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (min-width: 768px) {
+  html[data-theme="playful"] .sticker { transform: translate(calc(var(--px, 0) * var(--d)), calc(var(--py, 0) * var(--d))); transition: transform 600ms cubic-bezier(0.34,1.56,0.64,1); }
+  html[data-theme="playful"] .stage-sticker { transition: transform 500ms cubic-bezier(0.34,1.56,0.64,1); }
+  html[data-theme="playful"] .project-stage:is(:hover, :focus-within) .stage-sticker { transform: rotate(18deg) scale(1.25); }
+}
+
+/* After Dark — spotlight on the framing layer behind the screenshot */
+html[data-theme="after-dark"] .project-stage::before {
+  inset: -48px; opacity: 1;
+  background: radial-gradient(60% 70% at 70% 30%, color-mix(in oklab, #9B353B 38%, transparent), transparent 70%);
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (min-width: 768px) {
+  html[data-theme="after-dark"] .project-stage::before {
+    opacity: .35; transition: opacity 700ms ease;
+    background: radial-gradient(340px circle at calc(var(--sx, 50%) + 48px) calc(var(--sy, 40%) + 48px),
+      color-mix(in oklab, #DDD4C4 30%, transparent), color-mix(in oklab, #9B353B 55%, transparent) 40%, transparent 75%);
+  }
+  html[data-theme="after-dark"] .project-stage:hover::before { opacity: 1; }
+}
