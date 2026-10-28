@@ -97,42 +97,42 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
           Website <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
-      <Field label="Name" required>
-        <input name="name" required autoComplete="name" maxLength={100} className={fieldBase} aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
+      <Field label="Name" htmlFor="inquiry-name" required>
+        <input id="inquiry-name" name="name" required autoComplete="name" maxLength={100} className={fieldBase} aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
         {err("name")}
       </Field>
-      <Field label="Email" required>
-        <input name="email" type="email" required autoComplete="email" maxLength={255} className={fieldBase} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
+      <Field label="Email" htmlFor="inquiry-email" required>
+        <input id="inquiry-email" name="email" type="email" required autoComplete="email" maxLength={255} className={fieldBase} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
         {err("email")}
       </Field>
-      <Field label="Business name" className="sm:col-span-2">
-        <input name="businessName" autoComplete="organization" maxLength={150} className={fieldBase} />
+      <Field label="Business name" htmlFor="inquiry-business" className="sm:col-span-2">
+        <input id="inquiry-business" name="businessName" autoComplete="organization" maxLength={150} className={fieldBase} />
       </Field>
-      <Field label="What can I help you with?" required>
-        <select ref={serviceRef} name="service" required defaultValue={preselectedService} className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
+      <Field label="What can I help you with?" htmlFor="inquiry-service" required>
+        <select id="inquiry-service" ref={serviceRef} name="service" required defaultValue={preselectedService} className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
           <option value="" disabled>Choose one</option>
           {serviceOptions.map((o) => <option key={o}>{o}</option>)}
         </select>
         {err("service")}
       </Field>
-      <Field label="Approximate budget">
-        <select name="budget" defaultValue="" className={cn(fieldBase, "cursor-pointer")}>
+      <Field label="Approximate budget" htmlFor="inquiry-budget">
+        <select id="inquiry-budget" name="budget" defaultValue="" className={cn(fieldBase, "cursor-pointer")}>
           <option value="">Prefer not to say</option>
           {budgetOptions.map((o) => <option key={o}>{o}</option>)}
         </select>
       </Field>
-      <Field label="Existing website">
-        <input name="websiteUrl" type="text" inputMode="url" autoComplete="url" placeholder="https://yourwebsite.com" maxLength={255} className={fieldBase} aria-invalid={!!errors.websiteUrl} aria-describedby={errors.websiteUrl ? "websiteUrl-error" : undefined} />
+      <Field label="Existing website" htmlFor="inquiry-website-url">
+        <input id="inquiry-website-url" name="websiteUrl" type="text" inputMode="url" autoComplete="url" placeholder="https://yourwebsite.com" maxLength={255} className={fieldBase} aria-invalid={!!errors.websiteUrl} aria-describedby={errors.websiteUrl ? "websiteUrl-error" : undefined} />
         {err("websiteUrl")}
       </Field>
-      <Field label="When are you hoping to get started?">
-        <select name="timeline" defaultValue="" className={cn(fieldBase, "cursor-pointer")}>
+      <Field label="When are you hoping to get started?" htmlFor="inquiry-timeline">
+        <select id="inquiry-timeline" name="timeline" defaultValue="" className={cn(fieldBase, "cursor-pointer")}>
           <option value="">Select a timeline</option>
           {timelineOptions.map((o) => <option key={o}>{o}</option>)}
         </select>
       </Field>
-      <Field label="Tell me about your project" required className="sm:col-span-2">
-        <textarea name="message" required rows={5} maxLength={5000} placeholder="What would a great outcome look like for you?" className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
+      <Field label="Tell me about your project" htmlFor="inquiry-message" required className="sm:col-span-2">
+        <textarea id="inquiry-message" name="message" required rows={5} maxLength={5000} placeholder="What would a great outcome look like for you?" className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
         {err("message")}
       </Field>
       <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
@@ -155,9 +155,9 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
   );
 }
 
-function Field({ label, required, className, children }: { label: string; required?: boolean; className?: string; children: React.ReactNode }) {
+function Field({ label, required, htmlFor, className, children }: { label: string; required?: boolean; htmlFor?: string; className?: string; children: React.ReactNode }) {
   return (
-    <label className={cn("block", className)}>
+    <label className={cn("block", className)} htmlFor={htmlFor}>
       <span className="eyebrow text-muted-foreground">
         {label} {required ? <span className="text-terracotta" aria-hidden="true">*</span> : <span className="normal-case tracking-normal">(optional)</span>}
       </span>
