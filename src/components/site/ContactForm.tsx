@@ -155,9 +155,9 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
   );
 }
 
-function Field({ label, required, className, children }: { label: string; required?: boolean; className?: string; children: React.ReactNode }) {
+function Field({ label, required, htmlFor, className, children }: { label: string; required?: boolean; htmlFor?: string; className?: string; children: React.ReactNode }) {
   return (
-    <label className={cn("block", className)}>
+    <label className={cn("block", className)} htmlFor={htmlFor}>
       <span className="eyebrow text-muted-foreground">
         {label} {required ? <span className="text-terracotta" aria-hidden="true">*</span> : <span className="normal-case tracking-normal">(optional)</span>}
       </span>
