@@ -68,7 +68,7 @@ export const template = {
   component: Email,
   subject: (d: Record<string, any>) => `New inquiry from ${d['name'] || 'your website'}`,
   displayName: 'New inquiry alert',
-  to: 'alexisbeamdesign@gmail.com',
+  to: 'alexis@alexisbeamdesign.com',
   previewData: {
     name: 'Jane Doe',
     email: 'jane@example.com',
