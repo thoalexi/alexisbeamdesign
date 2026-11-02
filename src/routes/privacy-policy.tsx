@@ -45,26 +45,39 @@ function PrivacyPolicy() {
       <main id="main" className="px-6 pb-20 pt-32 md:px-10 md:pb-28 md:pt-40">
         <article className="mx-auto max-w-3xl space-y-12">
           <div>
-            <p className="eyebrow text-accent">Effective October 12, 2026</p>
+            <p className="eyebrow text-accent">Last revised: November 2, 2026</p>
             <h1 className="editorial-page-title mt-4">Privacy Policy</h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              This website, alexisbeamdesign.com, is operated by Meant To Beam LLC, doing business as Alexis Beam Design ("I", "me"). This policy explains what information the site collects and how it's used.
+              This website, alexisbeamdesign.com, is operated by Meant To Beam LLC, doing business as Alexis Beam Design ("I", "me"). This policy explains what information I collect through this website and through my Facebook and Instagram consultation request forms, and how it's used.
             </p>
           </div>
 
-          <Section title="Information you submit">
-            <p>When you send an inquiry, I collect what you choose to provide: your name, email address, and optionally your business name, existing website, desired timeline, approximate budget, the type of service you're interested in, and your project description.</p>
-            <p>I use this information only to review your request and respond to you about your project. I don't sell it or use it for advertising.</p>
+          <Section title="Inquiries submitted through this website">
+            <p>When you send an inquiry through this website, I collect what you choose to provide: your name, email address, and optionally your business name, existing website, desired timeline, approximate budget, the type of service you're interested in, and your project description.</p>
+            <p>I use website inquiries to review your request and respond about your project. I don't sell this information, add you to a marketing email list, or use your form answers for promotional marketing.</p>
           </Section>
 
           <Section title="How inquiries are processed">
             <p>Inquiries are stored in the website's database, which is managed by the site's hosting provider, and are not publicly accessible. When an inquiry arrives, an email notification with its details is sent to me through the hosting provider's email service so I can reply.</p>
             <p>Inquiries are not automatically deleted on a set schedule.</p>
+            <p>The website database and notification-email process described here applies to inquiries submitted through this website.</p>
+          </Section>
+
+          <Section title="Facebook and Instagram consultation requests">
+            <p>When you request a free consultation through a Facebook or Instagram instant form, I collect the information you submit. This includes your name, email address, business name, the service you need, and your project timeframe. You may also choose to provide your phone number and existing website.</p>
+            <p>Your form responses are collected through Meta and automatically transferred to a Google Sheet that I use to manage consultation requests. I use this information to respond to your request, discuss your project, arrange a consultation, and keep track of follow-up.</p>
+            <p>Submitting a request does not subscribe you to a marketing email list. I do not sell your personal information.</p>
+            <p>Meta and Google process information through their respective services under their applicable privacy policies: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Meta Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Google Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a>.</p>
+          </Section>
+
+          <Section title="Advertising measurement with Meta">
+            <p>My Facebook and Instagram consultation request forms are connected to Meta's Conversions API, a tool Meta provides for measuring how my ads perform. Meta processes information it receives under its own privacy policy. I don't use this connection to build marketing lists or send you promotional messages.</p>
           </Section>
 
           <Section title="Analytics">
             <p>This site uses Google Analytics to understand how visitors find and use it, for example which pages are viewed and which buttons are clicked. Google Analytics uses cookies and collects information such as your approximate location, device and browser type, and the website that referred you.</p>
             <p>Advertising personalization and Google signals are turned off. Your name, email address and form answers are not sent to Google Analytics. Google's own use of this data is described in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Google's Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a>.</p>
+            <p>Google Analytics is separate from the Google Sheet described above. Form responses are not sent to Google Analytics.</p>
             <p>If you arrive through a tagged link (for example from an ad or a social post), the site may remember the link's campaign tags and the page you first landed on, stored only in your browser's session storage for that visit. If you later send an inquiry or open the scheduling page, those tags are included with the inquiry notification email or passed to Calendly so I can understand how people find the site. If your browser blocks this storage, that context is simply omitted.</p>
           </Section>
 
@@ -73,12 +86,20 @@ function PrivacyPolicy() {
           </Section>
 
           <Section title="Service providers">
-            <p>The site relies on a small number of providers to operate: its hosting and database provider (which also sends inquiry notification emails), Google Analytics, and Calendly. They process information only as needed to provide their services.</p>
+            <p>I rely on a small number of providers:</p>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>The site's hosting and database provider, which also sends website inquiry notification emails.</li>
+              <li>Google Analytics, for website analytics.</li>
+              <li>Calendly, for scheduling.</li>
+              <li>Meta Platforms, for Facebook and Instagram lead forms and the connected advertising measurement integration.</li>
+              <li>Google Sheets, for storing and managing consultation requests submitted through Meta.</li>
+            </ul>
+            <p>They process information only as needed to provide their services.</p>
           </Section>
 
           <Section title="Your choices and questions">
             <p>You can block or delete cookies in your browser settings, or use Google's opt-out browser add-on to stop Google Analytics from collecting data about your visits.</p>
-            <p>If you have questions about this policy or about information you've submitted, or you want to make a request regarding your information, email <a href={`mailto:${CONTACT}`} className="link-underline text-foreground">{CONTACT}</a>. Depending on where you live, you may have rights under applicable law to request access to or deletion of your personal information, and I'll respond to requests as required by that law.</p>
+            <p>If you have questions about this policy or about information you've submitted, whether through this website or through a Facebook or Instagram consultation request, or you want to make a request regarding your information, email <a href={`mailto:${CONTACT}`} className="link-underline text-foreground">{CONTACT}</a>. Information from Facebook and Instagram requests may be held in both Meta and Google Sheets. Contact me about access or deletion requests. Depending on where you live, you may have rights under applicable law to request access to or deletion of your personal information, and I'll respond to requests as required by that law.</p>
           </Section>
 
           <Section title="Changes to this policy">
