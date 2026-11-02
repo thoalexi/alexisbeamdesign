@@ -35,11 +35,11 @@ Only the Privacy Policy page changes. I won't touch any other files, including t
    
    The contact email stays the same.
 
-8. **Retention.** Website inquiries keep their current wording. For Meta and Google Sheets, a visible marker reads: "Unresolved — retention awaiting confirmation."
+8. **Retention.** Website inquiries keep their current wording. For Meta and Google Sheets, the page says nothing about how long requests are kept or when they're deleted.
 
 9. The "Changes to this policy" section stays the same.
 
-## Questions to resolve before publication
+## Open questions (in my summary only, not on the page)
 1. **Conversions API:** What does it send to Meta, and when? This includes:
    - what Google Sheets sends back to Meta
    - whether it uses identifiers
