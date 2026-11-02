@@ -21,7 +21,7 @@ Only the Privacy Policy page changes. I won't touch any other files, including t
 4. **New section: "Advertising measurement with Meta".**
    > "My Facebook and Instagram consultation request forms are connected to Meta's Conversions API, a tool Meta provides for measuring how my ads perform. Meta processes information it receives under its own privacy policy. I don't use this connection to build marketing lists or send you promotional messages."
    
-   Below it, a visible marker reads: "Unresolved — to verify before publication: what this connection sends to Meta." It makes no claims about anonymity, hashing, events, identifiers or lead-status changes.
+   This section makes no claims about anonymity, hashing, events, identifiers or lead-status changes.
 
 5. **Analytics.** The current text stays, with one sentence added:
    > "Google Analytics is separate from the Google Sheet described above. Form responses are not sent to Google Analytics."
