@@ -72,7 +72,7 @@ function PrivacyPolicy() {
           </Section>
 
           <Section title="Advertising measurement with Meta">
-            <p>Alongside transferring consultation requests to Google Sheets, I have connected Meta's Conversions API for advertising measurement. Meta processes information it receives through this connection under its <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Meta's Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a>.</p>
+            <p>Alongside transferring consultation requests to Google Sheets, I have connected Meta's Conversions API for advertising measurement. Meta processes information it receives through this connection under <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Meta's Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a>.</p>
             <p>I don't use this connection to build marketing lists or send you promotional messages.</p>
           </Section>
 
