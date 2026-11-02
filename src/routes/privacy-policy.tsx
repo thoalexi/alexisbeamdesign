@@ -68,10 +68,12 @@ function PrivacyPolicy() {
             <p>Your form responses are collected through Meta and automatically transferred to a Google Sheet that I use to manage consultation requests. I use this information to respond to your request, discuss your project, arrange a consultation, and keep track of follow-up.</p>
             <p>Submitting a request does not subscribe you to a marketing email list. I do not sell your personal information.</p>
             <p>Meta and Google process information through their respective services under their applicable privacy policies: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Meta Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Google Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a>.</p>
+            <p>I keep Facebook and Instagram consultation requests in Google Sheets until I manually delete them. To request deletion, contact me at <a href={`mailto:${CONTACT}`} className="link-underline text-foreground">{CONTACT}</a>.</p>
           </Section>
 
           <Section title="Advertising measurement with Meta">
-            <p>My Facebook and Instagram consultation request forms are connected to Meta's Conversions API, a tool Meta provides for measuring how my ads perform. Meta processes information it receives under its own privacy policy. I don't use this connection to build marketing lists or send you promotional messages.</p>
+            <p>Alongside transferring consultation requests to Google Sheets, I have connected Meta's Conversions API for advertising measurement. Meta processes information it receives through this connection under its <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="link-underline text-foreground">Meta's Privacy Policy<span className="sr-only"> (opens in a new tab)</span></a>.</p>
+            <p>I don't use this connection to build marketing lists or send you promotional messages.</p>
           </Section>
 
           <Section title="Analytics">
