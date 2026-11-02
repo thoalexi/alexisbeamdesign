@@ -22,7 +22,7 @@ export const Route = createFileRoute("/privacy-policy")({
   component: PrivacyPolicy,
 });
 
-const CONTACT = "alexisbeamdesign@gmail.com";
+const CONTACT = "alexis@alexisbeamdesign.com";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
