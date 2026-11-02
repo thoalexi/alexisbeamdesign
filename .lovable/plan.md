@@ -21,7 +21,7 @@ Only the Privacy Policy page changes. I won't touch any other files, including t
 4. **New section: "Advertising measurement with Meta".**
    > "My Facebook and Instagram consultation request forms are connected to Meta's Conversions API, a tool Meta provides for measuring how my ads perform. Meta processes information it receives under its own privacy policy. I don't use this connection to build marketing lists or send you promotional messages."
    
-   Below it, a visible marker reads: "Unresolved — to verify before publication: what this connection sends to Meta." It makes no claims about anonymity, hashing, events, identifiers or lead-status changes.
+   This section makes no claims about anonymity, hashing, events, identifiers or lead-status changes.
 
 5. **Analytics.** The current text stays, with one sentence added:
    > "Google Analytics is separate from the Google Sheet described above. Form responses are not sent to Google Analytics."
@@ -35,11 +35,11 @@ Only the Privacy Policy page changes. I won't touch any other files, including t
    
    The contact email stays the same.
 
-8. **Retention.** Website inquiries keep their current wording. For Meta and Google Sheets, a visible marker reads: "Unresolved — retention awaiting confirmation."
+8. **Retention.** Website inquiries keep their current wording. For Meta and Google Sheets, the page says nothing about how long requests are kept or when they're deleted.
 
 9. The "Changes to this policy" section stays the same.
 
-## Questions to resolve before publication
+## Open questions (in my summary only, not on the page)
 1. **Conversions API:** What does it send to Meta, and when? This includes:
    - what Google Sheets sends back to Meta
    - whether it uses identifiers
