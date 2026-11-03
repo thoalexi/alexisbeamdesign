@@ -326,7 +326,7 @@ function Services() {
               </div>
               <ul className="space-y-2.5 text-sm md:col-span-4 md:col-start-9">
                 {s.includes.map((x) => (
-                  <li key={x} className="flex gap-3 border-b border-foreground/10 pb-2.5"><span className="text-accent" aria-hidden="true">+</span>{x}</li>
+                  <li key={x} className="flex gap-3 border-b border-foreground/10 pb-2.5"><span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rotate-45 bg-accent" aria-hidden="true" />{x}</li>
                 ))}
               </ul>
             </Reveal>
