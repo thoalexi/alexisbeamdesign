@@ -69,7 +69,7 @@ export const clientPortalUrl = "https://portal.alexisbeamdesign.com";
 export const steps = [
   { title: "Let's Talk", text: ["Tell me about your business, what you're looking for, and what you want your website to accomplish.", "We'll discuss your goals, budget, and timeline to determine the best approach."] },
   { title: "Review Your Proposal", text: ["I'll send you a personalized proposal outlining your project scope, deliverables, timeline, and pricing.", "You can review everything through a private link, ask questions, or request changes."], note: "No account required." },
-  { title: "Make It Official", text: ["Once you're happy with the proposal, we'll finalize the service agreement and initial deposit.", "As soon as your agreement is signed, you'll receive an invitation to your private client portal."] },
+  { title: "Make It Official", text: ["Once you're happy with the proposal, we'll finalize the service agreement and initial deposit.", "Once your agreement is signed and your deposit is paid, you'll receive an invitation to your private client portal."] },
   { title: "Watch It Come Together", text: ["Follow your project's progress, review designs, provide feedback, upload materials, and access important documents from your personal client workspace.", "You'll always know where things stand and what's needed next."] },
   { title: "Launch & Beyond", text: ["Once your website is approved and the final project balance is paid, we'll prepare for launch.", "Your maintenance plan begins when your website goes live, providing ongoing support, routine upkeep, and minor updates."] },
 ];
@@ -85,7 +85,7 @@ export const portal = {
   notes: [
     "Proposals arrive as a private link. No account is needed to review one.",
     "Approving a proposal is a separate step from signing the service agreement.",
-    "You'll receive your portal invitation once your service agreement is signed. The portal is for active client projects.",
+    "You'll receive your portal invitation once your service agreement is signed and your deposit is paid. The portal is for active client projects.",
   ],
 };
 
@@ -96,7 +96,7 @@ export const faqs: { q: string; a: string[] }[] = [
   { q: "What do you need from me to start?", a: ["A little information about your business, your goals, and any branding, photos, or content you already have. Don't have everything ready? That's okay. We can discuss what you need and whether content creation or branding support should be included in your proposal."] },
   { q: "How long does it take?", a: ["Timing depends on the size of the project and when I have the content and information needed to begin. You'll receive an estimated timeline in your proposal before work starts, so you know what to expect."] },
   { q: "What if I don't like how it looks?", a: ["You'll have opportunities to review the work and share feedback throughout the project, not just at the end.", "Your project includes two consolidated revision rounds at each major design milestone, unless your proposal specifies otherwise.", "Changes within our agreed scope are included. If you'd like to add something beyond that scope, I'll explain the additional cost and get your approval before proceeding."] },
-  { q: "Can I see how my project is going?", a: ["Absolutely. Once your service agreement is signed, you'll receive access to your private client portal.", "You can follow progress, see updates, review work, share files, and access important documents like your proposal and invoices.", "Everything stays organized in one place."] },
+  { q: "Can I see how my project is going?", a: ["Absolutely. Once your service agreement is signed and your deposit is paid, you'll receive access to your private client portal.", "You can follow progress, see updates, review work, share files, and access important documents like your proposal and invoices.", "Everything stays organized in one place."] },
   { q: "How do payments work?", a: ["Website projects are typically split into two payments: 50% to get started and 50% before launch.", "Your personalized proposal outlines the full project cost, deliverables, payment schedule, and any ongoing fees before you commit.", "Additional work outside the original scope is quoted and approved separately."] },
   { q: "Do I have to pay monthly?", a: ["My standard website packages include an ongoing maintenance plan to keep your site secure, updated, and running smoothly.", "Maintenance begins when your website launches, with a recommended initial three-month commitment followed by month-to-month service.", "After the initial term, you can cancel with 30 days' written notice.", "Your domain and website remain yours, and I'll help make the transition straightforward."] },
   { q: "What if you disappear?", a: ["Your website shouldn't depend on me being around forever.", "Your domain and essential accounts stay in your name, and you receive ownership of the original website deliverables once the project is paid in full, subject to any third-party licensing terms.", "If we part ways, you'll retain access to your accounts and receive the materials needed to continue independently.", "There are no surprises about ownership or ongoing responsibilities."] },
