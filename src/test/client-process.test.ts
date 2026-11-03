@@ -13,6 +13,6 @@ describe("portal access timing", () => {
     const { steps, portal, faqs } = await import("@/data/site");
     const all = JSON.stringify({ steps, portal, faqs }).toLowerCase();
     expect(all).not.toContain("onboarding");
-    expect(portal.notes.some((n) => n.includes("service agreement is signed"))).toBe(true);
+    expect(portal.notes.some((n) => n.includes("service agreement is signed and your deposit is paid"))).toBe(true);
   });
 });
