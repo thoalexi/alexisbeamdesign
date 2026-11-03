@@ -68,7 +68,7 @@ export const clientPortalUrl = "https://portal.alexisbeamdesign.com";
 export const steps = [
   { title: "Let's Talk", text: ["Tell me about your business, what you're looking for, and what you want your website to accomplish.", "We'll discuss your goals, budget, and timeline to determine the best approach."] },
   { title: "Review Your Proposal", text: ["I'll send you a personalized proposal outlining your project scope, deliverables, timeline, and pricing.", "You can review everything through a private link, ask questions, or request changes."], note: "No account required." },
-  { title: "Make It Official", text: ["Once you're happy with the proposal, we'll finalize the service agreement and initial deposit.", "After onboarding, you'll receive an invitation to your private client portal."] },
+  { title: "Make It Official", text: ["Once you're happy with the proposal, we'll finalize the service agreement and initial deposit.", "As soon as your agreement is signed, you'll receive an invitation to your private client portal."] },
   { title: "Watch It Come Together", text: ["Follow your project's progress, review designs, provide feedback, upload materials, and access important documents from your personal client workspace.", "You'll always know where things stand and what's needed next."] },
   { title: "Launch & Beyond", text: ["Once your website is approved and the final project balance is paid, we'll prepare for launch.", "Your maintenance plan begins when your website goes live, providing ongoing support, routine upkeep, and minor updates."] },
 ];
@@ -84,7 +84,7 @@ export const portal = {
   notes: [
     "Proposals arrive as a private link. No account is needed to review one.",
     "Approving a proposal is a separate step from signing the service agreement.",
-    "Full portal access begins after onboarding. The portal is for active client projects.",
+    "You'll receive your portal invitation once your service agreement is signed. The portal is for active client projects.",
   ],
 };
 
