@@ -97,13 +97,16 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
               <h2 className="editorial-heading mt-6 max-w-2xl">Simple process. <em className="text-accent">Thoughtful results.</em></h2>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{service.processNote}</p>
             </Reveal>
-            <ol className="relative mt-16 grid gap-12 md:grid-cols-4 md:gap-8">
+            <ol className="relative mt-16 grid gap-12 md:grid-cols-5 md:gap-8">
               <span aria-hidden="true" className="absolute bottom-0 left-[7px] top-0 w-px bg-border md:bottom-auto md:left-0 md:right-0 md:top-[7px] md:h-px md:w-auto" />
               {serviceProcessSteps.map((s, i) => (
                 <Reveal as="li" key={s.title} delay={i * 110} className="relative pl-10 md:pl-0 md:pt-12">
                   <span aria-hidden="true" className="absolute left-0 top-1 h-[15px] w-[15px] rounded-full border border-terracotta bg-background md:top-0" />
                   <h3 className="font-serif text-3xl leading-tight">{s.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                  <div className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                    {s.text.map((t) => <p key={t}>{t}</p>)}
+                    {"note" in s && s.note && <p className="eyebrow text-accent">{s.note}</p>}
+                  </div>
                 </Reveal>
               ))}
             </ol>
