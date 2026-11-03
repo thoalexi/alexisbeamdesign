@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { navLinks } from "@/data/site";
+import { clientPortalUrl, navLinks } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { ThemeSelector } from "@/components/site/ThemeSelector";
 
@@ -47,6 +47,7 @@ export function Header() {
               </li>
             ))}
           </ul>
+          <a href={clientPortalUrl} className="link-underline pb-0.5 text-sm text-muted-foreground hover:text-foreground">Client Login</a>
           <a
             href="/#contact"
             className="site-cta group inline-flex items-center gap-2 border border-foreground px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
@@ -93,6 +94,7 @@ export function Header() {
         >
           Request a Quote →
         </a>
+        <a href={clientPortalUrl} className="mt-6 block text-center text-sm text-muted-foreground">Client Login</a>
       </div>
     </header>
   );

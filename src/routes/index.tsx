@@ -7,7 +7,8 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { BookingLink } from "@/components/site/BookingLink";
 import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
-import { homepageCopy, navLinks, serviceOptions, services, socials, steps } from "@/data/site";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { clientPortalUrl, faqIntro, faqs, homepageCopy, navLinks, portal, serviceOptions, services, socials, steps } from "@/data/site";
 import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
 import headshot from "@/assets/alexis-headshot.png.asset.json";
@@ -67,7 +68,9 @@ function Home() {
         <About />
         <Services />
         <Process />
+        <Portal />
         <Differentiator />
+        <Faq />
         <Contact />
       </main>
       <Footer />
@@ -341,23 +344,97 @@ function Services() {
 /* ---------- Process ---------- */
 function Process() {
   return (
-    <section aria-labelledby="process-title" className="px-6 py-28 md:px-10 md:py-40">
+    <section id="process" aria-labelledby="process-title" className="px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-7xl">
-        <SectionHead
-          eyebrow="The process"
-          title={<span id="process-title">Simple process. <em className="text-accent">Thoughtful results.</em></span>}
-          copy="Building something new shouldn't feel overwhelming. I keep the process collaborative, transparent, and focused on what matters most."
-        />
-        <ol className="relative mt-20 grid gap-12 md:grid-cols-4 md:gap-8">
-          <span aria-hidden="true" className="absolute bottom-0 left-[7px] top-0 w-px bg-border md:bottom-auto md:left-0 md:right-0 md:top-[7px] md:h-px md:w-auto" />
+        <SectionHead eyebrow="The process" title={<span id="process-title">What working together <em className="text-accent">looks like.</em></span>} />
+        <ol className="mt-20 border-t border-foreground">
           {steps.map((s, i) => (
-            <Reveal as="li" key={s.title} delay={i * 110} className="relative pl-10 md:pl-0 md:pt-12">
-              <span aria-hidden="true" className="absolute left-0 top-1 h-[15px] w-[15px] rounded-full border border-terracotta bg-background md:top-0" />
-              <h3 className="font-serif text-3xl leading-tight">{s.title}</h3>
-              <p className="mt-4 leading-relaxed text-muted-foreground">{s.text}</p>
+            <Reveal as="li" key={s.title} className="grid gap-4 border-b border-foreground/20 py-10 md:grid-cols-12 md:gap-10 md:py-12">
+              <span className="font-serif text-2xl text-terracotta md:col-span-1">0{i + 1}</span>
+              <h3 className="font-serif text-3xl leading-tight md:col-span-4">{s.title}</h3>
+              <div className="space-y-3 leading-relaxed text-muted-foreground md:col-span-6 md:col-start-7">
+                {s.text.map((t) => <p key={t}>{t}</p>)}
+                {"note" in s && s.note && <p className="eyebrow text-accent">{s.note}</p>}
+              </div>
             </Reveal>
           ))}
         </ol>
+        <a href="#contact" className="site-cta group mt-12 inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
+          Start Your Project <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Client portal ---------- */
+function Portal() {
+  return (
+    <section aria-labelledby="portal-title" className="bg-secondary px-6 py-28 md:px-10 md:py-40">
+      <div className="mx-auto max-w-7xl">
+        <SectionHead eyebrow="The client portal" title={<span id="portal-title">Your project. <em className="text-accent">Everything in one place.</em></span>} copy={portal.intro} />
+        <ul className="mt-20 grid gap-10 border-t border-foreground pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          {portal.benefits.map((b, i) => (
+            <Reveal as="li" key={b.title} delay={i * 90}>
+              <h3 className="editorial-subheading">{b.title}</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{b.text}</p>
+            </Reveal>
+          ))}
+        </ul>
+        <div className="mt-16 grid gap-8 border-t border-foreground/20 pt-8 md:grid-cols-12">
+          <ul className="space-y-2.5 text-sm md:col-span-7">
+            {portal.notes.map((n) => (
+              <li key={n} className="flex gap-3"><span className="text-accent" aria-hidden="true">+</span>{n}</li>
+            ))}
+          </ul>
+          <p className="text-sm md:col-span-4 md:col-start-9">
+            Already a client?{" "}
+            <a href={clientPortalUrl} className="link-underline text-foreground">Client Login →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FAQ ---------- */
+function Faq() {
+  const half = Math.ceil(faqs.length / 2);
+  const cols = [faqs.slice(0, half), faqs.slice(half)];
+  return (
+    <section id="faq" aria-labelledby="faq-title" className="px-6 py-28 md:px-10 md:py-40">
+      <div className="mx-auto max-w-7xl">
+        <SectionHead eyebrow="FAQ" title={<span id="faq-title">A few good <em className="text-accent">questions.</em></span>} copy={faqIntro} />
+        <div className="mt-16 grid gap-x-16 md:grid-cols-2">
+          {cols.map((col, c) => (
+            <AccordionPrimitive.Root key={c} type="multiple" className="border-t border-foreground/20">
+              {col.map((f, i) => (
+                <AccordionPrimitive.Item key={f.q} value={`faq-${c}-${i}`} className="border-b border-foreground/20">
+                  <AccordionPrimitive.Header asChild>
+                    <h3>
+                      <AccordionPrimitive.Trigger className="group flex w-full items-start justify-between gap-6 py-6 text-left font-serif text-2xl leading-snug">
+                        {f.q}
+                        <span aria-hidden="true" className="mt-1 font-sans text-xl text-terracotta">
+                          <span className="group-data-[state=open]:hidden">+</span>
+                          <span className="hidden group-data-[state=open]:inline">−</span>
+                        </span>
+                      </AccordionPrimitive.Trigger>
+                    </h3>
+                  </AccordionPrimitive.Header>
+                  <AccordionPrimitive.Content forceMount className="max-w-prose space-y-3 pb-6 leading-relaxed text-muted-foreground data-[state=closed]:hidden">
+                    {f.a.map((p) => <p key={p}>{p}</p>)}
+                  </AccordionPrimitive.Content>
+                </AccordionPrimitive.Item>
+              ))}
+            </AccordionPrimitive.Root>
+          ))}
+        </div>
+        <p className="mt-12 text-sm">
+          Still have questions?{" "}
+          <a href="#contact" className="link-underline text-foreground">Let's talk.</a>{" "}
+          <span className="text-muted-foreground">Or </span>
+          <BookingLink placement="contact" className="link-underline text-foreground">schedule a free 15-minute chat</BookingLink>.
+        </p>
       </div>
     </section>
   );
@@ -433,6 +510,10 @@ function Footer() {
               <ul className="flex gap-8 text-sm">
                 {socials.linkedin && <li><a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="link-underline">LinkedIn</a></li>}
                 {socials.email && <li><a href={`mailto:${socials.email}`} className="link-underline">Email</a></li>}
+              </ul>
+            )}
+            <ul className="flex gap-8 text-sm">
+              <li><a href={clientPortalUrl} className="link-underline">Client Login</a></li>
               </ul>
             )}
           </nav>
