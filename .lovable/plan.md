@@ -1,18 +1,21 @@
-# Align service-page questions with "A few good questions"
+# Service-page questions: match the homepage design, keep service content
 
 ## Where they are today
-- **Homepage:** "A few good questions." section near the bottom, just above the contact form. Eight general questions that open and close. Not in the top menu, so it's easy to miss.
-- **Each service page:** "Common questions" near the bottom, above "Back to services". Four to six questions written for that service, always fully shown, in a different style.
+- **Homepage:** "A few good questions." near the bottom, above the contact form. Eight general questions. It isn't in the top menu.
+- **Each service page:** "Common questions" near the bottom. Four to six questions for that service, always fully shown, in a different style.
 
 ## Changes
-1. **Same look on every page.** Service-page questions use the homepage style: open/close rows with plus/minus, two columns on desktop and one on phone, same heading style ("A few good questions." with a short intro line).
-2. **Keep each service's own questions.** Questions that only make sense for that service stay (for example "Will I lose my search rankings?" on redesign, "Will automation work with my tools?" on automation). Wording stays as it is.
-3. **Remove repeats and clashes.** Service-page questions already answered on the homepage (cost, what happens after a quote, preparing wording and photos, hosting and support after launch) are checked against the homepage answers. Any that repeat or say something different are removed, so there is one answer in one place.
-4. **Link to the full list.** Under each service page's questions: "Have a general question? See all questions" linking to the homepage questions.
-5. **Easier to find.** Add "FAQ" to the top menu and phone menu, jumping to the homepage questions.
+1. **Same design everywhere.** Service-page questions use the homepage accordion: same typography, dividers, spacing, plus/minus icons, two columns on desktop and one on phone, and the same open/close behavior.
+2. **Same heading, service-specific intro.** Every service page uses the "A few good questions." heading style. The short intro line under it is written for that service, for example: "Common questions about building a new website."
+3. **Keep the service questions.** Each page keeps its existing 4–6 questions and answers, including ones that overlap with the homepage. Wording changes only where it conflicts with the updated terms. One likely fix: "What about hosting, software costs, and support after launch?" says support "depends on the project," but the homepage now says standard website packages include a maintenance plan from launch. That answer would be reworded to match. Any other change will be listed for you.
+4. **Homepage unchanged.** The eight general questions stay exactly as they are.
+5. **Link to all FAQs.** A subtle line under each service page's questions: "Have a general question? See all FAQs." It goes to the homepage questions.
+6. **FAQ in the menu.** Add "FAQ" to the top menu and the phone menu. From any page it jumps to the homepage questions.
+
+Nothing is published automatically.
 
 ## Technical details
-- Extract the homepage Faq accordion into a shared component in src/components/site, used by src/routes/index.tsx and ServicePage.tsx (content still from src/data/site.ts and src/data/services.ts).
-- Trim overlapping entries (quoteFollowUp, contentPreparation, quoteScope, ongoingArrangements, cost FAQ) in src/data/services.ts after comparing to `faqs`.
-- Add `{ id: "faq", label: "FAQ" }` to navLinks.
-- Update src/test/service-pages.test.tsx for the new question counts; verify desktop and phone in preview. Nothing published.
+- Extract the homepage accordion into a shared component in src/components/site, used by src/routes/index.tsx and ServicePage.tsx. Homepage answers are string arrays and service answers are strings, so the component accepts both.
+- Add `faqIntro` per service in src/data/services.ts. Revise `ongoingArrangements` (redesign and automation wording reviewed against the maintenance terms) and leave the other entries alone.
+- Add `{ id: "faq", label: "FAQ" }` to navLinks. Check that Header links work from service pages (go to `/#faq`).
+- Add a roadmap.md entry. Update the tests (homepage FAQ count stays 8, each service has 4–6 questions). Check desktop and phone in the preview.
