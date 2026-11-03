@@ -514,8 +514,7 @@ function Footer() {
             )}
             <ul className="flex gap-8 text-sm">
               <li><a href={clientPortalUrl} className="link-underline">Client Login</a></li>
-              </ul>
-            )}
+            </ul>
           </nav>
         </div>
         <div className="mt-16 flex flex-col gap-2 border-t border-ink-foreground/15 pt-6 text-xs text-ink-foreground/60 sm:flex-row sm:justify-between">
