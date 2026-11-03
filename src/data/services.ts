@@ -25,6 +25,11 @@ const ongoingArrangements: ServiceFaq = {
   a: "These depend on the project. We’ll discuss the setup, any ongoing costs, and whether support is needed as part of agreeing on the scope.",
 };
 
+const websiteOngoing: ServiceFaq = {
+  q: "What about hosting, software costs, and support after launch?",
+  a: "My standard website packages include an ongoing maintenance plan that begins when your site launches. Hosting, any software costs, and the support involved are set out in your proposal before you commit.",
+};
+
 export type ServicePagePath = "/small-business-web-design" | "/website-redesign" | "/workflow-automation";
 
 export type ServicePage = {
@@ -45,6 +50,8 @@ export type ServicePage = {
   included: string[];
   processNote: string;
   scopeCaveat: string;
+  /** Short service-specific intro under the shared FAQ heading. */
+  faqIntro: string;
   faqs: ServiceFaq[];
 };
 
@@ -79,6 +86,7 @@ export const servicePages: ServicePage[] = [
       "Every website project follows the same five steps: we talk about your business and goals, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. If your project needs something beyond a thoughtfully built website, I'll tell you honestly what's involved before we begin.",
+    faqIntro: "Common questions about building a new website.",
     faqs: [
       {
         q: "How much does a new website cost?",
@@ -91,7 +99,7 @@ export const servicePages: ServicePage[] = [
       quoteFollowUp,
       contentPreparation,
       quoteScope,
-      ongoingArrangements,
+      websiteOngoing,
     ],
   },
   {
@@ -124,6 +132,7 @@ export const servicePages: ServicePage[] = [
       "A redesign follows the same five steps: we talk about what's working and what isn't, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. If your redesign involves systems beyond the website itself, we'll scope that honestly before starting.",
+    faqIntro: "Common questions about redesigning an existing website.",
     faqs: [
       {
         q: "Will I lose my existing content or search rankings?",
@@ -139,7 +148,7 @@ export const servicePages: ServicePage[] = [
       },
       quoteFollowUp,
       contentPreparation,
-      ongoingArrangements,
+      websiteOngoing,
     ],
   },
   {
@@ -172,6 +181,7 @@ export const servicePages: ServicePage[] = [
       "Automation work follows the same five steps: we talk through your current process, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. Some systems connect easily; others need more involved work. I'll always be upfront about which situation you're in before we start.",
+    faqIntro: "Common questions about automating everyday work.",
     faqs: [
       {
         q: "How do I know if a task is worth automating?",

@@ -15,6 +15,7 @@ export const navLinks = [
   { id: "work", label: "Work" },
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
+  { id: "faq", label: "FAQ" },
 ] as const;
 
 /** Leave null until real details exist — links are hidden when null. */
