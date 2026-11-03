@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
 import { BookingLink } from "@/components/site/BookingLink";
+import { FaqAccordion } from "@/components/site/FaqAccordion";
 import { backToServices, servicePages, serviceProcessSteps, type ServicePage } from "@/data/services";
 
 /** Shared layout for the standalone service pages. Content lives in src/data/services.ts. */
@@ -117,22 +118,25 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
         </section>
 
         {/* FAQs */}
-        <section className="px-6 py-24 md:px-10 md:py-32">
+        <section aria-labelledby="service-faq-title" className="px-6 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-7xl">
-            <Reveal>
-              <p className="eyebrow flex items-center gap-4 text-accent">
-                <span className="h-px w-10 bg-accent" aria-hidden="true" />
-                Common questions
-              </p>
-            </Reveal>
-            <div className="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
-              {service.faqs.map((f) => (
-                <Reveal key={f.q} as="article">
-                  <h3 className="editorial-subheading">{f.q}</h3>
-                  <p className="editorial-body mt-4 max-w-prose text-muted-foreground">{f.a}</p>
-                </Reveal>
-              ))}
+            <div className="grid gap-8 md:grid-cols-12">
+              <Reveal className="md:col-span-7">
+                <p className="eyebrow flex items-center gap-4 text-accent">
+                  <span className="h-px w-10 bg-accent" aria-hidden="true" />
+                  FAQ
+                </p>
+                <h2 id="service-faq-title" className="editorial-heading mt-6">A few good <em className="text-accent">questions.</em></h2>
+              </Reveal>
+              <Reveal delay={120} className="self-end md:col-span-4 md:col-start-9">
+                <p className="text-lg leading-relaxed text-muted-foreground">{service.faqIntro}</p>
+              </Reveal>
             </div>
+            <FaqAccordion items={service.faqs} idPrefix={`${service.slug}-faq`} />
+            <p className="mt-12 text-sm text-muted-foreground">
+              Have a general question?{" "}
+              <a href="/#faq" className="link-underline text-foreground">See all FAQs.</a>
+            </p>
           </div>
         </section>
 
