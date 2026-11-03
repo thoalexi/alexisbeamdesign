@@ -76,7 +76,7 @@ export const servicePages: ServicePage[] = [
       "Foundational SEO setup: page titles, descriptions, social sharing metadata, and clean structure",
     ],
     processNote:
-      "Every website project follows the same collaborative process: we clarify your business and goals by email or an optional call, I develop a visual direction for your review, then I build and refine the site with you before launch.",
+      "Every website project follows the same five steps: we talk about your business and goals, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. If your project needs something beyond a thoughtfully built website, I'll tell you honestly what's involved before we begin.",
     faqs: [
