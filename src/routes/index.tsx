@@ -309,7 +309,7 @@ function Services() {
           copy={homepageCopy.servicesIntro}
         />
         <div className="mt-20 border-t border-foreground">
-          {services.map((s, i) => (
+          {services.map((s) => (
             <Reveal key={s.title} as="article" className="group grid gap-6 border-b border-foreground/20 py-12 md:grid-cols-12 md:gap-10 md:py-16">
               <div className="md:col-span-7">
                 <h3 className="text-4xl transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">{s.title}</h3>
