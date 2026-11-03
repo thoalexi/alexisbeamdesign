@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
 import { BookingLink } from "@/components/site/BookingLink";
+import { FaqAccordion } from "@/components/site/FaqAccordion";
 import { backToServices, servicePages, serviceProcessSteps, type ServicePage } from "@/data/services";
 
 /** Shared layout for the standalone service pages. Content lives in src/data/services.ts. */
