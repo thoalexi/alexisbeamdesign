@@ -121,7 +121,7 @@ export const servicePages: ServicePage[] = [
       "Clearer customer journeys from first visit to getting in touch",
     ],
     processNote:
-      "A redesign starts with listening: what's working, what's frustrating, and what you want the new site to accomplish. From there I develop a refreshed direction, build it, and we review and refine together before anything goes live.",
+      "A redesign follows the same five steps: we talk about what's working and what isn't, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. If your redesign involves systems beyond the website itself, we'll scope that honestly before starting.",
     faqs: [
@@ -169,7 +169,7 @@ export const servicePages: ServicePage[] = [
       "Interactive web tools built around how your business actually works",
     ],
     processNote:
-      "Automation work starts with understanding your current process — what's working, what's frustrating, and what's worth automating. Then I design a practical solution, build it, and we refine it together around your real workflow.",
+      "Automation work follows the same five steps: we talk through your current process, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. Some systems connect easily; others need more involved work. I'll always be upfront about which situation you're in before we start.",
     faqs: [
