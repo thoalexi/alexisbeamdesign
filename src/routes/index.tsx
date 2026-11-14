@@ -108,8 +108,8 @@ function Hero() {
       <div className="relative mx-auto w-full max-w-7xl">
         <p className="eyebrow rise text-muted-foreground">Independent web design &amp; digital solutions</p>
         <h1 className="hero-heading mt-8">
-          <span className="sr-only">Alexis Beam — Web Design &amp; Digital Solutions</span>
-          <span className="rise block" aria-hidden="true" style={{ animationDelay: "120ms" }}>Thoughtfully designed.</span>
+          <span className="sr-only">Alexis Beam — Web Design &amp; Workflow Automation for Small Businesses.</span>{" "}
+          <span className="rise block" aria-hidden="true" style={{ animationDelay: "120ms" }}>Thoughtfully designed.</span>{" "}
           <span className="rise block italic text-accent sm:pl-3 lg:pl-8" aria-hidden="true" style={{ animationDelay: "260ms" }}>
             Purposefully built<span className="not-italic text-terracotta">.</span>
           </span>
