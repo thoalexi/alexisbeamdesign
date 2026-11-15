@@ -37,7 +37,7 @@ export function Header() {
         <a href="/" aria-label="alexis beam, back to top" onClick={() => setOpen(false)}>
           <Wordmark />
         </a>
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden items-center gap-5 lg:flex">
           <ul className="flex items-center gap-5 text-sm">
             {navLinks.map((l) => (
               <li key={l.id}>
@@ -52,12 +52,12 @@ export function Header() {
             href="/#contact"
             className="site-cta group inline-flex items-center gap-2 border border-foreground px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
           >
-            {inquiryCopy.primaryCta} <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            {inquiryCopy.navigationCta} <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </div>
         <button
           type="button"
-          className="relative flex h-11 w-11 items-center justify-center md:hidden"
+          className="relative flex h-11 w-11 items-center justify-center lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -75,7 +75,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="h-[calc(100dvh-6.75rem)] overflow-y-auto bg-background px-6 pb-10 pt-8 md:hidden"
+        className="h-[calc(100dvh-6.75rem)] overflow-y-auto bg-background px-6 pb-10 pt-8 lg:hidden"
       >
         <ul className="space-y-2">
           {navLinks.map((l, i) => (
@@ -92,7 +92,7 @@ export function Header() {
           onClick={() => setOpen(false)}
           className="site-cta mt-10 flex items-center justify-center bg-foreground py-4 text-background"
         >
-          {inquiryCopy.primaryCta} →
+          {inquiryCopy.navigationCta} →
         </a>
         <a href={clientPortalUrl} className="mt-6 block text-center text-sm text-muted-foreground">Client Login</a>
       </div>

@@ -124,6 +124,7 @@ export const serviceOptionLabels: Record<(typeof serviceOptions)[number], string
 
 export const inquiryCopy = {
   primaryCta: "Tell Me About Your Project",
+  navigationCta: "Let's Talk",
   bookingCta: "Book a Free 15-Minute Chat",
   nameLabel: "Your Name",
   emailLabel: "Email Address",
