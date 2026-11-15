@@ -5,3 +5,6 @@
 - [x] Refine shared typography and homepage text hierarchy without changing content or palette.
 - [x] Review all five content pages at the seven requested widths and check existing tests.
 - [x] Service-page FAQs use the homepage accordion design, keep service questions, link to all FAQs; FAQ in main menu.
+- [x] Align inquiry CTAs, short form, five-step process, and relevant FAQs without redesigning.
+- [x] Preserve inquiry storage, alerts, spam protection, historical data, and analytics; test desktop/mobile paths.
+- [x] Report quote-path availability and integration verification limits; do not publish.

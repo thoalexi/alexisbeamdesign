@@ -1,3 +1,4 @@
+import { inquiryCopy } from "@/data/site";
 import { Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
@@ -17,7 +18,7 @@ function BackToServices({ className }: { className?: string }) {
 
 export function ServicePageLayout({ service }: { service: ServicePage }) {
   const others = servicePages.filter((s) => s.slug !== service.slug);
-  const quoteHref = `/?service=${encodeURIComponent(service.inquiryService)}#contact`;
+  const inquiryHref = `/?service=${encodeURIComponent(service.inquiryService)}#contact`;
 
   return (
     <>
@@ -36,13 +37,13 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">{service.intro}</p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
                 <a
-                  href={quoteHref}
+                  href={inquiryHref}
                   className="site-cta group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent"
                 >
-                  Request a Quote <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  {inquiryCopy.primaryCta} <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
                 <BookingLink placement="services" className="link-underline self-start py-2 text-sm text-foreground sm:self-auto">
-                  Schedule a Free 15-Minute Chat →
+                  {inquiryCopy.bookingCta} →
                 </BookingLink>
               </div>
             </Reveal>
@@ -151,13 +152,13 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
               <h2 className="editorial-heading">Ready to talk about <em>your</em> project?</h2>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
                 <a
-                  href={quoteHref}
+                  href={inquiryHref}
                   className="site-cta group inline-flex min-h-12 items-center justify-center gap-3 bg-accent-foreground px-7 py-4 text-sm text-aegean transition-colors duration-300 hover:opacity-90"
                 >
-                  Request a Quote <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  {inquiryCopy.primaryCta} <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
                 <BookingLink placement="services" className="link-underline self-start py-2 text-sm text-accent-foreground sm:self-auto">
-                  Schedule a Free 15-Minute Chat →
+                  {inquiryCopy.bookingCta} →
                 </BookingLink>
               </div>
             </Reveal>

@@ -9,8 +9,8 @@ import { steps } from "./site";
 export type ServiceFaq = { q: string; a: string };
 
 const quoteFollowUp: ServiceFaq = {
-  q: "What happens after I request a quote?",
-  a: "I’ll review your project details and follow up by email. Depending on what you need and how you prefer to communicate, we can continue by email or arrange a call to talk through the details.",
+  q: "What happens after I send an inquiry?",
+  a: "I’ll review your message and follow up by email. A call is optional. We’ll clarify what you need, and once the scope is defined, I can prepare a personalized proposal. If you have a detailed project in mind, I may ask a few additional questions; you don’t need a polished plan to reach out.",
 };
 const contentPreparation: ServiceFaq = {
   q: "Do I need to have my wording and photographs ready?",
@@ -18,7 +18,7 @@ const contentPreparation: ServiceFaq = {
 };
 const quoteScope: ServiceFaq = {
   q: "What will my quote cover?",
-  a: "Your quote will set out the proposed work, what’s included, what you’ll need to provide, and any exclusions. Any ongoing costs or support arrangements will be discussed separately and clarified before you commit.",
+  a: "Once we’ve defined the scope, your personalized proposal will set out the recommended approach and pricing, the proposed work, what’s included, what you’ll need to provide, and any exclusions. Any ongoing costs or support arrangements will be discussed separately and clarified before you commit.",
 };
 const ongoingArrangements: ServiceFaq = {
   q: "What about hosting, software costs, and support after launch?",
@@ -37,7 +37,7 @@ export type ServicePage = {
   slug: string;
   /** Full route path, used for type-safe links. */
   path: ServicePagePath;
-  /** Matches an entry in serviceOptions so the quote form can preselect it. */
+  /** Matches an entry in serviceOptions so the inquiry form can preselect it. */
   inquiryService: string;
   title: string;
   metaTitle: string;
@@ -83,18 +83,18 @@ export const servicePages: ServicePage[] = [
       "Foundational SEO setup: page titles, descriptions, social sharing metadata, and clean structure",
     ],
     processNote:
-      "Every website project follows the same five steps: we talk about your business and goals, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
+      "Every website project follows the same five steps: you say hello, we figure out what makes sense, you review a personalized proposal after we define the scope, we build with your feedback in the client portal after your agreement is signed and your deposit is paid, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. If your project needs something beyond a thoughtfully built website, I'll tell you honestly what's involved before we begin.",
     faqIntro: "Common questions about building a new website.",
     faqs: [
       {
         q: "How much does a new website cost?",
-        a: "Every project is different, so I don't publish fixed prices. After a short conversation about what you need, I'll provide a clear, scoped quote before any work begins, so you know what to expect.",
+        a: "Every project is a little different. Pricing depends on what you're looking to build, the features you need, and the overall scope. Once we've talked through your goals, I'll provide a proposal outlining the pricing and what's included.",
       },
       {
         q: "Do I need to be in Atlanta to work with you?",
-        a: "No. I'm based in Atlanta, but I work remotely with small businesses across the U.S. Our conversations happen over video or phone, and everything else is shared online.",
+        a: "No. I'm based in Atlanta, but I work remotely with small businesses across the U.S. We can start over email. Calls are optional, and project materials are shared online.",
       },
       quoteFollowUp,
       contentPreparation,
@@ -129,7 +129,7 @@ export const servicePages: ServicePage[] = [
       "Clearer customer journeys from first visit to getting in touch",
     ],
     processNote:
-      "A redesign follows the same five steps: we talk about what's working and what isn't, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
+      "A redesign follows the same five steps: you say hello, we review what's working and what isn't, you receive a personalized proposal after we define the scope, we rebuild with your feedback after your agreement is signed and your deposit is paid, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. If your redesign involves systems beyond the website itself, we'll scope that honestly before starting.",
     faqIntro: "Common questions about redesigning an existing website.",
@@ -144,7 +144,7 @@ export const servicePages: ServicePage[] = [
       },
       {
         q: "Do I need to be local to work with you?",
-        a: "No. I'm based in Atlanta and work remotely with small businesses across the U.S. Everything — from our first conversation to design reviews — happens online or over the phone.",
+        a: "No. I'm based in Atlanta and work remotely with small businesses across the U.S. We can start over email; a call isn't required. Project materials and design reviews are shared online.",
       },
       quoteFollowUp,
       contentPreparation,
@@ -178,7 +178,7 @@ export const servicePages: ServicePage[] = [
       "Interactive web tools built around how your business actually works",
     ],
     processNote:
-      "Automation work follows the same five steps: we talk through your current process, you review a personalized proposal, we make it official, you follow along in your private client portal, and then we launch.",
+      "Automation work follows the same five steps: you say hello, we work through your current process, you receive a personalized proposal after we define the scope, we build with your feedback after your agreement is signed and your deposit is paid, and then we launch.",
     scopeCaveat:
       "Complex integrations and custom software projects are evaluated individually based on technical requirements. Some systems connect easily; others need more involved work. I'll always be upfront about which situation you're in before we start.",
     faqIntro: "Common questions about automating everyday work.",
@@ -209,7 +209,7 @@ export function servicePageBySlug(slug: string): ServicePage | undefined {
   return servicePages.find((s) => s.slug === slug);
 }
 
-/** Map an allowlisted ?service= quote-CTA value to a valid form option, or "" if unknown. */
+/** Map an allowlisted ?service= inquiry-CTA value to a valid form option, or "" if unknown. */
 export function preselectService(raw: string, options: readonly string[]): string {
   const v = raw.trim();
   return options.includes(v) ? v : "";

@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
-import { budgetOptions, homepageCopy, serviceOptions, timelineOptions } from "@/data/site";
-import { normalizeWebsite } from "@/lib/inquiry.functions";
+import { homepageCopy, inquiryCopy, serviceOptions, serviceOptionLabels } from "@/data/site";
+import { BookingLink } from "@/components/site/BookingLink";
+import { Button } from "@/components/ui/button";
+import { useServerFn } from "@tanstack/react-start";
+import { normalizeWebsite } from "@/lib/inquiry-schema";
 import { submitInquiry } from "@/lib/inquiry.functions";
 import { cn } from "@/lib/utils";
 import { track, trackOnce } from "@/lib/analytics";
@@ -14,6 +17,8 @@ const fieldBase =
 
 export function ContactForm({ preselectedService = "" }: { preselectedService?: string | undefined }) {
   const startedAt = useRef(Date.now());
+  const submitting = useRef(false);
+  const submit = useServerFn(submitInquiry);
   const serviceRef = useRef<HTMLSelectElement>(null);
 
   // Browsers auto-select the first enabled option when none matches; set the
@@ -26,29 +31,28 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting.current) return;
     const fd = new FormData(e.currentTarget);
     const v = (k: string) => String(fd.get(k) ?? "").trim();
     const next: Errors = {};
     if (!v("name")) next.name = "Please share your name.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) next.email = "Please enter a valid email address.";
-    if (!v("service")) next.service = "Please choose what I can help with.";
+    if (v("service") && !serviceOptions.some((o) => o === v("service"))) next.service = "Please choose a valid option.";
     if (normalizeWebsite(v("websiteUrl")) === null) next.websiteUrl = "Please enter a valid website address, like yourwebsite.com.";
     if (v("message").length < 10) next.message = "Tell me a little more (at least 10 characters).";
     setErrors(next);
     if (Object.keys(next).length) return;
 
+    submitting.current = true;
     setStatus("sending");
     try {
-      const res = await submitInquiry({
+      const res = await submit({
         data: {
           name: v("name"),
           email: v("email"),
-          businessName: v("businessName"),
           service: v("service") as (typeof serviceOptions)[number],
           message: v("message"),
-          budget: v("budget") as (typeof budgetOptions)[number] | "",
           websiteUrl: v("websiteUrl"),
-          timeline: v("timeline") as (typeof timelineOptions)[number] | "",
           website: v("website"),
           startedAt: startedAt.current,
           attribution: getAttribution(),
@@ -65,6 +69,8 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
     } catch {
       setErrors({ form: "Your message couldn't be sent just now. Please check your details and try again." });
       setStatus("idle");
+    } finally {
+      submitting.current = false;
     }
   }
 
@@ -75,10 +81,11 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
         <span className="success-confetti" aria-hidden="true">
           {Array.from({ length: 10 }, (_, i) => <i key={i} />)}
         </span>
-        <p className="eyebrow text-accent">Message received</p>
+        <p className="eyebrow text-accent">{inquiryCopy.successHeading}</p>
         <p className="mt-5 font-serif text-3xl leading-snug md:text-4xl">
-          Thanks for reaching out! Your project details have been received. I look forward to learning more about your project.
+          {inquiryCopy.successBody}
         </p>
+        <BookingLink placement="contact" className="link-underline mt-8 inline-flex py-2 text-sm">{inquiryCopy.bookingCta}</BookingLink>
       </div>
     );
   }
@@ -97,56 +104,42 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
           Website <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
-      <Field label="Name" htmlFor="inquiry-name" required>
+      <Field label={inquiryCopy.nameLabel} htmlFor="inquiry-name" required>
         <input id="inquiry-name" name="name" required autoComplete="name" maxLength={100} className={fieldBase} aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
         {err("name")}
       </Field>
-      <Field label="Email" htmlFor="inquiry-email" required>
+      <Field label={inquiryCopy.emailLabel} htmlFor="inquiry-email" required>
         <input id="inquiry-email" name="email" type="email" required autoComplete="email" maxLength={255} className={fieldBase} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
         {err("email")}
       </Field>
-      <Field label="Business name" htmlFor="inquiry-business" className="sm:col-span-2">
-        <input id="inquiry-business" name="businessName" autoComplete="organization" maxLength={150} className={fieldBase} />
-      </Field>
-      <Field label="What can I help you with?" htmlFor="inquiry-service" required>
-        <select id="inquiry-service" ref={serviceRef} name="service" required defaultValue={preselectedService} className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
-          <option value="" disabled>Choose one</option>
-          {serviceOptions.map((o) => <option key={o}>{o}</option>)}
+      <Field label={inquiryCopy.serviceLabel} htmlFor="inquiry-service">
+        <select id="inquiry-service" ref={serviceRef} name="service" defaultValue={preselectedService} className={cn(fieldBase, "cursor-pointer")} aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined}>
+          <option value="">Choose one (optional)</option>
+          {serviceOptions.map((o) => <option key={o} value={o}>{serviceOptionLabels[o]}</option>)}
         </select>
         {err("service")}
       </Field>
-      <Field label="Approximate budget" htmlFor="inquiry-budget">
-        <select id="inquiry-budget" name="budget" defaultValue="" className={cn(fieldBase, "cursor-pointer")}>
-          <option value="">Prefer not to say</option>
-          {budgetOptions.map((o) => <option key={o}>{o}</option>)}
-        </select>
-      </Field>
-      <Field label="Existing website" htmlFor="inquiry-website-url">
+      <Field label={inquiryCopy.websiteLabel} htmlFor="inquiry-website-url">
         <input id="inquiry-website-url" name="websiteUrl" type="text" inputMode="url" autoComplete="url" placeholder="https://yourwebsite.com" maxLength={255} className={fieldBase} aria-invalid={!!errors.websiteUrl} aria-describedby={errors.websiteUrl ? "websiteUrl-error" : undefined} />
         {err("websiteUrl")}
       </Field>
-      <Field label="When are you hoping to get started?" htmlFor="inquiry-timeline">
-        <select id="inquiry-timeline" name="timeline" defaultValue="" className={cn(fieldBase, "cursor-pointer")}>
-          <option value="">Select a timeline</option>
-          {timelineOptions.map((o) => <option key={o}>{o}</option>)}
-        </select>
-      </Field>
-      <Field label="Tell me about your project" htmlFor="inquiry-message" required className="sm:col-span-2">
-        <textarea id="inquiry-message" name="message" required rows={5} maxLength={5000} placeholder="What would a great outcome look like for you?" className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
+      <Field label={inquiryCopy.messageLabel} htmlFor="inquiry-message" required className="sm:col-span-2">
+        <textarea id="inquiry-message" name="message" required rows={5} maxLength={5000} placeholder={inquiryCopy.messagePlaceholder} className={cn(fieldBase, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
         {err("message")}
       </Field>
       <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground" aria-live="polite">
           {errors.form ? <span className="text-destructive">{errors.form}</span> : homepageCopy.followUp}
         </p>
-        <button
+        <Button
+          variant="ghost"
           type="submit"
           disabled={status === "sending"}
-          className="site-button group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-8 py-4 text-sm tracking-wide text-background transition-colors duration-300 hover:bg-accent disabled:opacity-60"
+          className="site-button group h-auto shrink-0 whitespace-nowrap rounded-none font-normal inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-8 py-4 text-sm tracking-wide text-background transition-colors duration-300 hover:bg-accent disabled:opacity-60"
         >
-          {status === "sending" ? "Sending…" : "Send My Project Details"}
+          {status === "sending" ? "Sending…" : inquiryCopy.submitLabel}
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </button>
+        </Button>
       </div>
       <p className="text-xs text-muted-foreground sm:col-span-2">
         See the <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link> for how your information is handled.

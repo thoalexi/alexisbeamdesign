@@ -38,11 +38,11 @@ const Email = ({ name, email, businessName, service, budget, websiteUrl, timelin
         <Hr style={hr} />
         <Row label="Name" value={name} />
         <Row label="Email" value={email} />
-        <Row label="Business" value={businessName} />
+        {businessName && <Row label="Business" value={businessName} />}
         <Row label="Service" value={service} />
-        <Row label="Budget" value={budget} />
+        {budget && <Row label="Budget" value={budget} />}
         <Row label="Existing website" value={websiteUrl} />
-        <Row label="Timeline" value={timeline} />
+        {timeline && <Row label="Timeline" value={timeline} />}
         <Text style={labelStyle}>Message</Text>
         <Text style={{ ...valueStyle, whiteSpace: 'pre-wrap' }}>{message || '—'}</Text>
         {hasAttribution && (

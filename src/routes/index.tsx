@@ -8,7 +8,7 @@ import { BookingLink } from "@/components/site/BookingLink";
 import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
 import { FaqAccordion } from "@/components/site/FaqAccordion";
-import { clientPortalUrl, faqIntro, faqs, homepageCopy, navLinks, portal, serviceOptions, services, socials, steps } from "@/data/site";
+import { clientPortalUrl, faqIntro, faqs, homepageCopy, inquiryCopy, navLinks, portal, serviceOptions, services, socials, steps } from "@/data/site";
 import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
 import headshot from "@/assets/alexis-headshot.png.asset.json";
@@ -19,7 +19,7 @@ const DESC =
 const URL_HOME = "https://alexisbeamdesign.com/";
 
 export const Route = createFileRoute("/")({
-  // Quote CTAs arrive as /?service=<option>#contact; only allowlisted form options preselect.
+  // Inquiry CTAs arrive as /?service=<option>#contact; only allowlisted form options preselect.
   validateSearch: (search: Record<string, unknown>) => {
     const service = preselectService(typeof search["service"] === "string" ? search["service"] : "", serviceOptions);
     return service ? { service } : {};
@@ -120,10 +120,10 @@ function Hero() {
             <p className="max-w-xl font-sans text-sm leading-relaxed md:text-base">{homepageCopy.intro}</p>
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
               <a href="#contact" className="site-cta group inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
-                Request a Quote <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                {inquiryCopy.primaryCta} <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
               <BookingLink placement="opening" className="link-underline self-start py-3 text-sm text-foreground sm:self-auto">
-                Schedule a Free 15-Minute Chat →
+                {inquiryCopy.bookingCta} →
               </BookingLink>
             </div>
           </div>
@@ -359,7 +359,7 @@ function Process() {
           ))}
         </ol>
         <a href="#contact" className="site-cta group mt-12 inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
-          Start Your Project <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          {inquiryCopy.primaryCta} <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </a>
       </div>
     </section>
@@ -407,7 +407,7 @@ function Faq() {
           Still have questions?{" "}
           <a href="#contact" className="link-underline text-foreground">Let's talk.</a>{" "}
           <span className="text-muted-foreground">Or </span>
-          <BookingLink placement="contact" className="link-underline text-foreground">schedule a free 15-minute chat</BookingLink>.
+          <BookingLink placement="contact" className="link-underline text-foreground">{inquiryCopy.bookingCta}</BookingLink>.
         </p>
       </div>
     </section>
@@ -442,16 +442,16 @@ function Contact() {
     <section id="contact" className="px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-12">
         <Reveal className="md:col-span-5">
-          <p className="eyebrow flex items-center gap-4 text-accent"><span className="h-px w-10 bg-accent" aria-hidden="true" />Request a quote</p>
+          <p className="eyebrow flex items-center gap-4 text-accent"><span className="h-px w-10 bg-accent" aria-hidden="true" />Say hello</p>
           <h2 className="editorial-heading mt-6">
-            Ready to get <em className="text-accent">started?</em>
+            {homepageCopy.contactHeading}
           </h2>
           <p className="mt-8 text-lg leading-relaxed text-muted-foreground">{homepageCopy.contactIntro}</p>
           <div className="mt-12 border-t pt-8">
             <p className="font-serif text-2xl">{homepageCopy.chatHeading}</p>
             <p className="mt-2 leading-relaxed text-muted-foreground">{homepageCopy.chatIntro}</p>
             <BookingLink placement="contact" className="group mt-4 inline-flex items-center gap-2 text-sm">
-              <span className="link-underline">Schedule a Free 15-Minute Chat</span>
+              <span className="link-underline">{inquiryCopy.bookingCta}</span>
               <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </BookingLink>
           </div>
@@ -488,6 +488,7 @@ function Footer() {
             )}
             <ul className="flex gap-8 text-sm">
               <li><a href={clientPortalUrl} className="link-underline">Client Login</a></li>
+              <li><a href="/#contact" className="link-underline">{inquiryCopy.primaryCta}</a></li>
             </ul>
           </nav>
         </div>

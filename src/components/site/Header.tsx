@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { clientPortalUrl, navLinks } from "@/data/site";
+import { clientPortalUrl, inquiryCopy, navLinks } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { ThemeSelector } from "@/components/site/ThemeSelector";
 
@@ -37,8 +37,8 @@ export function Header() {
         <a href="/" aria-label="alexis beam, back to top" onClick={() => setOpen(false)}>
           <Wordmark />
         </a>
-        <div className="hidden items-center gap-10 md:flex">
-          <ul className="flex items-center gap-8 text-sm">
+        <div className="hidden items-center gap-5 md:flex">
+          <ul className="flex items-center gap-5 text-sm">
             {navLinks.map((l) => (
               <li key={l.id}>
                 <a href={`/#${l.id}`} className="link-underline pb-0.5 text-foreground/80 hover:text-foreground">
@@ -52,7 +52,7 @@ export function Header() {
             href="/#contact"
             className="site-cta group inline-flex items-center gap-2 border border-foreground px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-foreground hover:text-background"
           >
-            Request a Quote <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            {inquiryCopy.primaryCta} <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </div>
         <button
@@ -92,7 +92,7 @@ export function Header() {
           onClick={() => setOpen(false)}
           className="site-cta mt-10 flex items-center justify-center bg-foreground py-4 text-background"
         >
-          Request a Quote →
+          {inquiryCopy.primaryCta} →
         </a>
         <a href={clientPortalUrl} className="mt-6 block text-center text-sm text-muted-foreground">Client Login</a>
       </div>

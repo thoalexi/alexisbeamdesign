@@ -53,7 +53,7 @@ function PrivacyPolicy() {
           </div>
 
           <Section title="Inquiries submitted through this website">
-            <p>When you send an inquiry through this website, I collect what you choose to provide: your name, email address, and optionally your business name, existing website, desired timeline, approximate budget, the type of service you're interested in, and your project description.</p>
+            <p>When you send an inquiry through this website, I collect your name, email address, and a little about your idea. You may also choose to provide your existing website and the type of service you're interested in. Older inquiries may include business names, budgets, or desired timelines collected by the previous form.</p>
             <p>I use website inquiries to review your request and respond about your project. I don't sell this information, add you to a marketing email list, or use your form answers for promotional marketing.</p>
           </Section>
 

@@ -22,6 +22,8 @@ const CTA_TARGETS: Record<string, string> = {
 // Only known CTA labels are sent; anything else falls back to the target name.
 const KNOWN_CTA_LABELS = new Set([
   "Request a Quote",
+  "Tell Me About Your Project",
+  "Book a Free 15-Minute Chat",
   "Let's Talk",
   "Explore My Work",
   "Let's Talk About Automation",
@@ -58,7 +60,7 @@ export function initAnalytics(id: string) {
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() {
     // eslint-disable-next-line prefer-rest-params -- gtag.js needs the Arguments object
-    window.dataLayer!.push(arguments);
+    window.dataLayer?.push(arguments);
   };
   window.gtag("set", "developer_id.dZjgwMW", true);
   window.gtag("js", new Date());
@@ -75,7 +77,7 @@ export function initAnalytics(id: string) {
     const label = (a.textContent ?? "").replace(/[→↓]/g, "").trim().slice(0, 60);
     if (href.startsWith("mailto:")) track("email_click", { link_location: a.closest("footer") ? "footer" : "page" });
     else if (href.startsWith("tel:")) track("phone_click");
-    else if (CTA_TARGETS[href]) track("cta_click", { cta_text: knownCtaLabel(label), cta_target: CTA_TARGETS[href] });
+    else if (CTA_TARGETS[href] || /^\/\?service=[^#]+#contact$/.test(href)) track("cta_click", { cta_text: knownCtaLabel(label), cta_target: CTA_TARGETS[href] ?? "contact" });
     else if (a.closest("#work") && /^https?:/.test(href)) track("portfolio_click", { project_url: href });
   });
 

@@ -22,6 +22,20 @@
       "when": 1791849816890,
       "tag": "0002_inquiries_website_timeline",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794719471975,
+      "tag": "0003_optional_public_inquiry_service",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794719708093,
+      "tag": "0004_allow_unspecified_service_interest",
+      "breakpoints": true
     }
   ]
 }

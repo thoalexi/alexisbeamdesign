@@ -1,0 +1,2 @@
+ALTER TABLE public.inquiries DROP CONSTRAINT inquiries_service_check;
+ALTER TABLE public.inquiries ADD CONSTRAINT inquiries_service_check CHECK (service IN ('','New Website','Website Redesign','Digital Tool or Web Application','Automation / Workflow Improvement','Something Else'));
