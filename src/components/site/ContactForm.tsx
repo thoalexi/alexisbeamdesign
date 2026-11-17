@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { Link } from "@tanstack/react-router";
 import { homepageCopy, inquiryCopy, serviceOptions, serviceOptionLabels } from "@/data/site";
 import { BookingLink } from "@/components/site/BookingLink";
 import { Button } from "@/components/ui/button";
@@ -141,9 +140,6 @@ export function ContactForm({ preselectedService = "" }: { preselectedService?: 
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </Button>
       </div>
-      <p className="text-xs text-muted-foreground sm:col-span-2">
-        See the <Link to="/privacy-policy" className="link-underline">Privacy Policy</Link> for how your information is handled.
-      </p>
     </form>
   );
 }
