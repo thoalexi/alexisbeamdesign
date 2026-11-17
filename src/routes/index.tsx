@@ -368,17 +368,11 @@ function Process() {
               <div className="space-y-3 leading-relaxed text-muted-foreground md:col-span-6 md:col-start-7">
                 {s.text.map((t) => <p key={t}>{t}</p>)}
                 {"note" in s && s.note && <p className="eyebrow text-accent">{s.note}</p>}
+                {"portalLink" in s && s.portalLink && <a href={clientPortalUrl} className="link-underline inline-block text-sm text-foreground">Client Login →</a>}
               </div>
             </Reveal>
           ))}
         </ol>
-        <div className="mt-12 grid gap-6 border-b border-foreground/20 pb-10 md:grid-cols-12">
-          <h3 className="editorial-subheading md:col-span-5">{portal.processHeading}</h3>
-          <div className="space-y-4 text-muted-foreground md:col-span-6 md:col-start-7">
-            <p className="leading-relaxed">{portal.processNote}</p>
-            <a href={clientPortalUrl} className="link-underline inline-block text-sm text-foreground">Client Login →</a>
-          </div>
-        </div>
         <a href="#contact" className="site-cta group mt-12 inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
           {inquiryCopy.primaryCta} <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </a>

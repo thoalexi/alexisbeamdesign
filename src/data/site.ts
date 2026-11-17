@@ -100,13 +100,11 @@ export const steps = [
   { title: "Say Hello", text: ["Tell me a little about your business and what you're hoping to accomplish. No polished plan required."] },
   { title: "Let's Figure It Out", text: ["We'll talk through your goals, what's working, what's not, and what kind of solution makes sense. We can start by email; a call is optional."] },
   { title: "Your Personalized Proposal", text: ["Once we've defined the scope, I'll put together a proposal outlining the recommended approach, deliverables, timeline, and pricing.", "You can review your proposal through a private link, ask questions, or request changes."], note: "No account required." },
-  { title: "Let's Build Something Good", text: ["After we've agreed on the details, your service agreement is signed, and your deposit is paid, I'll get to work bringing your project to life.", "You'll receive your portal invitation once your service agreement is signed and your deposit is paid. Follow progress, review work, and share materials in your private client workspace."] },
+  { title: "Let's Build Something Good", text: ["After we've agreed on the details, your service agreement is signed, and your deposit is paid, I'll get to work bringing your project to life.", "You'll receive your portal invitation once your service agreement is signed and your deposit is paid. Follow progress, review work, and share materials in your private client workspace."], portalLink: true },
   { title: "Launch & Beyond", text: ["Once your website is approved and the final project balance is paid, we'll get everything ready to go live and I'll make sure you know how to manage your new setup.", "For standard website packages, your maintenance plan begins when your website goes live. Support for automation or custom tools is agreed in your proposal."] },
 ];
 
 export const portal = {
-  processHeading: "Once we start",
-  processNote: "Once your service agreement is signed and your deposit is paid, you'll receive an invitation to your private client portal. Follow progress, share materials, review work, and keep important documents organized in one place.",
   intro: "No chasing email threads or wondering what's happening behind the scenes. Once your project begins, you'll have a private workspace to follow progress, share materials, review work, and keep important documents organized.",
   benefits: [
     { title: "Clear Progress", text: "Follow project stages, milestones, and updates as your website comes together." },
