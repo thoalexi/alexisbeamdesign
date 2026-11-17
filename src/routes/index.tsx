@@ -8,7 +8,7 @@ import { BookingLink } from "@/components/site/BookingLink";
 import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
 import { FaqAccordion } from "@/components/site/FaqAccordion";
-import { clientPortalUrl, faqIntro, faqs, homepageCopy, inquiryCopy, navLinks, portal, serviceOptions, services, socials, steps } from "@/data/site";
+import { clientPortalUrl, faqIntro, faqs, homepageCopy, inquiryCopy, navLinks, portal, serviceOptions, services, socials, steps, websiteDiagnosis } from "@/data/site";
 import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
 import headshot from "@/assets/alexis-headshot.png.asset.json";
@@ -316,12 +316,26 @@ function Services() {
                 <p className="mt-5 max-w-lg leading-relaxed text-muted-foreground">{s.blurb}</p>
                 {(() => {
                   const page = servicePages.find((p) => p.title === s.title);
-                  return page ? (
-                    <Link to={page.path} className="group/link mt-6 inline-flex items-center gap-2 text-sm text-foreground">
-                      <span className="link-underline">Learn more about {s.title}</span>
-                      <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
-                    </Link>
-                  ) : null;
+                  return (
+                    <div className="mt-6 space-y-3">
+                      {page ? (
+                        <Link to={page.path} className="group/link inline-flex items-center gap-2 text-sm text-foreground">
+                          <span className="link-underline">Learn more about {s.title}</span>
+                          <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+                        </Link>
+                      ) : null}
+                      {page?.slug === "website-redesign" ? (
+                        <a
+                          href={websiteDiagnosis.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link block text-sm text-muted-foreground"
+                        >
+                          <span className="link-underline">{websiteDiagnosis.homepageLink}</span>
+                        </a>
+                      ) : null}
+                    </div>
+                  );
                 })()}
               </div>
               <ul className="space-y-2.5 text-sm md:col-span-4 md:col-start-9">

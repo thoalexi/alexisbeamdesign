@@ -1,4 +1,4 @@
-import { inquiryCopy } from "@/data/site";
+import { inquiryCopy, websiteDiagnosis } from "@/data/site";
 import { Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
@@ -68,6 +68,28 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
             </Reveal>
           </div>
         </section>
+
+        {/* $125 Website Diagnosis callout (redesign page only) */}
+        {service.slug === "website-redesign" && (
+          <section className="px-6 py-16 md:px-10 md:py-20">
+            <div className="mx-auto max-w-7xl">
+              <Reveal>
+                <div className="max-w-3xl border border-foreground/15 p-8 md:p-10">
+                  <h2 className="font-serif text-2xl leading-snug md:text-3xl">{websiteDiagnosis.redesignCallout.heading}</h2>
+                  <p className="mt-4 leading-relaxed text-muted-foreground">{websiteDiagnosis.redesignCallout.body}</p>
+                  <a
+                    href={websiteDiagnosis.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-6 inline-flex items-center gap-2 text-sm text-foreground"
+                  >
+                    <span className="link-underline">{websiteDiagnosis.redesignCallout.cta}</span>
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        )}
 
         {/* Included work */}
         <section className="px-6 py-24 md:px-10 md:py-32">
