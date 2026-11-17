@@ -21,3 +21,4 @@
 
 - Public inquiry validation lives in browser-safe `src/lib/inquiry-schema.ts`; stable service values map to approachable labels so historical data, attribution, and existing service URLs remain compatible.
 - Inquiry analytics retain `cta_click`, `inquiry_start`, `generate_lead`, and `discovery_call_click`; new CTA labels and service-prefilled contact URLs are recognized, and only successful saves emit `generate_lead`.
+- Service navigation destinations live in `src/data/site.ts` and render through ServiceNavigationLink in desktop, mobile, and footer menus, so all entry points stay aligned.

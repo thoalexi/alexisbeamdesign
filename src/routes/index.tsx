@@ -8,7 +8,8 @@ import { BookingLink } from "@/components/site/BookingLink";
 import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
 import { FaqAccordion } from "@/components/site/FaqAccordion";
-import { clientPortalUrl, faqIntro, faqs, homepageCopy, inquiryCopy, navLinks, portal, serviceOptions, services, socials, steps, websiteDiagnosis } from "@/data/site";
+import { ServiceNavigationLink } from "@/components/site/ServiceNavigationLink";
+import { clientPortalUrl, faqIntro, faqs, homepageCopy, inquiryCopy, navLinks, portal, serviceNavigation, serviceOptions, services, socials, steps, websiteDiagnosis } from "@/data/site";
 import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
 import headshot from "@/assets/alexis-headshot.png.asset.json";
@@ -64,12 +65,10 @@ function Home() {
       <Header />
       <main id="main">
         <Hero />
+        <Services />
         <Work />
         <About />
-        <Services />
         <Process />
-        <Portal />
-        <Differentiator />
         <Faq />
         <Contact />
       </main>
@@ -168,7 +167,7 @@ function Work() {
         <SectionHead
           eyebrow="Selected work"
           title={<>Good ideas, <em className="text-accent">brought to life.</em></>}
-          copy="Every project starts with a problem worth solving. Here's a look at some of the digital experiences I've created."
+          copy={homepageCopy.workIntro}
         />
         <div className="mt-24 space-y-32 md:space-y-44">
           {projects.map((p, i) => (
@@ -269,9 +268,9 @@ function About() {
             </div>
           </Reveal>
           <Reveal delay={120} className="space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-6 md:col-start-6">
-            <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">You know your business. I bring a fresh perspective on how your website and everyday tools can support it.</p>
+            <p className="font-serif text-2xl leading-snug text-foreground md:text-3xl">{homepageCopy.aboutPerspective}</p>
             <p>I’m Alexis, and I enjoy turning complicated problems into clear, useful solutions. My Ph.D. in psychology, with a focus in cognitive science, taught me to look closely at how people think, learn, and make decisions. More than 12 years in data, technology, and business strategy taught me to connect that understanding to practical business needs.</p>
-            <p>When we work together, I start by listening: what’s working, what’s frustrating, and what you want to accomplish. From there, I combine thoughtful design with practical problem-solving—whether we’re creating or redesigning a website, improving a workflow, or automating a repetitive task.</p>
+            <p>{homepageCopy.aboutApproach}</p>
             <p>Based in Atlanta and working with small businesses across the U.S., I keep the process collaborative and focused on what will be useful to you.</p>
             <ul className="!mt-10 grid gap-8 border-t pt-8 xl:grid-cols-3">
               {[
@@ -312,6 +311,7 @@ function Services() {
           {services.map((s) => (
             <Reveal key={s.title} as="article" className="group grid gap-6 border-b border-foreground/20 py-12 md:grid-cols-12 md:gap-10 md:py-16">
               <div className="md:col-span-7">
+                <p className="eyebrow mb-4 text-accent">{s.choice}</p>
                 <h3 className="text-4xl transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">{s.title}</h3>
                 <p className="mt-5 max-w-lg leading-relaxed text-muted-foreground">{s.blurb}</p>
                 {(() => {
@@ -372,39 +372,16 @@ function Process() {
             </Reveal>
           ))}
         </ol>
+        <div className="mt-12 grid gap-6 border-b border-foreground/20 pb-10 md:grid-cols-12">
+          <h3 className="editorial-subheading md:col-span-5">{portal.processHeading}</h3>
+          <div className="space-y-4 text-muted-foreground md:col-span-6 md:col-start-7">
+            <p className="leading-relaxed">{portal.processNote}</p>
+            <a href={clientPortalUrl} className="link-underline inline-block text-sm text-foreground">Client Login →</a>
+          </div>
+        </div>
         <a href="#contact" className="site-cta group mt-12 inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-7 py-4 text-sm text-background transition-colors duration-300 hover:bg-accent">
           {inquiryCopy.primaryCta} <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </a>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Client portal ---------- */
-function Portal() {
-  return (
-    <section aria-labelledby="portal-title" className="bg-secondary px-6 py-28 md:px-10 md:py-40">
-      <div className="mx-auto max-w-7xl">
-        <SectionHead eyebrow="The client portal" title={<span id="portal-title">Your project. <em className="text-accent">Everything in one place.</em></span>} copy={portal.intro} />
-        <ul className="mt-20 grid gap-10 border-t border-foreground pt-10 sm:grid-cols-2 lg:grid-cols-4">
-          {portal.benefits.map((b, i) => (
-            <Reveal as="li" key={b.title} delay={i * 90}>
-              <h3 className="editorial-subheading">{b.title}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{b.text}</p>
-            </Reveal>
-          ))}
-        </ul>
-        <div className="mt-16 grid gap-8 border-t border-foreground/20 pt-8 md:grid-cols-12">
-          <ul className="space-y-2.5 text-sm md:col-span-7">
-            {portal.notes.map((n) => (
-              <li key={n} className="flex gap-3"><span className="text-accent" aria-hidden="true">+</span>{n}</li>
-            ))}
-          </ul>
-          <p className="text-sm md:col-span-4 md:col-start-9">
-            Already a client?{" "}
-            <a href={clientPortalUrl} className="link-underline text-foreground">Client Login →</a>
-          </p>
-        </div>
       </div>
     </section>
   );
@@ -419,31 +396,10 @@ function Faq() {
         <FaqAccordion items={faqs} />
         <p className="mt-12 text-sm">
           Still have questions?{" "}
-          <a href="#contact" className="link-underline text-foreground">Let's talk.</a>{" "}
+          <a href="#contact" className="link-underline text-foreground">{inquiryCopy.primaryCta}</a>{" "}
           <span className="text-muted-foreground">Or </span>
           <BookingLink placement="contact" className="link-underline text-foreground">{inquiryCopy.bookingCta}</BookingLink>.
         </p>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Differentiator ---------- */
-function Differentiator() {
-  return (
-    <section aria-labelledby="diff-title" className="bg-aegean px-6 py-24 text-accent-foreground md:px-10 md:py-28">
-      <div className="mx-auto grid max-w-7xl gap-14 md:grid-cols-12">
-        <Reveal className="md:col-span-6">
-          <h2 id="diff-title" className="editorial-heading">
-            Not just another <em>pretty</em> website.
-          </h2>
-        </Reveal>
-        <Reveal delay={120} className="space-y-5 self-end text-lg leading-relaxed text-accent-foreground/85 md:col-span-5 md:col-start-8">
-          <p>{homepageCopy.differentiator}</p>
-          <p className="border-t border-accent-foreground/30 pt-6 font-serif text-2xl italic text-accent-foreground">
-            Less unnecessary complexity. More thoughtful solutions.
-          </p>
-        </Reveal>
       </div>
     </section>
   );
@@ -483,12 +439,16 @@ function Footer() {
   return (
     <footer className="bg-ink px-6 pb-10 pt-20 text-ink-foreground md:px-10">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-12 xl:flex-row xl:items-start xl:justify-between">
           <div>
             <Wordmark className="text-4xl md:text-5xl" />
             <p className="mt-3 font-serif text-xl italic text-ink-foreground/70">Thoughtfully designed. Purposefully built.</p>
           </div>
-          <nav aria-label="Footer" className="flex flex-col gap-6 sm:flex-row sm:gap-14">
+          <nav aria-label="Footer" className="grid gap-8 sm:grid-cols-2 xl:max-w-2xl">
+            <ul className="space-y-3 text-sm">
+              {serviceNavigation.map((item) => <li key={item.label}><ServiceNavigationLink item={item} className="link-underline" /></li>)}
+            </ul>
+            <div className="space-y-6">
             <ul className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
               {navLinks.map((l) => (
                 <li key={l.id}><a href={`/#${l.id}`} className="link-underline">{l.label}</a></li>
@@ -504,6 +464,7 @@ function Footer() {
               <li><a href={clientPortalUrl} className="link-underline">Client Login</a></li>
               <li><a href="/#contact" className="link-underline">{inquiryCopy.primaryCta}</a></li>
             </ul>
+            </div>
           </nav>
         </div>
         <div className="mt-16 flex flex-col gap-2 border-t border-ink-foreground/15 pt-6 text-xs text-ink-foreground/60 sm:flex-row sm:justify-between">

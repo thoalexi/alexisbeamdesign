@@ -8,3 +8,6 @@
 - [x] Align inquiry CTAs, short form, five-step process, and relevant FAQs without redesigning.
 - [x] Preserve inquiry storage, alerts, spam protection, historical data, and analytics; test desktop/mobile paths.
 - [x] Report quote-path availability and integration verification limits; do not publish.
+- [x] Add shared Services dropdown and direct footer links, preserving destinations.
+- [x] Reorder homepage, consolidate portal into process, and clarify inquiry choices.
+- [x] Verify desktop/mobile and keyboard navigation, direct service arrivals, and anchor clearance; leave unpublished.

@@ -3,7 +3,10 @@ import { attributionUtmParams } from "@/lib/attribution";
 export const homepageCopy = {
   opening: "Websites and practical workflow automation for small businesses.",
   intro: "Based in Atlanta, working with small businesses across the U.S.",
-  servicesIntro: "Website design, redesign, and practical improvements to the tools you use every day.",
+  servicesIntro: "A website should help people understand your business and take the next step. Choose a new website, a redesign, or practical automation to simplify repetitive work.",
+  workIntro: "Every project starts with a problem worth solving. These examples show the digital experiences I've created, from interactive tools to clearer information and practical workflows.",
+  aboutPerspective: "You know your business. I bring a fresh perspective, grounded in how people think and how technology can help.",
+  aboutApproach: "When we work together, I start by listening: what’s working, what’s frustrating, and what you want to accomplish. Thoughtful design and practical problem-solving guide my approach.",
   differentiator: "A website should help people understand your business and take the next step. Connected tools and practical automation can make the work behind it simpler, too.",
   contactIntro: "Whether you've got a fully formed idea or just know something needs to change, I'd love to hear about it.",
   contactHeading: "Tell me what you're dreaming up.",
@@ -13,9 +16,9 @@ export const homepageCopy = {
 };
 
 export const navLinks = [
+  { id: "services", label: "Services" },
   { id: "work", label: "Work" },
   { id: "about", label: "About" },
-  { id: "services", label: "Services" },
   { id: "faq", label: "FAQ" },
 ] as const;
 
@@ -28,6 +31,7 @@ export const socials = {
 export const services = [
   {
     title: "Website Design & Development",
+    choice: "Build a new site",
     blurb:
       "Modern, thoughtfully designed websites that help your business make a great first impression and turn visitors into customers.",
     includes: [
@@ -40,6 +44,7 @@ export const services = [
   },
   {
     title: "Website Redesign",
+    choice: "Improve an existing site",
     blurb:
       "Already have a website that isn't quite working for you? Let's make it something you're excited to share.",
     includes: [
@@ -52,6 +57,7 @@ export const services = [
   },
   {
     title: "Digital Solutions & Workflow Automation",
+    choice: "Automate repetitive work",
     blurb:
       "Practical automation for the everyday work that eats up your time, from customer follow-ups and connected forms and spreadsheets to reporting and admin workflows, so your business runs more smoothly.",
     includes: [
@@ -78,6 +84,18 @@ export const websiteDiagnosis = {
   homepageLink: "Not sure what needs fixing? Explore the $125 Website Diagnosis →",
 };
 
+export type ServiceDestination =
+  | { label: string; to: "/" | "/small-business-web-design" | "/website-redesign" | "/workflow-automation"; hash?: string; url?: never }
+  | { label: string; url: string; to?: never; hash?: never };
+
+export const serviceNavigation: ServiceDestination[] = [
+  { label: "All Services", to: "/", hash: "services" },
+  { label: "Website Design & Development", to: "/small-business-web-design" },
+  { label: "Website Redesign", to: "/website-redesign" },
+  { label: "Workflow Automation", to: "/workflow-automation" },
+  { label: "Website Diagnosis · $125", url: websiteDiagnosis.url },
+];
+
 export const steps = [
   { title: "Say Hello", text: ["Tell me a little about your business and what you're hoping to accomplish. No polished plan required."] },
   { title: "Let's Figure It Out", text: ["We'll talk through your goals, what's working, what's not, and what kind of solution makes sense. We can start by email; a call is optional."] },
@@ -87,6 +105,8 @@ export const steps = [
 ];
 
 export const portal = {
+  processHeading: "Once we start",
+  processNote: "Once your service agreement is signed and your deposit is paid, you'll receive an invitation to your private client portal. Follow progress, share materials, review work, and keep important documents organized in one place.",
   intro: "No chasing email threads or wondering what's happening behind the scenes. Once your project begins, you'll have a private workspace to follow progress, share materials, review work, and keep important documents organized.",
   benefits: [
     { title: "Clear Progress", text: "Follow project stages, milestones, and updates as your website comes together." },
@@ -135,7 +155,7 @@ export const serviceOptionLabels: Record<(typeof serviceOptions)[number], string
 
 export const inquiryCopy = {
   primaryCta: "Tell Me About Your Project",
-  navigationCta: "Let's Talk",
+  navigationCta: "Tell Me About Your Project",
   bookingCta: "Book a Free 15-Minute Chat",
   nameLabel: "Your Name",
   emailLabel: "Email Address",
