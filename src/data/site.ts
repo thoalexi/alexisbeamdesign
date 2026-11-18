@@ -77,7 +77,7 @@ export const clientPortalUrl = "https://portal.alexisbeamdesign.com";
 export const websiteDiagnosis = {
   url: "https://websiteaudit.alexisbeamdesign.com",
   banner: {
-    introduction: "Prices go up in the new year",
+    introduction: "Book a Website Diagnosis",
     currentPriceCents: 12500,
     currentPriceThrough: "December",
     newPriceCents: 17500,
