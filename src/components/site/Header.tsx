@@ -5,6 +5,7 @@ import { clientPortalUrl, inquiryCopy, navLinks, serviceNavigation } from "@/dat
 import { cn } from "@/lib/utils";
 import { ThemeSelector } from "@/components/site/ThemeSelector";
 import { ServiceNavigationLink } from "@/components/site/ServiceNavigationLink";
+import { AuditBanner } from "@/components/site/AuditBanner";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
@@ -50,6 +51,7 @@ export function Header() {
         scrolled || open ? "border-b bg-background/90 backdrop-blur-md" : "bg-transparent",
       )}
     >
+      <AuditBanner />
       <nav aria-label="Main" className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-4 md:px-10">
         <Link to="/" aria-label="alexis beam, back to top" onClick={closeMobile}>
           <Wordmark />
@@ -110,7 +112,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="h-[calc(100dvh-6.75rem)] overflow-y-auto bg-background px-6 pb-10 pt-8 xl:hidden"
+        className="h-[calc(100dvh-6.75rem-var(--audit-banner-height))] overflow-y-auto bg-background px-6 pb-10 pt-8 xl:hidden"
       >
         <ul className="space-y-2">
           {navLinks.map((l, i) => (

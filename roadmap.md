@@ -11,3 +11,4 @@
 - [x] Add shared Services dropdown and direct footer links, preserving destinations.
 - [x] Reorder homepage, consolidate portal into process, and clarify inquiry choices.
 - [x] Verify desktop/mobile and keyboard navigation, direct service arrivals, and anchor clearance; leave unpublished.
+- [x] Add WebsiteAuditor's audit banner now without a start timer; verify preview and leave publishing to the user at 9 a.m.

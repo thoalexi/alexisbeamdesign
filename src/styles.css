@@ -176,6 +176,16 @@
 @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 
 /* Shared personalities: Classic retains the original tokens and layout above. */
+.site-header { --audit-banner-height: 3.5rem; }
+.audit-banner { height: var(--audit-banner-height); }
+.site-header + main { padding-top: 3.5rem; }
+html { scroll-padding-top: 11rem; }
+@media (min-width: 640px) {
+  .site-header { --audit-banner-height: 2.5rem; }
+  .site-header + main { padding-top: 2.5rem; }
+  html { scroll-padding-top: 10rem; }
+}
+
 .theme-swatch { display: inline-block; width: 14px; height: 14px; flex-shrink: 0; border: 1px solid currentColor; border-radius: 50%; }
 .theme-swatch-classic { background: var(--swatch-classic); }
 .theme-swatch-retro { background: var(--swatch-retro); }

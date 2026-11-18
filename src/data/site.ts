@@ -76,6 +76,13 @@ export const clientPortalUrl = "https://portal.alexisbeamdesign.com";
 /** $125 Website Diagnosis offer for people who already have a website. Purchased only on its own page. */
 export const websiteDiagnosis = {
   url: "https://websiteaudit.alexisbeamdesign.com",
+  banner: {
+    introduction: "Prices go up in the new year",
+    currentPriceCents: 12500,
+    currentPriceThrough: "December",
+    newPriceCents: 17500,
+    newPriceFrom: "January",
+  },
   redesignCallout: {
     heading: "Not sure your website needs a redesign?",
     body: "For $125, I’ll review your site on desktop and mobile and tell you what’s working, what’s worth fixing, and what I’d tackle first. If a few changes will do the job, I’ll tell you that, too.",
