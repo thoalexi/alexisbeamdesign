@@ -1,3 +1,4 @@
+import nonsenseShot from "@/assets/nonsensesupply.jpg";
 import picklightlyShot from "@/assets/picklightly.jpg";
 import projectbidsShot from "@/assets/projectbids.jpg";
 import medicareShot from "@/assets/medicarechoice.jpg";
@@ -18,6 +19,23 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "nonsense-supply-co",
+    name: "Nonsense Supply Co.",
+    category: "E-Commerce / Brand Experience",
+    description:
+      "A playful e-commerce experience for an Atlanta-based studio creating custom gifts, paper goods, and party things. Nonsense Supply Co. pairs a bold, personality-driven brand with a practical shopping experience built around occasions, customization, and a launch countdown.",
+    highlights: [
+      "Brand-driven e-commerce design",
+      "Product browsing by occasion",
+      "Customization and cart experience",
+      "Launch countdown and email signup",
+    ],
+    url: "https://nonsensesupply.com/",
+    cta: "Explore Nonsense Supply Co.",
+    image: nonsenseShot,
+    imageAlt: "Nonsense Supply Co. homepage with the headline “Good things take time. Nonsense takes until January 4.”",
+  },
   {
     slug: "picklightly",
     name: "picklightly",
