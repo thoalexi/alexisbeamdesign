@@ -123,6 +123,9 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <noscript>
+          <img height="1" width="1" style={{ display: "none" }} alt="" src="https://www.facebook.com/tr?id=966964635872874&ev=PageView&noscript=1" />
+        </noscript>
         {children}
         <Scripts />
       </body>
@@ -130,11 +133,36 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const META_PIXEL_ID = "966964635872874";
+
+function initMetaPixel() {
+  const w = window as unknown as { fbq?: ((...a: unknown[]) => void) & Record<string, unknown>; _fbq?: unknown };
+  if (w.fbq) return;
+  const n = function (...args: unknown[]) {
+    const self = n as unknown as { callMethod?: (...a: unknown[]) => void; queue: unknown[] };
+    if (self.callMethod) self.callMethod(...args);
+    else self.queue.push(args);
+  } as unknown as ((...a: unknown[]) => void) & Record<string, unknown>;
+  w.fbq = n;
+  if (!w._fbq) w._fbq = n;
+  n.push = n;
+  n.loaded = true;
+  n.version = "2.0";
+  n.queue = [];
+  const t = document.createElement("script");
+  t.async = true;
+  t.src = "https://connect.facebook.net/en_US/fbevents.js";
+  document.head.appendChild(t);
+  w.fbq("init", META_PIXEL_ID);
+  w.fbq("track", "PageView");
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   useEffect(() => {
     captureAttribution();
+    initMetaPixel();
     getAnalyticsId()
       .then((id) => id && initAnalytics(id))
       .catch(() => {});
