@@ -145,10 +145,10 @@ function initMetaPixel() {
   } as unknown as ((...a: unknown[]) => void) & Record<string, unknown>;
   w.fbq = n;
   if (!w._fbq) w._fbq = n;
-  n.push = n;
-  n.loaded = true;
-  n.version = "2.0";
-  n.queue = [];
+  n["push"] = n;
+  n["loaded"] = true;
+  n["version"] = "2.0";
+  n["queue"] = [];
   const t = document.createElement("script");
   t.async = true;
   t.src = "https://connect.facebook.net/en_US/fbevents.js";
