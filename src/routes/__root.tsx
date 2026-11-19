@@ -157,12 +157,27 @@ function initMetaPixel() {
   w.fbq("track", "PageView");
 }
 
+const GTM_ID = "GTM-WTCXTJHP";
+
+function initGoogleTagManager() {
+  const w = window as unknown as { dataLayer?: unknown[] };
+  if (document.getElementById("gtm-script")) return;
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+  const t = document.createElement("script");
+  t.id = "gtm-script";
+  t.async = true;
+  t.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+  document.head.appendChild(t);
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   useEffect(() => {
     captureAttribution();
     initMetaPixel();
+    initGoogleTagManager();
     getAnalyticsId()
       .then((id) => id && initAnalytics(id))
       .catch(() => {});
