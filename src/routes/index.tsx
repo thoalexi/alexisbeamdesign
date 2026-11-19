@@ -307,9 +307,9 @@ function Services() {
           title={<>Good design is just <em className="text-accent">the beginning.</em></>}
           copy={homepageCopy.servicesIntro}
         />
-        <div className="mt-20 border-t border-foreground">
+        <div className="mt-20 border-y border-foreground/20 border-t-foreground">
           {services.map((s) => (
-            <Reveal key={s.title} as="article" className="group grid gap-6 border-b border-foreground/20 py-12 md:grid-cols-12 md:gap-10 md:py-16">
+            <Reveal key={s.title} as="article" className="group grid gap-6 border-foreground/20 [&:not(:last-of-type)]:border-b py-12 md:grid-cols-12 md:gap-10 md:py-16">
               <div className="md:col-span-7">
                 <p className="eyebrow mb-4 text-accent">{s.choice}</p>
                 <h3 className="text-4xl transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">{s.title}</h3>
@@ -345,10 +345,10 @@ function Services() {
               </ul>
             </Reveal>
           ))}
+          <p className="max-w-xl pb-10 text-sm italic text-muted-foreground">
+            Complex integrations and custom software projects are evaluated individually based on technical requirements.
+          </p>
         </div>
-        <p className="mt-10 max-w-xl text-sm italic text-muted-foreground">
-          Complex integrations and custom software projects are evaluated individually based on technical requirements.
-        </p>
       </div>
     </section>
   );
