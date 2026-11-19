@@ -157,7 +157,7 @@ function Work() {
   };
   useEffect(() => () => cancelAnimationFrame(frameRef.current), []);
   return (
-    <section id="work" onPointerMove={onPointerMove} className="work-section relative bg-secondary px-6 py-28 md:px-10 md:py-40">
+    <section id="work" onPointerMove={onPointerMove} className="work-section relative bg-secondary px-6 pb-28 pt-14 md:px-10 md:pb-40 md:pt-20">
       <span className="work-stickers" aria-hidden="true">
         <svg className="sticker sticker-star" viewBox="0 0 40 40"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" /></svg>
         <svg className="sticker sticker-arrow" viewBox="0 0 60 30"><path d="M2 22 C18 4 36 4 50 16 M42 8 l9 8 -11 4" fill="none" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -250,7 +250,7 @@ function ProjectImage({ project: p }: { project: Project }) {
 /* ---------- About ---------- */
 function About() {
   return (
-    <section id="about" className="px-6 py-28 md:px-10 md:py-40">
+    <section id="about" className="px-6 pb-14 pt-28 md:px-10 md:pb-20 md:pt-40">
       <div className="mx-auto max-w-7xl">
         <SectionHead eyebrow="A little about me" title={<>A creative mind.<br /><em className="text-accent">An analytical <span className="whitespace-nowrap">one, too.</span></em></>} />
         <div className="mt-12 grid items-start gap-12 md:grid-cols-12 md:gap-10">
@@ -300,7 +300,7 @@ function About() {
 /* ---------- Services ---------- */
 function Services() {
   return (
-    <section id="services" className="bg-secondary px-6 py-28 md:px-10 md:py-40">
+    <section id="services" className="bg-secondary px-6 pb-14 pt-28 md:px-10 md:pb-20 md:pt-40">
       <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="What I do"
@@ -357,7 +357,7 @@ function Services() {
 /* ---------- Process ---------- */
 function Process() {
   return (
-    <section id="process" aria-labelledby="process-title" className="px-6 py-28 md:px-10 md:py-40">
+    <section id="process" aria-labelledby="process-title" className="px-6 pb-14 pt-14 md:px-10 md:pb-20 md:pt-20">
       <div className="mx-auto max-w-7xl">
         <SectionHead eyebrow="The process" title={<span id="process-title">What working together <em className="text-accent">looks like.</em></span>} />
         <ol className="mt-20 border-t border-foreground">
@@ -384,7 +384,7 @@ function Process() {
 /* ---------- FAQ ---------- */
 function Faq() {
   return (
-    <section id="faq" aria-labelledby="faq-title" className="px-6 py-28 md:px-10 md:py-40">
+    <section id="faq" aria-labelledby="faq-title" className="px-6 pb-14 pt-14 md:px-10 md:pb-20 md:pt-20">
       <div className="mx-auto max-w-7xl">
         <SectionHead eyebrow="FAQ" title={<span id="faq-title">A few good <em className="text-accent">questions.</em></span>} copy={faqIntro} />
         <FaqAccordion items={faqs} />
@@ -403,7 +403,7 @@ function Faq() {
 function Contact() {
   const { service } = Route.useSearch();
   return (
-    <section id="contact" className="px-6 py-28 md:px-10 md:py-40">
+    <section id="contact" className="px-6 pb-28 pt-14 md:px-10 md:pb-40 md:pt-20">
       <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-12">
         <Reveal className="md:col-span-5">
           <p className="eyebrow flex items-center gap-4 text-accent"><span className="h-px w-10 bg-accent" aria-hidden="true" />Say hello</p>
