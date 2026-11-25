@@ -23,3 +23,4 @@
 - Inquiry analytics retain `cta_click`, `inquiry_start`, `generate_lead`, and `discovery_call_click`; new CTA labels and service-prefilled contact URLs are recognized, and only successful saves emit `generate_lead`.
 - Service navigation destinations live in `src/data/site.ts` and render through ServiceNavigationLink in desktop, mobile, and footer menus, so all entry points stay aligned.
 - Audit promotion copy lives with websiteDiagnosis in src/data/site.ts and renders through AuditBanner in the shared Header; fixed banner heights offset content, anchors, and the mobile menu to prevent overlap.
+- Temporary seasonal homepage styling is gated by seasonalHomepageEnabled in src/data/seasonal.ts; keep its static decoration and CSS scoped to the homepage so disabling one setting restores the original presentation without changing content or behavior.

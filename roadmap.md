@@ -12,3 +12,6 @@
 - [x] Reorder homepage, consolidate portal into process, and clarify inquiry choices.
 - [x] Verify desktop/mobile and keyboard navigation, direct service arrivals, and anchor clearance; leave unpublished.
 - [x] Add WebsiteAuditor's audit banner now without a start timer; verify preview and leave publishing to the user at 9 a.m.
+- [x] Add temporary homepage Christmas styling from the brief and uploaded moodboard, controlled by one setting.
+- [x] Verify desktop/mobile lights, menu, unchanged CTAs and inquiry form behavior; leave unpublished.
+- [x] Drape smaller seasonal strands around the About portrait and inquiry form without obscuring the photo, labels or controls.

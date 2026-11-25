@@ -9,6 +9,8 @@ import { Link } from "@tanstack/react-router";
 import { projects, type Project } from "@/data/projects";
 import { FaqAccordion } from "@/components/site/FaqAccordion";
 import { ServiceNavigationLink } from "@/components/site/ServiceNavigationLink";
+import { ChristmasLights, ChristmasPaper } from "@/components/site/ChristmasLights";
+import { seasonalHomepageEnabled } from "@/data/seasonal";
 import { clientPortalUrl, faqIntro, faqs, homepageCopy, inquiryCopy, navLinks, portal, serviceNavigation, serviceOptions, services, socials, steps, websiteDiagnosis } from "@/data/site";
 import { preselectService, servicePages } from "@/data/services";
 import { cn } from "@/lib/utils";
@@ -58,7 +60,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <>
+    <div className={seasonalHomepageEnabled ? "seasonal-homepage" : undefined}>
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-foreground focus:px-4 focus:py-2 focus:text-background">
         Skip to content
       </a>
@@ -73,7 +75,7 @@ function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
@@ -100,7 +102,8 @@ function SectionHead({ eyebrow, title, copy, className }: { eyebrow: string; tit
 function Hero() {
   return (
     <section id="top" className="personality-hero relative flex flex-col justify-center overflow-hidden px-6 pb-16 pt-36 md:min-h-[90svh] md:px-10 md:pb-24 md:pt-40">
-      <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
+      {seasonalHomepageEnabled && <><ChristmasPaper /><ChristmasLights /></>}
+      <svg aria-hidden="true" className={cn("pointer-events-none absolute inset-0 h-full w-full", seasonalHomepageEnabled && "hidden")} viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
         <path className="hero-line" d="M-40 720 C 320 640, 520 260, 860 300 S 1300 520, 1500 140" stroke="var(--terracotta)" strokeWidth="1" strokeDasharray="1200" />
         <circle cx="1130" cy="250" r="140" stroke="var(--aegean)" strokeOpacity="0.35" strokeWidth="1" />
       </svg>
@@ -253,9 +256,10 @@ function About() {
     <section id="about" className="px-6 pb-14 pt-28 md:px-10 md:pb-20 md:pt-40">
       <div className="mx-auto max-w-7xl">
         <SectionHead eyebrow="A little about me" title={<>A creative mind.<br /><em className="text-accent">An analytical <span className="whitespace-nowrap">one, too.</span></em></>} />
-        <div className="mt-12 grid items-start gap-12 md:grid-cols-12 md:gap-10">
-          <Reveal className="md:col-span-5 md:sticky md:top-28 md:self-start">
-            <div className="relative mx-auto w-full max-w-[300px] md:mx-0 md:max-w-[380px]">
+        <div className={cn("grid items-start gap-12 md:grid-cols-12 md:gap-10", seasonalHomepageEnabled ? "mt-24" : "mt-12")}>
+          <Reveal className={cn("md:col-span-5 md:sticky md:self-start", seasonalHomepageEnabled ? "seasonal-portrait-sticky" : "md:top-28")}>
+            <div className={cn("relative mx-auto w-full max-w-[300px] md:mx-0 md:max-w-[380px]", seasonalHomepageEnabled && "seasonal-portrait")}>
+              {seasonalHomepageEnabled && <ChristmasLights variant="feature" />}
               <img
                 src={headshot.url}
                 alt="Portrait of Alexis Beam"
@@ -420,7 +424,8 @@ function Contact() {
             </BookingLink>
           </div>
         </Reveal>
-        <Reveal delay={120} className="relative md:col-span-6 md:col-start-7">
+        <Reveal delay={120} className={cn("relative md:col-span-6 md:col-start-7", seasonalHomepageEnabled && "seasonal-inquiry")}>
+          {seasonalHomepageEnabled && <ChristmasLights variant="feature" />}
           <ContactForm preselectedService={service} />
         </Reveal>
       </div>

@@ -589,3 +589,127 @@ html[data-theme="after-dark"] .project-stage::before {
   }
   html[data-theme="after-dark"] .project-stage:hover::before { opacity: 1; }
 }
+
+/* Temporary homepage print treatment. All selectors disappear behind one setting. */
+.seasonal-homepage {
+  overflow-x: clip;
+  --christmas-paper: #F7F0E3;
+  --christmas-print-ink: oklch(0.3 0.017 125);
+  --christmas-cherry: oklch(0.55 0.18 23);
+  --christmas-cranberry: oklch(0.46 0.15 20);
+  --christmas-teal: oklch(0.6 0.07 183);
+  --christmas-butter: oklch(0.87 0.11 91);
+  --christmas-ivory: oklch(0.94 0.04 91);
+  --christmas-pink: oklch(0.78 0.07 5);
+  --christmas-wire: oklch(0.33 0.04 155);
+  --christmas-socket: oklch(0.4 0.035 155);
+  --christmas-socket-rib: oklch(0.54 0.03 147);
+  --christmas-glass-highlight: oklch(0.98 0.025 85);
+  --christmas-bulb-edge: oklch(0.4 0.035 130 / 28%);
+}
+.seasonal-homepage :is(.site-header, .personality-hero) {
+  --background: var(--christmas-paper);
+  --foreground: oklch(0.254 0 0);
+  --accent: oklch(0.53 0.04 215);
+  --muted-foreground: oklch(0.46 0.008 75);
+  --ring: var(--accent);
+  --personality-display: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --personality-weight: 400;
+  --personality-radius: 2px;
+  --personality-border: 1px;
+  --personality-shadow: none;
+  color: var(--foreground);
+}
+html .seasonal-homepage .site-header .font-serif {
+  font-family: var(--personality-display);
+  font-weight: 400;
+}
+html .seasonal-homepage .site-header nav > a .font-serif { font-size: 1.875rem; }
+.seasonal-homepage .site-header { background-color: var(--christmas-paper); }
+.seasonal-homepage .personality-hero {
+  background-color: var(--christmas-paper);
+  background-image: none;
+  isolation: isolate;
+  padding-top: 14.75rem;
+  padding-bottom: 1rem;
+}
+.seasonal-homepage .personality-hero::before,
+.seasonal-homepage .personality-hero::after { content: none; }
+.seasonal-homepage .personality-hero > .relative { z-index: 1; }
+html .seasonal-homepage .hero-heading { font-family: var(--personality-display); font-size: 2.875rem; line-height: 1.02; font-weight: 400; font-variation-settings: normal; }
+html .seasonal-homepage .hero-heading .italic { font-style: italic; }
+.seasonal-homepage :is(.site-header, .personality-hero) .site-cta { border-radius: 0; box-shadow: none; }
+.seasonal-homepage .personality-hero .site-cta { background: var(--foreground); color: var(--background); border: 0; }
+.seasonal-homepage .personality-hero .site-cta:hover { background: var(--accent); }
+.seasonal-homepage .site-header .site-cta { background: transparent; color: var(--foreground); }
+.seasonal-homepage .site-header .site-cta:hover { background: var(--foreground); color: var(--background); }
+.seasonal-homepage .site-header #mobile-menu .site-cta { background: var(--foreground); color: var(--background); }
+.seasonal-homepage .site-header #mobile-menu .site-cta:hover { background: var(--accent); }
+.seasonal-homepage .christmas-lights {
+  position: absolute;
+  inset: 6.75rem 0 auto;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.seasonal-homepage .christmas-lights-feature {
+  inset: auto -1rem calc(100% + .5rem);
+}
+.seasonal-homepage .christmas-lights-feature .christmas-lights-desktop { display: none; }
+.seasonal-homepage .seasonal-inquiry { padding-top: calc(20% + 1.5rem); }
+.seasonal-homepage .seasonal-inquiry .christmas-lights-feature { inset: 0 0 auto; }
+@media (min-width: 768px) {
+  .seasonal-homepage .seasonal-portrait-sticky { top: 16.5rem; }
+  html .seasonal-homepage .site-header nav > a .font-serif { font-size: 2.25rem; }
+}
+.christmas-lights svg { display: block; width: 100%; height: auto; overflow: visible; }
+.christmas-lights .christmas-lights-desktop { display: none; }
+.christmas-wire { stroke: var(--christmas-wire); stroke-width: 2; stroke-linecap: round; }
+.christmas-wire-twist { stroke: var(--christmas-socket-rib); stroke-width: .8; stroke-linecap: round; opacity: .7; }
+.christmas-bulb-cherry { color: var(--christmas-cherry); }
+.christmas-bulb-teal { color: var(--christmas-teal); }
+.christmas-bulb-butter { color: var(--christmas-butter); }
+.christmas-bulb-ivory { color: var(--christmas-ivory); }
+.christmas-bulb-pink { color: var(--christmas-pink); }
+.seasonal-homepage .christmas-paper,
+.seasonal-homepage .christmas-starbursts {
+  display: block;
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  pointer-events: none;
+}
+.christmas-paper path { stroke: var(--christmas-print-ink); stroke-width: 1; stroke-linecap: round; opacity: .09; }
+.christmas-starbursts { overflow: hidden; }
+.christmas-starburst-teal { fill: var(--christmas-teal); opacity: .55; }
+.christmas-starburst-cherry { fill: var(--christmas-cherry); opacity: .48; }
+.christmas-starburst-pink { fill: var(--christmas-pink); opacity: .8; }
+.seasonal-homepage footer { border-top: 1px solid var(--christmas-cranberry); }
+@media (max-width: 639px) {
+  .christmas-starburst-teal { transform: translate(1390px, 470px) scale(.65); }
+  .christmas-starburst-cherry { display: none; }
+  .christmas-starburst-pink { transform: translate(1400px, 815px) scale(.7); }
+}
+@media (min-width: 640px) {
+  .christmas-lights .christmas-lights-desktop { display: block; }
+  .christmas-lights .christmas-lights-mobile { display: none; }
+  .seasonal-homepage .personality-hero { padding-top: 18rem; padding-bottom: 4rem; }
+  html .seasonal-homepage .hero-heading { font-size: 4rem; }
+}
+@media (min-width: 768px) {
+  .seasonal-homepage .personality-hero { padding-top: 18rem; padding-bottom: 6rem; }
+  html .seasonal-homepage .hero-heading { font-size: 4.5rem; }
+}
+@media (min-width: 1024px) {
+  html .seasonal-homepage .hero-heading { font-size: 5.5rem; }
+}
+@media (min-width: 1280px) {
+  .seasonal-homepage .personality-hero { padding-top: 20rem; }
+  html .seasonal-homepage .hero-heading { font-size: 7rem; }
+}
+@media (min-width: 1536px) {
+  .seasonal-homepage .personality-hero { padding-top: 24rem; }
+  html .seasonal-homepage .hero-heading { font-size: 8rem; }
+}
